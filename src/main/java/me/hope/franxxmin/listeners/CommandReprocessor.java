@@ -380,7 +380,7 @@ public class CommandReprocessor {
                             eb.setDescription("Shutting down Bot and updating through Github..");
                             event.getChannel().sendMessage(eb);
                             Runtime r = Runtime.getRuntime();
-                            Main.UpdatedServerID.put("id", event.getChannel().getIdAsString());
+
                             try {
                                 r.exec("screen -S gitupdater -p 0 -X stuff 'botupdate'$(echo -ne '\\015')");
                             } catch (IOException e) {
