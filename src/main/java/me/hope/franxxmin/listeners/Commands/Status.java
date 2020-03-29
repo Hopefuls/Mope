@@ -1,0 +1,45 @@
+package me.hope.franxxmin.listeners.Commands;
+
+import me.hope.franxxmin.Main;
+import me.hope.franxxmin.Templates;
+import me.hope.franxxmin.listeners.CommandReprocessor;
+import me.hope.franxxmin.utils.RequestLibrary.makeRequest;
+import org.javacord.api.entity.message.Message;
+import org.javacord.api.entity.message.embed.EmbedBuilder;
+import org.javacord.api.event.message.MessageCreateEvent;
+import org.json.JSONObject;
+
+import java.util.concurrent.TimeUnit;
+
+public class Status {
+    public static EmbedBuilder request(String ID, MessageCreateEvent event) {
+        //ID is important to keep track of the cooldown
+        EmbedBuilder eb = Templates.defaultembed();
+        eb.setThumbnail(Main.api.getYourself().getAvatar());
+        long startTime = System.nanoTime();
+        makeRequest.getResponse("http://88.218.227.106/api.php?status&key=hMozZJejEFag0dP2FrZY1puTh3QClvAw", Status.class, event);
+
+        long elapsedTime = System.nanoTime() - startTime;
+        long durationInMs = TimeUnit.MILLISECONDS.convert(elapsedTime, TimeUnit.NANOSECONDS);
+        eb.setDescription("BOT STATUS: OK \u2713");
+        eb.addField("ARABNET API", "Response Time: **" + durationInMs + "ms**");
+
+        long startTimeCDN = System.nanoTime();
+        JSONObject jsonobject = new JSONObject(makeRequest.getResponse("http://franxx.ml/api.php?count=all&key=hMozZJejEFag0dP2FrZY1puTh3QClvAw", Status.class, event));
+        long elapsedTimeCDN = System.nanoTime() - startTimeCDN;
+        long durationInMsCDN = TimeUnit.MILLISECONDS.convert(elapsedTimeCDN, TimeUnit.NANOSECONDS);
+
+        int hugcount = jsonobject.getInt("hugcount");
+        int cuddlecount = jsonobject.getInt("cuddlecount");
+        int patcount = jsonobject.getInt("patcount");
+        int kisscount = jsonobject.getInt("kisscount");
+        int smugcount = jsonobject.getInt("smugcount");
+        int crycount = jsonobject.getInt("crycount");
+        int pokecount = jsonobject.getInt("pokecount");
+        int ticklecount = jsonobject.getInt("ticklecount");
+        int feedcount = jsonobject.getInt("feedcount");
+        eb.addField("Franxxmin CDN Status", "Response Time: **" + durationInMsCDN + "ms**\nResource Count:\n \n      Resource \"kiss\"\u2192 " + kisscount + "\n      Resource \"hug\"\u2192 " + hugcount + "\n      Resource \"pat\"\u2192 " + patcount + "\n      Resource \"smug\"\u2192 " + smugcount + "\n      Resource \"cry\"\u2192 " + crycount + "\n      Resource \"poke\"\u2192 " + pokecount + "\n      Resource \"tickle\"\u2192 " + ticklecount + "\n      Resource \"feed\"\u2192 " + feedcount+"\n      Resource \"cuddle\"\u2192 " + cuddlecount);
+
+        return eb;
+    }
+}

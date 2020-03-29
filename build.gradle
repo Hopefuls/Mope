@@ -1,0 +1,20 @@
+plugins {
+    id 'application'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories { mavenCentral() }
+
+dependencies {
+
+    implementation 'org.javacord:javacord:3.0.5'
+    compile 'org.json:json:20171018'
+// https://mvnrepository.com/artifact/at.mukprojects/giphy4j
+    compile group: 'at.mukprojects', name: 'giphy4j', version: '1.0.0'
+
+}
+mainClassName= 'me.hope.franxxmin.Main'
