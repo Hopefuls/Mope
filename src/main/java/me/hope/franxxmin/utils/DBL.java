@@ -16,6 +16,7 @@ public class DBL {
                 .botId("688561837020545080")
                 .build();
         System.out.println("[DBL] DBL Connection successfully initialized!");
+
     }
     public static void updateServerCount() {
         dbl.setStats(ServerHashmaps.ID.size());

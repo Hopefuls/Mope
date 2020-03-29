@@ -45,13 +45,6 @@ public static DiscordApi api;
             new BotInitializer(args[1]);
 
         }
-        //first of all, most importantly, generate Hashmaps for servers (more important than actually starting the actual bot)
-
-
-
-
-
-        // Initialize Bot in extra class
 
         System.out.println("Using versionID "+versionid);
         //adds CommandReprocessor for Commands such as fm> or a custom one (later updates)
@@ -65,7 +58,6 @@ public static DiscordApi api;
                 if (event.getMessageAuthor().isYourself() || event.getMessageAuthor().isBotUser()) {
                 } else {
                     List<String> Arr = new LinkedList<String>(Arrays.asList(event.getMessageContent().split(" ")));
-                    System.out.println(Arr.toString());
                     Arr.remove(0);
                     String[] str = Arr.toArray(new String[Arr.size()]);
                     new CommandReprocessor(event, str, event.getMessageContent().split(" "));
