@@ -381,7 +381,7 @@ public class CommandReprocessor {
                             event.getChannel().sendMessage(eb);
                             Runtime r = Runtime.getRuntime();
                             try {
-                                r.exec("botupdate");
+                                r.exec("screen -X gitupdater updatebot");
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
