@@ -17,7 +17,7 @@ public class Status {
         EmbedBuilder eb = Templates.defaultembed();
         eb.setThumbnail(Main.api.getYourself().getAvatar());
         long startTime = System.nanoTime();
-        makeRequest.getResponse("http://88.218.227.106/api.php?status&key=hMozZJejEFag0dP2FrZY1puTh3QClvAw", Status.class, event);
+        makeRequest.getResponse("http://88.218.227.106/api.php?status&key="+Main.apistring, Status.class, event);
 
         long elapsedTime = System.nanoTime() - startTime;
         long durationInMs = TimeUnit.MILLISECONDS.convert(elapsedTime, TimeUnit.NANOSECONDS);
@@ -25,7 +25,7 @@ public class Status {
         eb.addField("ARABNET API", "Response Time: **" + durationInMs + "ms**");
 
         long startTimeCDN = System.nanoTime();
-        JSONObject jsonobject = new JSONObject(makeRequest.getResponse("http://franxx.ml/api.php?count=all&key=hMozZJejEFag0dP2FrZY1puTh3QClvAw", Status.class, event));
+        JSONObject jsonobject = new JSONObject(makeRequest.getResponse("http://franxx.ml/api.php?count=all&key="+Main.apistring, Status.class, event));
         long elapsedTimeCDN = System.nanoTime() - startTimeCDN;
         long durationInMsCDN = TimeUnit.MILLISECONDS.convert(elapsedTimeCDN, TimeUnit.NANOSECONDS);
 
