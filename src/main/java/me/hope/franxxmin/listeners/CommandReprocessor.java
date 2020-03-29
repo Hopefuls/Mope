@@ -379,13 +379,14 @@ public class CommandReprocessor {
                             EmbedBuilder eb = Templates.debugembed();
                             eb.setDescription("Shutting down Bot and updating through Github..");
                             event.getChannel().sendMessage(eb);
-                            Runtime r = Runtime.getRuntime();
+
 
                             try {
-                                Runtime.getRuntime().exec("screen -S gitupdater -X stuff 'botupdate$(echo -ne '\\015')'");
+                                Runtime.getRuntime().exec("initupdate");
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
+
 
                             System.exit(1);
                         }
