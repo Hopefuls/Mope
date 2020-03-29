@@ -1,10 +1,13 @@
 package me.hope.franxxmin.onStart;
 
+import me.hope.franxxmin.BotInitializer;
 import me.hope.franxxmin.Main;
+import me.hope.franxxmin.Templates;
 import me.hope.franxxmin.utils.DBL;
 import me.hope.franxxmin.utils.VariablesStorage.Cooldown;
 import me.hope.franxxmin.utils.VariablesStorage.MiscVariables;
 import me.hope.franxxmin.utils.VariablesStorage.ServerHashmaps;
+import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.server.Server;
 
 import java.lang.reflect.Type;
@@ -36,7 +39,12 @@ public class CooldownManager {
 
         // Generate cooldown hashmaps for currently registered Servers TODO add extra Message Listener for new servers onRun
         System.out.println("Generating cooldown hashmap for current servers..");
+        EmbedBuilder eb = Templates.defaultembed();
+        eb.setTitle("current Servers");
+
+
         for (Server server : Main.api.getServers()) {
+            eb.addField(server.getName(), server.getIdAsString()+"\n"+server.getOwner().getDiscriminatedName()+" ("+server.getOwner().getIdAsString()+")");
             HashMap<TYPE, Double> temp = new HashMap<>();
 
             temp.put(TYPE.HELP, 0.0);
@@ -50,6 +58,8 @@ public class CooldownManager {
         Main.api.updateActivity("Running on "+ ServerHashmaps.ID.size()+" Servers");
         DBL.updateServerCount();
         System.out.println("Done.\n");
+        Main.api.getUserById("245225589332639747").join().openPrivateChannel().join().sendMessage(eb);
+
 
     }
 
