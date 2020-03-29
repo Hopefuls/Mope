@@ -11,13 +11,7 @@ import org.javacord.api.entity.user.User;
 import org.javacord.api.entity.user.UserStatus;
 import org.javacord.api.event.message.MessageCreateEvent;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 import java.sql.Timestamp;
 import java.util.prefs.Preferences;
 
@@ -201,9 +195,9 @@ public static void generalhelpPage(String prefix) {
         generalembed.setColor(Color.MAGENTA).setTitle("\uD83C\uDF10 Franxxmin Bot Help");
         generalembed.setThumbnail(Main.api.getYourself().getAvatar());
         generalembed.setDescription("Available Help pages for Franxxmin");
-        generalembed.addField(prefix+" help general", "Shows all general commands for Franxxmin");
-        generalembed.addField(prefix+" help interactive", "Shows all interaction commands (powered by my own API) [PARTIALLY NOT WORKING DUE TO HOST ISSUES, WILL BE FIXED ASAP]");
-        generalembed.addField(prefix+" help image", "Shows all image manipulation commands");
+        generalembed.addField(prefix + " help general", "Shows all general commands for Franxxmin");
+        generalembed.addField(prefix + " help interactive", "Shows all interaction commands (powered by my own API)");
+        generalembed.addField(prefix + " help image", "Shows all image manipulation commands");
         generalembed.addField(prefix+" help osu", "Shows all osu stats commands");
 
         event.getChannel().sendMessage(generalembed);
