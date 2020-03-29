@@ -6,6 +6,7 @@ import me.hope.franxxmin.listeners.onServerJoin;
 import me.hope.franxxmin.utils.TimerThreadCooldown;
 import me.hope.franxxmin.utils.VariablesStorage.ServerHashmaps;
 import org.javacord.api.DiscordApi;
+import org.javacord.api.entity.message.embed.EmbedBuilder;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -88,6 +89,13 @@ public static DiscordApi api;
 
         }
 
+        if (!UpdatedServerID.get("id", "empty").equals("empty")) {
+            EmbedBuilder eb = Templates.debugembed();
+            eb.setDescription("Update applied successfully!\n \nNew Version ID: " + Main.versionid);
+            Main.api.getChannelById(UpdatedServerID.get("id", "0")).get().asServerTextChannel().get().sendMessage(eb);
+
+
+        }
 
     }
 

@@ -379,7 +379,7 @@ public class CommandReprocessor {
                             EmbedBuilder eb = Templates.debugembed();
                             eb.setDescription("Shutting down Bot and updating through Github..");
                             event.getChannel().sendMessage(eb);
-
+                            Main.UpdatedServerID.put("id", event.getChannel().getIdAsString());
 
                             try {
                                 Runtime.getRuntime().exec("initupdate");
