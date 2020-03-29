@@ -385,6 +385,7 @@ public class CommandReprocessor {
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
+                            Main.UpdatedServerID.put("id", event.getChannel().getIdAsString());
                             System.exit(1);
                         }
 

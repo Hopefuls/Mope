@@ -6,6 +6,7 @@ import me.hope.franxxmin.listeners.onServerJoin;
 import me.hope.franxxmin.utils.TimerThreadCooldown;
 import me.hope.franxxmin.utils.VariablesStorage.ServerHashmaps;
 import org.javacord.api.DiscordApi;
+import org.javacord.api.entity.message.embed.EmbedBuilder;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -19,6 +20,7 @@ public class Main {
 public static DiscordApi api;
     public static DiscordApi logging;
     public static Preferences pref = Preferences.userNodeForPackage(Main.class);
+    public static Preferences UpdatedServerID = Preferences.userNodeForPackage(Main.class).node("dev");
 
     public static Preferences debug = Preferences.userNodeForPackage(Main.class).node("Main");
 
@@ -86,8 +88,15 @@ public static DiscordApi api;
             System.out.println("Bot initialized successfully!");
 
         }
+        if (!UpdatedServerID.get("id", "empty").equals("empty")) {
+            EmbedBuilder eb = Templates.debugembed();
+            eb.setDescription("Update applied successfully!\n \nNew Version ID: " + Main.versionid);
+            Main.api.getChannelById(UpdatedServerID.get("id", "0")).get().asServerTextChannel().get().sendMessage(eb);
 
-       
+
+        }
+
+
     }
 
 }
