@@ -387,7 +387,11 @@ public class CommandReprocessor {
                                 e.printStackTrace();
                             }
 
-
+                            try {
+                                Thread.sleep(3000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
                             System.exit(1);
                         }
 
