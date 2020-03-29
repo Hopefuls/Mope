@@ -15,4 +15,5 @@ public class MiscVariables {
     public static HashMap<String/*Userid*/, JSONObject> jsonObjectHashMap = new HashMap<>();
     public static HashMap<String/*Userid*/, JSONObject> jsonObjectHashMapGetBest = new HashMap<>();
     public static HashMap<String/*messageid*/, Message/*Message for Edit OSUREACTOR*/> editosureactor = new HashMap<>();
+
 }

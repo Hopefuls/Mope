@@ -1,7 +1,9 @@
 package me.hope.franxxmin.onStart;
 
 import me.hope.franxxmin.Main;
+import me.hope.franxxmin.utils.DBL;
 import me.hope.franxxmin.utils.VariablesStorage.Cooldown;
+import me.hope.franxxmin.utils.VariablesStorage.MiscVariables;
 import me.hope.franxxmin.utils.VariablesStorage.ServerHashmaps;
 import org.javacord.api.entity.server.Server;
 
@@ -45,6 +47,8 @@ public class CooldownManager {
             Cooldown.cooldowntrack.put(server.getIdAsString(), temp);
             ServerHashmaps.ID.add(server.getIdAsString());
         }
+        Main.api.updateActivity("Running on "+ ServerHashmaps.ID.size()+" Servers");
+        DBL.updateServerCount();
         System.out.println("Done.\n");
 
     }
@@ -62,8 +66,9 @@ public class CooldownManager {
             temp.put(TYPE.OSU_REACT, 0.0);
             Cooldown.cooldowntrack.put(ID, temp);
             ServerHashmaps.ID.add(ID);
-
+        Main.api.updateActivity("Running on "+ ServerHashmaps.ID.size()+" Servers");
         System.out.println("Done.\n");
+
     }
     public static void removeServer(Server srv) {
         String ID = srv.getIdAsString();
@@ -71,6 +76,7 @@ public class CooldownManager {
 
         ServerHashmaps.ID.remove(ID);
         Cooldown.cooldowntrack.remove(ID);
+
     }
     public static Double getDefault(String cooldowntype) {
 

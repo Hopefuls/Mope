@@ -7,10 +7,12 @@ version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
-repositories { mavenCentral() }
+repositories { mavenCentral()
+    maven { url 'https://jitpack.io' }
+     }
 
 dependencies {
-
+    compile 'org.discordbots:DBL-Java-Library:2.0.1'
     implementation 'org.javacord:javacord:3.0.5'
     compile 'org.json:json:20171018'
 // https://mvnrepository.com/artifact/at.mukprojects/giphy4j

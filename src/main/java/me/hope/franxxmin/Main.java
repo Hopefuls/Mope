@@ -31,11 +31,13 @@ public static DiscordApi api;
     public static String OSUAPIKEY;
     public static String versionid = UUID.randomUUID().toString().substring(30);
     public static String loggingtoken;
+    public static String dbltoken;
     public static String dfprfx;
     public static String apistring;
     public static void main(String[] args) {
         OSUAPIKEY = args[4];
         loggingtoken = args[5];
+        dbltoken = args[6];
         if (Boolean.valueOf(args[0]).equals(true)) {
             new BotInitializer(args[2]);
 
@@ -95,7 +97,7 @@ public static DiscordApi api;
 
         }
 
-
+       
     }
 
 }
