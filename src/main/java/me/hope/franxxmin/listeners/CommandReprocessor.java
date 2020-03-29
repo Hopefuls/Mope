@@ -15,6 +15,7 @@ import org.javacord.api.entity.user.User;
 import org.javacord.api.event.message.MessageCreateEvent;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.UUID;
 import java.util.prefs.Preferences;
 
@@ -370,7 +371,28 @@ public class CommandReprocessor {
 
                     }
 
+                } else if (str[0].equalsIgnoreCase("gitupdate")) {
+                    if (event.getMessageAuthor().isBotOwner()) {
+                        if (Main.localmode) {
+
+                        } else {
+                            EmbedBuilder eb = Templates.debugembed();
+                            eb.setDescription("Shutting down Bot and updating through Github..");
+                            event.getChannel().sendMessage(eb);
+                            Runtime r = Runtime.getRuntime();
+                            try {
+                                r.exec("botupdate");
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            System.exit(1);
+                        }
+
+
+                    }
+
                 } else {
+
                     event.getChannel().sendMessage(Templates.argerrorembed().setDescription("This command is unknown. Get a list of available commands by using `" + Pstr + " help`"));
                 }
             }

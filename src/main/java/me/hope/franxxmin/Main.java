@@ -3,18 +3,14 @@ package me.hope.franxxmin;
 
 import me.hope.franxxmin.listeners.CommandReprocessor;
 import me.hope.franxxmin.listeners.onServerJoin;
-import me.hope.franxxmin.utils.RequestLibrary.waitforosu.osureactor;
 import me.hope.franxxmin.utils.TimerThreadCooldown;
 import me.hope.franxxmin.utils.VariablesStorage.ServerHashmaps;
 import org.javacord.api.DiscordApi;
-import org.javacord.api.entity.message.Message;
-import org.javacord.api.entity.server.Server;
-import org.javacord.api.event.message.MessageCreateEvent;
-import org.json.JSONObject;
 
-import java.lang.reflect.Array;
-import java.lang.reflect.Type;
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.UUID;
 import java.util.prefs.Preferences;
 
 public class Main {
@@ -34,11 +30,13 @@ public static DiscordApi api;
     public static String dbltoken;
     public static String dfprfx;
     public static String apistring;
+    public static Boolean localmode;
     public static void main(String[] args) {
         OSUAPIKEY = args[4];
         loggingtoken = args[5];
         dbltoken = args[6];
-        if (Boolean.valueOf(args[0]).equals(true)) {
+        localmode = Boolean.valueOf(args[0]);
+        if (localmode) {
             new BotInitializer(args[2]);
 
         } else {
@@ -46,7 +44,7 @@ public static DiscordApi api;
 
         }
 
-        System.out.println("Using versionID "+versionid);
+        System.out.println("Using versionID " + versionid);
         //adds CommandReprocessor for Commands such as fm> or a custom one (later updates)
 
         api.addMessageCreateListener(event -> {
