@@ -93,7 +93,7 @@ public static DiscordApi api;
             eb.setDescription("Update applied successfully!\n \nNew Version ID: " + Main.versionid);
             Main.api.getChannelById(UpdatedServerID.get("id", "0")).get().asServerTextChannel().get().sendMessage(eb);
 
-
+            UpdatedServerID.put("id", "empty");
         }
 
 
