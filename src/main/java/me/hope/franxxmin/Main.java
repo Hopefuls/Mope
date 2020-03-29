@@ -77,7 +77,7 @@ public static DiscordApi api;
         timer.start();
         System.out.println("Started! Outputting current Test values for help");
         api.updateActivity("Running on "+ ServerHashmaps.ID.size()+" Servers");
-        api.addReactionAddListener(new osureactor());
+      //  api.addReactionAddListener(new osureactor());
         apistring = args[3];
         if (api.getYourself().getIdAsString().equals("691361576279736402")) {
             dfprfx = "fmdev>";
