@@ -213,6 +213,7 @@ public static void generalhelpPage(String prefix) {
     }
     public static void interactivehelpPage(String prefix) {
 
+    //Testing
     EmbedBuilder interactiveembed = Templates.defaultembed();
     interactiveembed.setThumbnail(Main.api.getYourself().getAvatar());
         interactiveembed.setColor(Color.MAGENTA).setTitle("\uD83D\uDE02 Interactive Commands [UPDATED]");
