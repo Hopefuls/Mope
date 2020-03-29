@@ -88,7 +88,7 @@ public class Templates {
         EmbedBuilder tempeb = defaultembed();
         tempeb.setColor(Color.MAGENTA).setTitle("\uD83E\uDDED About this Bot");
         tempeb.setThumbnail(Main.api.getOwner().join().getAvatar());
-        tempeb.setDescription("This Bot was made with \u2764 by HopeDev\n \nDiscord: Hope#1445\nEmail: hopedevmail@yahoo.com\n[Development Server](https://discord.gg/xAURjuc)\n[Alternative Server](https://discord.gg/RSfuEgq)\n \nThanks to [nekobot.xyz](https://nekobot.xyz) for making their API available for everyone! <3\n \nCredit for the Avatar goes to [u/youregretti](https://www.reddit.com/r/DarlingInTheFranxx/comments/8nnvgs/dr_frank_werner_dr_franxx_minimalistic_wallpaper/)");
+        tempeb.setDescription("This Bot was made with \u2764 by HopeDev\n \nDiscord: Hope#1445\nEmail: hopedevmail@yahoo.com\n[Development Server](https://discord.gg/xAURjuc)\n[Alternative Server](https://discord.gg/RSfuEgq)\n[Franxxmin on top.gg](https://top.gg/bot/688561837020545080)\n \nThanks to [nekobot.xyz](https://nekobot.xyz) for making their API available for everyone! <3\n \nCredit for the Avatar goes to [u/youregretti](https://www.reddit.com/r/DarlingInTheFranxx/comments/8nnvgs/dr_frank_werner_dr_franxx_minimalistic_wallpaper/)");
         tempeb.addField("Planned Features", "- Custom Prefix (Done)\n- Automoderation\n- React Roles\n- Image Manipulation (Partially done)\n- Moderation\n- Raid Protection (partially implemented into Moderation)\n");
 
 
