@@ -30,17 +30,17 @@ public class OSU_PPY_SH extends Thread {
     public static WhatIWant iwant;
 
     public OSU_PPY_SH(String username, MessageCreateEvent event, Message msg, WhatIWant iwant) {
-        this.event = event;
-        this.username = username;
-        this.msg = msg;
-        this.iwant = iwant;
+        OSU_PPY_SH.event = event;
+        OSU_PPY_SH.username = username;
+        OSU_PPY_SH.msg = msg;
+        OSU_PPY_SH.iwant = iwant;
     }
 
     public void run() {
-        if (this.iwant.equals(WhatIWant.GET_USER)) {
+        if (iwant.equals(WhatIWant.GET_USER)) {
             getUser(username);
 
-        } else if (this.iwant.equals(WhatIWant.GET_RECENT)) {
+        } else if (iwant.equals(WhatIWant.GET_RECENT)) {
             getRecent(username);
         }
         for (int i = 0; i < 2; i++) {
@@ -115,7 +115,7 @@ public class OSU_PPY_SH extends Thread {
 
                 eb.setDescription("most Recent Gameplay from " + new TimestampResolver(ts).resolvewithTime());
                 eb.setImage("https://assets.ppy.sh/beatmaps/" + resultbeatmapinfo.getString("beatmapset_id") + "/covers/card.jpg");
-                eb.addInlineField("Author - Title | Map Creator", "[" + resultbeatmapinfo.getString("artist") + " - " + resultbeatmapinfo.getString("title") + "](https://osu.ppy.sh/beatmapsets/" + resultbeatmapinfo.getString("beatmapset_id") + "#osu/" + result.getString("beatmap_id") + ") by [" + resultbeatmapinfo.getString("creator") + "](https://osu.ppy.sh/users/" + resultbeatmapinfo.getString("creator_id") + ")");
+                eb.addInlineField("Author - Title - Map Creator", "[" + resultbeatmapinfo.getString("artist") + " - " + resultbeatmapinfo.getString("title") + "](https://osu.ppy.sh/beatmapsets/" + resultbeatmapinfo.getString("beatmapset_id") + "#osu/" + result.getString("beatmap_id") + ") by [" + resultbeatmapinfo.getString("creator") + "](https://osu.ppy.sh/users/" + resultbeatmapinfo.getString("creator_id") + ")");
                 eb.addInlineField("Difficulty", resultbeatmapinfo.getString("difficultyrating"));
                 String ranking = result.getString("rank");
                 String Rank;
@@ -176,7 +176,7 @@ public class OSU_PPY_SH extends Thread {
             new cooldownutility(ID).cooldownreset(CooldownManager.TYPE.OSU);
 
 
-            this.msg = event.getChannel().sendMessage(Templates.defaultembed().setDescription("Querying User Profile ``" + username.replace("%20", " ") + "``, please wait..").setThumbnail("https://i.pinimg.com/originals/3e/f0/e6/3ef0e69f3c889c1307330c36a501eb12.gif")).join();
+            msg = event.getChannel().sendMessage(Templates.defaultembed().setDescription("Querying User Profile ``" + username.replace("%20", " ") + "``, please wait..").setThumbnail("https://i.pinimg.com/originals/3e/f0/e6/3ef0e69f3c889c1307330c36a501eb12.gif")).join();
             String apikey = Main.OSUAPIKEY;
             try {
                 EmbedBuilder eb = Templates.defaultembed();
@@ -286,12 +286,9 @@ public class OSU_PPY_SH extends Thread {
                 eb.addInlineField("\u200B", "\u200B\n");
                 eb.addInlineField("\u200B", "\u200B\n");
                 eb.addInlineField("\u200B", "\u200B\n");
-                eb.addField("Other Pages", "React with:\n \n- <:star_osu_best:692820580336009267> for ``"+result.getString("username")+"``'s best play [NOT WORKING YET; WORK IN PROGRESS]");
 
-                eb.setFooter("This Command has a 6 Second Cooldown | Franxxmin | HopeDev | Version ID: "+Main.versionid);
 
                 msg.edit(eb);
-                msg.addReaction(Main.api.getCustomEmojiById("692820580336009267").get());
                 MiscVariables.osureactmessage.put(event.getServer().get().getIdAsString(), msg);
                 MiscVariables.osuapieventholder.put(event.getServer().get().getIdAsString(), event);
                 MiscVariables.osuuserid.put(event.getServer().get().getIdAsString(), result.getString("user_id"));
@@ -433,11 +430,8 @@ public class OSU_PPY_SH extends Thread {
                 eb.addInlineField("\u200B", "\u200B");
                 eb.addInlineField("\u200B", "\u200B");
                 eb.addInlineField("\u200B", "\u200B");
-                eb.addField("Other Pages", "React with:\n \n- <:star_osu_best:692820580336009267> for ``"+result.getString("username")+"``'s best play");
-                eb.setFooter("This Command has a 6 Second Cooldown | Franxxmin | HopeDev | Version ID: "+Main.versionid);
 
                 msg.edit(eb);
-                msg.addReaction(Main.api.getCustomEmojiById("692820580336009267").get());
                 MiscVariables.osureactmessage.put(event.getServer().get().getIdAsString(), msg);
                 MiscVariables.osuapieventholder.put(event.getServer().get().getIdAsString(), event);
                 MiscVariables.osuuserid.put(event.getServer().get().getIdAsString(), result.getString("user_id"));
@@ -453,7 +447,7 @@ public class OSU_PPY_SH extends Thread {
 
     public enum WhatIWant {
         GET_USER,
-        GET_RECENT;
+        GET_RECENT
     }
 
 }
