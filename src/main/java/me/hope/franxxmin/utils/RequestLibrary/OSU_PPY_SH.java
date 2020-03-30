@@ -1,7 +1,5 @@
 package me.hope.franxxmin.utils.RequestLibrary;
 
-import com.google.gson.JsonObject;
-import com.google.gson.annotations.JsonAdapter;
 import me.hope.franxxmin.Main;
 import me.hope.franxxmin.Templates;
 import me.hope.franxxmin.onStart.CooldownManager;
@@ -24,20 +22,28 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public class OSU_PPY_SH extends Thread{
-public static MessageCreateEvent event;
-public static Message msg;
-public static String username;
-public static Boolean wentthr = false;
-public OSU_PPY_SH(String username, MessageCreateEvent event, Message msg) {
-    this.event = event;
-    this.username = username;
-    this.msg = msg;
+public class OSU_PPY_SH extends Thread {
+    public static MessageCreateEvent event;
+    public static Message msg;
+    public static String username;
+    public static Boolean wentthr = false;
+    public static WhatIWant iwant;
 
-}
+    public OSU_PPY_SH(String username, MessageCreateEvent event, Message msg, WhatIWant iwant) {
+        this.event = event;
+        this.username = username;
+        this.msg = msg;
+        this.iwant = iwant;
+    }
+
     public void run() {
-        getUser(username);
-        for (int i = 0; i<2; i++) {
+        if (this.iwant.equals(WhatIWant.GET_USER)) {
+            getUser(username);
+
+        } else if (this.iwant.equals(WhatIWant.GET_RECENT)) {
+            getRecent(username);
+        }
+        for (int i = 0; i < 2; i++) {
 
 
             for (int i2 = 0; i2 < 20; i2++) {
@@ -47,19 +53,120 @@ public OSU_PPY_SH(String username, MessageCreateEvent event, Message msg) {
 
                 }
                 if (!wentthr) {
-                System.out.println("Failed querying on "+event.getServer().get().getIdAsString()+", retrying..");
+                    System.out.println("Failed querying on " + event.getServer().get().getIdAsString() + ", retrying..");
+                    System.out.println("Wentthr" + wentthr.toString());
             } else if (wentthr) {
-                Thread.currentThread().interrupt();
 
-            }
+                    Thread.currentThread().interrupt();
+
+                }
             }
             System.out.println("failed. retrying..");
         }
         Thread.currentThread().interrupt();
     }
 
+    public void getRecent(String username) {
+        String ID = event.getServer().get().getIdAsString();
+
+        if (new cooldownutility(ID).chkcooldown(CooldownManager.TYPE.OSU) != 0.0) {
+            event.getChannel().sendMessage(Templates.cooldownerrorembed("osu", Cooldown.def.get(CooldownManager.TYPE.OSU), new cooldownutility(ID).chkcooldown(CooldownManager.TYPE.OSU)));
+
+
+        } else {
+            new cooldownutility(ID).cooldownreset(CooldownManager.TYPE.OSU);
+
+
+            msg = event.getChannel().sendMessage(Templates.defaultembed().setDescription("Querying Recent map from ``" + username.replace("%20", " ") + "``, please wait..").setThumbnail("https://i.pinimg.com/originals/3e/f0/e6/3ef0e69f3c889c1307330c36a501eb12.gif")).join();
+            String apikey = Main.OSUAPIKEY;
+            try {
+                String type;
+                EmbedBuilder eb = Templates.defaultembed();
+                eb.setColor(Color.pink);
+
+                try {
+                    int num = Integer.parseInt(username);
+                    type = "id";
+                } catch (NumberFormatException e) {
+                    type = "string";
+                }
+                JSONArray jsonarray = new JSONArray(makeRequest.getResponse("https://osu.ppy.sh/api/get_user_recent?k=" + apikey + "&u=" + username.replace(" ", "%20") + "&limit=1&type=" + type, OSU_PPY_SH.class, event));
+
+                JSONObject result = jsonarray.getJSONObject(0);
+                JSONArray jsonarrayuserinfo = new JSONArray(makeRequest.getResponse("https://osu.ppy.sh/api/get_user?k=" + apikey + "&u=" + username.replace(" ", "%20"), OSU_PPY_SH.class, event));
+                JSONObject resultuserinfo = jsonarrayuserinfo.getJSONObject(0);
+                JSONArray jsonarraybeatmapinfo = new JSONArray(makeRequest.getResponse("https://osu.ppy.sh/api/get_beatmaps?k=" + apikey + "&limit=1&b=" + result.getString("beatmap_id"), OSU_PPY_SH.class, event));
+                JSONObject resultbeatmapinfo = jsonarraybeatmapinfo.getJSONObject(0);
+
+                wentthr = true;
+                eb.setTitle("<:osuicon:692410518090022944> :flag_" + resultuserinfo.getString("country").toLowerCase() + ": " + resultuserinfo.getString("username") + " | Recent play");
+
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+                String dateString = format.format(new Date());
+                Date date = null;
+                try {
+                    date = format.parse(result.getString("date"));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                Timestamp ts = new Timestamp(date.getTime());
+
+
+                eb.setDescription("most Recent Gameplay from " + new TimestampResolver(ts).resolvewithTime());
+                eb.setImage("https://assets.ppy.sh/beatmaps/" + resultbeatmapinfo.getString("beatmapset_id") + "/covers/card.jpg");
+                eb.addInlineField("Author - Title | Map Creator", "[" + resultbeatmapinfo.getString("artist") + " - " + resultbeatmapinfo.getString("title") + "](https://osu.ppy.sh/beatmapsets/" + resultbeatmapinfo.getString("beatmapset_id") + "#osu/" + result.getString("beatmap_id") + ") by [" + resultbeatmapinfo.getString("creator") + "](https://osu.ppy.sh/users/" + resultbeatmapinfo.getString("creator_id") + ")");
+                eb.addInlineField("Difficulty", resultbeatmapinfo.getString("difficultyrating"));
+                String ranking = result.getString("rank");
+                String Rank;
+                switch (ranking) {
+                    case ("XH"):
+                        Rank = "<:rankingXH:692418403994173451>";
+                        break;
+                    case ("X"):
+                        Rank = "<:rankingX:692415554723643512>";
+                        break;
+                    case ("SH"):
+                        Rank = "<:rankingSH:692415554065006694>";
+                        break;
+                    case ("S"):
+                        Rank = "<:rankingS:692415554807398500>";
+                        break;
+                    case ("A"):
+                        Rank = "<:rankingA:692415554841083954>";
+                        break;
+                    case ("B"):
+                        Rank = "<:rankingB:692415554665054298>";
+                        break;
+                    case ("C"):
+                        Rank = "<:rankingC:692415554341830666>";
+                        break;
+                    case ("D"):
+                        Rank = "<:rankingD:692415554627305472> ";
+                        break;
+                    default:
+                        Rank = "FAILED";
+                        break;
+
+                }
+                eb.addInlineField("Rank", Rank);
+                eb.addInlineField("Score", result.getString("score"));
+                eb.addField("Max Combo", result.getString("maxcombo"));
+                eb.addInlineField("Missed", result.getString("countmiss"));
+                msg.edit(eb);
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                msg.edit(Templates.argerrorembed().setDescription("**The osu! Player** ``" + username.replace("_", " ") + "`` **does not exist or this User hasn't played a Map recently.**"));
+
+            }
+
+        }
+    }
+
     public void getUser(String username) {
-    String ID = event.getServer().get().getIdAsString();
+        String ID = event.getServer().get().getIdAsString();
 
         if (new cooldownutility(ID).chkcooldown(CooldownManager.TYPE.OSU) != 0.0) {
             event.getChannel().sendMessage(Templates.cooldownerrorembed("osu", Cooldown.def.get(CooldownManager.TYPE.OSU), new cooldownutility(ID).chkcooldown(CooldownManager.TYPE.OSU)));
@@ -343,5 +450,10 @@ public OSU_PPY_SH(String username, MessageCreateEvent event, Message msg) {
                 msg.edit(Templates.argerrorembed().setDescription("**The osu! Player** ``" + username.replace("_", " ") + "`` **does not exist.**"));
             }
         }
+
+    public enum WhatIWant {
+        GET_USER,
+        GET_RECENT;
+    }
 
 }

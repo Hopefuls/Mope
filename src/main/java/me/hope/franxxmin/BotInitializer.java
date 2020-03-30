@@ -1,11 +1,9 @@
 package me.hope.franxxmin;
 
 import me.hope.franxxmin.onStart.CooldownManager;
-import me.hope.franxxmin.utils.DBL;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 import org.javacord.api.entity.permission.Permissions;
-import org.javacord.api.util.logging.ExceptionLogger;
 
 public class BotInitializer {
 
@@ -14,7 +12,7 @@ public class BotInitializer {
         //Initialize API with API token from Arguments
         // Use Shard 0 for Debugging reasons
 
-        DBL.init();
+
         Main.logging = new DiscordApiBuilder().setToken(Main.loggingtoken).login().join();
         Main.api = new DiscordApiBuilder().setToken(token).login().join();
         System.out.println("Logging Invite: "+Main.logging.createBotInvite(Permissions.fromBitmask(8)));

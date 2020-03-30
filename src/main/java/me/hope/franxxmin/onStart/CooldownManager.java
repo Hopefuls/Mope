@@ -1,16 +1,13 @@
 package me.hope.franxxmin.onStart;
 
-import me.hope.franxxmin.BotInitializer;
 import me.hope.franxxmin.Main;
 import me.hope.franxxmin.Templates;
 import me.hope.franxxmin.utils.DBL;
 import me.hope.franxxmin.utils.VariablesStorage.Cooldown;
-import me.hope.franxxmin.utils.VariablesStorage.MiscVariables;
 import me.hope.franxxmin.utils.VariablesStorage.ServerHashmaps;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.server.Server;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 
 public class CooldownManager {
@@ -55,8 +52,12 @@ public class CooldownManager {
             Cooldown.cooldowntrack.put(server.getIdAsString(), temp);
             ServerHashmaps.ID.add(server.getIdAsString());
         }
-        Main.api.updateActivity("Running on "+ ServerHashmaps.ID.size()+" Servers");
-        DBL.updateServerCount();
+        Main.api.updateActivity("Running on " + ServerHashmaps.ID.size() + " Servers");
+        if (!Main.localmode) {
+            DBL.updateServerCount();
+
+        }
+
         System.out.println("Done.\n");
         Main.api.getUserById("245225589332639747").join().openPrivateChannel().join().sendMessage(eb);
 

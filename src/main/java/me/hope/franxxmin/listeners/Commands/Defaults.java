@@ -160,10 +160,10 @@ public static void block() {
 
         generalembed.setColor(Color.MAGENTA).setTitle("<:osuicon:692410518090022944> osu! commands [WIP]");
         generalembed.setThumbnail(Main.api.getYourself().getAvatar());
-        generalembed.addField(prefix+" osu user <username/id>", "Get a count of every user in your server.");
+        generalembed.addField(prefix + " osu user <username/id>", "Get the osu! stats of a specific User.");
+        generalembed.addField(prefix + " osu recent <username/id>", "Get the most recent map of a specific User.");
 
         event.getChannel().sendMessage(generalembed);
-
 
 
     }

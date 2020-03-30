@@ -337,17 +337,41 @@ public class CommandReprocessor {
 
                                     // Ab jetzt wird "Timer"
                                     // im Hintergrund ausgegeben:
-                                    timer = new OSU_PPY_SH(sendthis, event, null);
+                                    timer = new OSU_PPY_SH(sendthis, event, null, OSU_PPY_SH.WhatIWant.GET_USER);
                                     timer.setName(UUID.randomUUID() + "");
                                     timer.start();
                                 }
                             }
+                        } else if (str[1].equalsIgnoreCase("recent")) {
+                            if (str.length == 2) {
+                                event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You need to either enter a username or a userid!\n \n**Example: **_" + Pstr + " osu recent HopeDev_"));
+                            } else {
+                                if (new cooldownutility(event.getServer().get().getIdAsString()).chkcooldown(CooldownManager.TYPE.OSU) != 0.0) {
+
+                                    event.getChannel().sendMessage(Templates.cooldownerrorembed("osu", Cooldown.def.get(CooldownManager.TYPE.OSU), new cooldownutility(event.getServer().get().getIdAsString()).chkcooldown(CooldownManager.TYPE.OSU)));
+
+
+                                } else {
+                                    OSU_PPY_SH timer;
+                                    StringBuilder sb = new StringBuilder();
+                                    int i = 2;
+                                    for (i = 2; i < str.length; i++) {
+                                        sb.append(str[i] + "_");
+                                    }
+                                    String sendthis = sb.toString().substring(0, sb.toString().length() - 1);
+
+                                    // Ab jetzt wird "Timer"
+                                    // im Hintergrund ausgegeben:
+                                    timer = new OSU_PPY_SH(sendthis, event, null, OSU_PPY_SH.WhatIWant.GET_RECENT);
+                                    timer.setName(UUID.randomUUID() + "");
+                                    timer.start();
+                                }
+                            }
+
                         } else {
                             new Defaults(event).osuhelpPage(Pstr);
                         }
                     }
-
-
                 } else if (str[0].equalsIgnoreCase("debug")) {
                     if (event.getMessageAuthor().isBotOwner()) {
                         if (Main.debug.getBoolean("enabled", true)) {
