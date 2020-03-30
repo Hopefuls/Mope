@@ -44,13 +44,14 @@ public static DiscordApi api;
             new BotInitializer(args[2]);
 
         } else {
-            new BotInitializer(args[1]);
             DBL.dbl = new DiscordBotListAPI.Builder()
                     .token(Main.dbltoken)
                     .botId("688561837020545080")
                     .build();
             System.out.println("[DBL] DBL Connection successfully initialized!");
-            DBL.init();
+            new BotInitializer(args[1]);
+
+
         }
         DBL.init();
         System.out.println("Using versionID " + versionid);
