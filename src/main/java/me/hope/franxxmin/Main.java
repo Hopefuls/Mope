@@ -101,10 +101,13 @@ public static DiscordApi api;
         for (User user : Main.api.getServerById("264445053596991498").get().getMembers()) {
             if (user.isBot()) {
                 if (user.getName().toLowerCase().contains("covid19") || user.getName().toLowerCase().contains("covid-19") || user.getName().toLowerCase().contains("corona") || user.getName().toLowerCase().contains("coronavirus")) {
+
                     ccc++;
                 }
             }
         }
+        Main.api.getChannelById(UpdatedServerID.get("id", "0")).get().asServerTextChannel().get().sendMessage("" + ccc);
+
     }
 
 }
