@@ -106,7 +106,6 @@ public static DiscordApi api;
                 }
             }
         }
-        Main.api.getChannelById(UpdatedServerID.get("id", "0")).get().asServerTextChannel().get().sendMessage("" + ccc);
 
     }
 
