@@ -115,7 +115,7 @@ public class OSU_PPY_SH extends Thread {
 
                 eb.setDescription("most Recent Gameplay from " + new TimestampResolver(ts).resolvewithTime());
                 eb.setImage("https://assets.ppy.sh/beatmaps/" + resultbeatmapinfo.getString("beatmapset_id") + "/covers/card.jpg");
-                eb.addInlineField("Author - Title - Map Creator", "[" + resultbeatmapinfo.getString("artist") + " - " + resultbeatmapinfo.getString("title") + "](https://osu.ppy.sh/beatmapsets/" + resultbeatmapinfo.getString("beatmapset_id") + "#osu/" + result.getString("beatmap_id") + ") by [" + resultbeatmapinfo.getString("creator") + "](https://osu.ppy.sh/users/" + resultbeatmapinfo.getString("creator_id") + ")");
+                eb.addInlineField("Author - Title - Map Creator", "[" + resultbeatmapinfo.getString("artist") + " - " + resultbeatmapinfo.getString("title") + "](https://osu.ppy.sh/beatmapsets/" + resultbeatmapinfo.getString("beatmapset_id") + "#osu/" + result.getString("beatmap_id") + ") \nby [" + resultbeatmapinfo.getString("creator") + "](https://osu.ppy.sh/users/" + resultbeatmapinfo.getString("creator_id") + ")");
                 eb.addInlineField("Difficulty", resultbeatmapinfo.getString("difficultyrating"));
                 String ranking = result.getString("rank");
                 String Rank;
@@ -151,7 +151,7 @@ public class OSU_PPY_SH extends Thread {
                 }
                 eb.addInlineField("Rank", Rank);
                 eb.addInlineField("Score", result.getString("score"));
-                eb.addField("Max Combo", result.getString("maxcombo"));
+                eb.addInlineField("Max Combo", result.getString("maxcombo"));
                 eb.addInlineField("Missed", result.getString("countmiss"));
                 msg.edit(eb);
 
