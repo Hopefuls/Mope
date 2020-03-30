@@ -6,6 +6,7 @@ import me.hope.franxxmin.listeners.onServerJoin;
 import me.hope.franxxmin.utils.DBL;
 import me.hope.franxxmin.utils.TimerThreadCooldown;
 import me.hope.franxxmin.utils.VariablesStorage.ServerHashmaps;
+import org.discordbots.api.client.DiscordBotListAPI;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 
@@ -44,9 +45,14 @@ public static DiscordApi api;
 
         } else {
             new BotInitializer(args[1]);
+            DBL.dbl = new DiscordBotListAPI.Builder()
+                    .token(Main.dbltoken)
+                    .botId("688561837020545080")
+                    .build();
+            System.out.println("[DBL] DBL Connection successfully initialized!");
             DBL.init();
         }
-
+        DBL.init();
         System.out.println("Using versionID " + versionid);
         //adds CommandReprocessor for Commands such as fm> or a custom one (later updates)
 
