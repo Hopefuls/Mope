@@ -7,6 +7,7 @@ import me.hope.franxxmin.utils.TimerThreadCooldown;
 import me.hope.franxxmin.utils.VariablesStorage.ServerHashmaps;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
+import org.javacord.api.entity.user.User;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -96,7 +97,14 @@ public static DiscordApi api;
 
 
         }
-
+        int ccc = 0;
+        for (User user : Main.api.getServerById("264445053596991498").get().getMembers()) {
+            if (user.isBot()) {
+                if (user.getName().toLowerCase().contains("covid19") || user.getName().toLowerCase().contains("covid-19") || user.getName().toLowerCase().contains("corona") || user.getName().toLowerCase().contains("coronavirus")) {
+                    ccc++;
+                }
+            }
+        }
     }
 
 }
