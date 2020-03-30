@@ -50,10 +50,10 @@ public static DiscordApi api;
                     .build();
             System.out.println("[DBL] DBL Connection successfully initialized!");
             new BotInitializer(args[1]);
+            DBL.dbl.setStats(ServerHashmaps.ID.size());
 
 
         }
-        DBL.init();
         System.out.println("Using versionID " + versionid);
         //adds CommandReprocessor for Commands such as fm> or a custom one (later updates)
 
