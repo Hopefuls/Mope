@@ -3,6 +3,7 @@ package me.hope.franxxmin.listeners;
 import me.hope.franxxmin.Main;
 import me.hope.franxxmin.Templates;
 import me.hope.franxxmin.listeners.Commands.Defaults;
+import me.hope.franxxmin.listeners.Commands.Moderation.Moderation;
 import me.hope.franxxmin.listeners.Commands.NEKOBOTRES;
 import me.hope.franxxmin.listeners.Commands.Status;
 import me.hope.franxxmin.onStart.CooldownManager;
@@ -421,6 +422,15 @@ public class CommandReprocessor {
 
 
                     }
+
+                } else if (str[0].equalsIgnoreCase("kick")) {
+                    if (event.getServer().get().getIdAsString().equals("655071198291689504")) {
+                        new Moderation(event, str, Pstr).kickUser();
+                    } else {
+                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("This command is unknown. Get a list of available commands by using `" + Pstr + " help`"));
+
+                    }
+
 
                 } else {
 
