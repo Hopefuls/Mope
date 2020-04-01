@@ -3,16 +3,11 @@ package me.hope.franxxmin.listeners;
 import me.hope.franxxmin.Main;
 import me.hope.franxxmin.Templates;
 import me.hope.franxxmin.onStart.CooldownManager;
-import me.hope.franxxmin.utils.VariablesStorage.Cooldown;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.event.server.ServerJoinEvent;
 import org.javacord.api.event.server.ServerLeaveEvent;
-import org.javacord.api.event.server.member.ServerMemberJoinEvent;
 import org.javacord.api.listener.server.ServerJoinListener;
 import org.javacord.api.listener.server.ServerLeaveListener;
-import org.javacord.api.listener.server.member.ServerMemberJoinListener;
-
-import java.util.HashMap;
 
 public class onServerJoin implements ServerJoinListener, ServerLeaveListener {
     @Override
@@ -50,6 +45,7 @@ public class onServerJoin implements ServerJoinListener, ServerLeaveListener {
 
 
         Main.api.getUserById("245225589332639747").join().openPrivateChannel().join().sendMessage(eb);
+        CooldownManager.updateServer(event.getServer());
 
         //Remove Server from Array
 
