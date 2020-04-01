@@ -21,7 +21,7 @@ public static MessageCreateEvent event;
 
 
 public Defaults (MessageCreateEvent event) {
-    this.event = event;
+    Defaults.event = event;
 }
 
 public static void usercount() {
@@ -207,20 +207,24 @@ public static void generalhelpPage(String prefix) {
     }
     public static void interactivehelpPage(String prefix) {
 
-    //Testing
-    EmbedBuilder interactiveembed = Templates.defaultembed();
-    interactiveembed.setThumbnail(Main.api.getYourself().getAvatar());
+        //Testing
+        EmbedBuilder interactiveembed = Templates.defaultembed();
+        interactiveembed.setThumbnail(Main.api.getYourself().getAvatar());
         interactiveembed.setColor(Color.MAGENTA).setTitle("\uD83D\uDE02 Interactive Commands [UPDATED]");
         interactiveembed.setDescription("_Took me hours to make a working api myself_\nHere's a list of available Interactive Commands:");
-        interactiveembed.addField(prefix+" smug", "makes you smug");
-        interactiveembed.addField(prefix+" cry", "makes you cry");
-        interactiveembed.addField(prefix+" hug @mention", "Hugs mentioned user");
-        interactiveembed.addField(prefix+" kiss @mention", "Kiss mentioned user");
-        interactiveembed.addField(prefix+" pat @mention", "Give mentioned user headpats");
-        interactiveembed.addField(prefix+" poke @mention", "pokes mentioned user");
-        interactiveembed.addField(prefix+" tickle @mention", "tickles mentioned user");
-        interactiveembed.addField(prefix+" feed @mention", "feed mentioned user");
-        interactiveembed.addField(prefix+" cuddle @mention", "Cuddle with mentioned user");
+        interactiveembed.addField(prefix + " smug", "makes you smug");
+        interactiveembed.addField(prefix + " cry", "makes you cry");
+        interactiveembed.addField(prefix + " laugh", "makes you laugh");
+        interactiveembed.addField(prefix + "blush", "makes you blush");
+        interactiveembed.addField(prefix + " hug @mention", "Hugs mentioned user");
+        interactiveembed.addField(prefix + " kiss @mention", "Kiss mentioned user");
+        interactiveembed.addField(prefix + " pat @mention", "Give mentioned user headpats");
+        interactiveembed.addField(prefix + " poke @mention", "pokes mentioned user");
+        interactiveembed.addField(prefix + " tickle @mention", "tickles mentioned user");
+        interactiveembed.addField(prefix + " feed @mention", "feed mentioned user");
+        interactiveembed.addField(prefix + " cuddle @mention", "Cuddle with mentioned user");
+        interactiveembed.addField(prefix + " lick @mention", "Licks mentioned user");
+
         event.getChannel().sendMessage(interactiveembed);
 
 

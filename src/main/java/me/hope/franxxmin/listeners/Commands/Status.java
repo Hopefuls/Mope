@@ -2,9 +2,7 @@ package me.hope.franxxmin.listeners.Commands;
 
 import me.hope.franxxmin.Main;
 import me.hope.franxxmin.Templates;
-import me.hope.franxxmin.listeners.CommandReprocessor;
 import me.hope.franxxmin.utils.RequestLibrary.makeRequest;
-import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.event.message.MessageCreateEvent;
 import org.json.JSONObject;
@@ -38,7 +36,12 @@ public class Status {
         int pokecount = jsonobject.getInt("pokecount");
         int ticklecount = jsonobject.getInt("ticklecount");
         int feedcount = jsonobject.getInt("feedcount");
-        eb.addField("Franxxmin CDN Status", "Response Time: **" + durationInMsCDN + "ms**\nResource Count:\n \n      Resource \"kiss\"\u2192 " + kisscount + "\n      Resource \"hug\"\u2192 " + hugcount + "\n      Resource \"pat\"\u2192 " + patcount + "\n      Resource \"smug\"\u2192 " + smugcount + "\n      Resource \"cry\"\u2192 " + crycount + "\n      Resource \"poke\"\u2192 " + pokecount + "\n      Resource \"tickle\"\u2192 " + ticklecount + "\n      Resource \"feed\"\u2192 " + feedcount+"\n      Resource \"cuddle\"\u2192 " + cuddlecount);
+
+        int happycount = jsonobject.getInt("happycount");
+        int lickcount = jsonobject.getInt("lickcount");
+        int laughcount = jsonobject.getInt("laughcount");
+        int blushcount = jsonobject.getInt("blushcount");
+        eb.addField("Franxxmin CDN Status", "Response Time: **" + durationInMsCDN + "ms**\nResource Count:\n \n      Resource \"kiss\"\u2192 " + kisscount + "\n      Resource \"hug\"\u2192 " + hugcount + "\n      Resource \"pat\"\u2192 " + patcount + "\n      Resource \"smug\"\u2192 " + smugcount + "\n      Resource \"cry\"\u2192 " + crycount + "\n      Resource \"poke\"\u2192 " + pokecount + "\n      Resource \"tickle\"\u2192 " + ticklecount + "\n      Resource \"feed\"\u2192 " + feedcount + "\n      Resource \"cuddle\"\u2192 " + cuddlecount + "\n      Resource \"laugh\"\u2192 " + laughcount + "\n      Resource \"lick\"\u2192 " + lickcount + "\n      Resource \"happy\"\u2192 " + happycount + "\n      Resource \"blush\"\u2192 " + blushcount);
 
         return eb;
     }

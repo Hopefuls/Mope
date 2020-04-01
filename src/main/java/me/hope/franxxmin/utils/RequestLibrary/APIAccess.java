@@ -1,21 +1,8 @@
 package me.hope.franxxmin.utils.RequestLibrary;
 
-import at.mukprojects.giphy4j.Giphy;
-
 import me.hope.franxxmin.Main;
-import me.hope.franxxmin.listeners.CommandReprocessor;
 import org.javacord.api.event.message.MessageCreateEvent;
-import org.json.JSONArray;
 import org.json.JSONObject;
-
-import javax.imageio.ImageIO;
-import javax.sound.midi.SysexMessage;
-import java.awt.image.BufferedImage;
-import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.*;
 
 public class APIAccess {
 
@@ -24,7 +11,7 @@ public class APIAccess {
     private static String requrl = "http://franxx.ml";
     private static MessageCreateEvent event;
     public APIAccess(MessageCreateEvent event) {
-    this.event = event;
+    APIAccess.event = event;
     }
     public static String resolveImageURL(String PLAINJSON) {
 
@@ -71,13 +58,38 @@ public class APIAccess {
     }
     //Done
     public static String smug() {
-        return resolveImageURL(makeRequest.getResponse(requrl+"/api.php?type=smug&key="+key, APIAccess.class, event));
+        return resolveImageURL(makeRequest.getResponse(requrl + "/api.php?type=smug&key=" + key, APIAccess.class, event));
 
     }
 
     public static String feed() {
-        return resolveImageURL(makeRequest.getResponse(requrl+"/api.php?type=feed&key="+key, APIAccess.class, event));
+        return resolveImageURL(makeRequest.getResponse(requrl + "/api.php?type=feed&key=" + key, APIAccess.class, event));
 
 
     }
+
+    public static String blush() {
+        return resolveImageURL(makeRequest.getResponse(requrl + "/api.php?type=blush&key=" + key, APIAccess.class, event));
+
+
+    }
+
+    public static String laugh() {
+        return resolveImageURL(makeRequest.getResponse(requrl + "/api.php?type=laugh&key=" + key, APIAccess.class, event));
+
+
+    }
+
+    public static String lick() {
+        return resolveImageURL(makeRequest.getResponse(requrl + "/api.php?type=lick&key=" + key, APIAccess.class, event));
+
+
+    }
+
+    public static String happy() {
+        return resolveImageURL(makeRequest.getResponse(requrl + "/api.php?type=happy&key=" + key, APIAccess.class, event));
+
+
+    }
+
 }

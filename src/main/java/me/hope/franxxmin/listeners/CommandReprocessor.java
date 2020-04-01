@@ -11,6 +11,7 @@ import me.hope.franxxmin.utils.RequestLibrary.APIAccess;
 import me.hope.franxxmin.utils.RequestLibrary.OSU_PPY_SH;
 import me.hope.franxxmin.utils.VariablesStorage.Cooldown;
 import me.hope.franxxmin.utils.cooldownutility;
+import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.event.message.MessageCreateEvent;
@@ -305,6 +306,38 @@ public class CommandReprocessor {
                         }
                     }
 
+                } else if (str[0].equalsIgnoreCase("blush")) {
+                    new Defaults(event).ImageSender(event.getMessageAuthor().asUser().get().getMentionTag() + " is blushing", new APIAccess(event).blush());
+
+                } else if (str[0].equalsIgnoreCase("laugh")) {
+
+                    new Defaults(event).ImageSender(event.getMessageAuthor().asUser().get().getMentionTag() + " is laughing", new APIAccess(event).laugh());
+
+
+                } else if (str[0].equalsIgnoreCase("lick")) {
+                    Object[] list = event.getMessage().getMentionedUsers().toArray();
+                    if (list.length > 1) {
+                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You only need to mention one user!\n \n**Usage example: " + Pstr + " lick " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
+                    } else if (list.length == 0) {
+                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You need to mention a user!\n \n**Usage example: " + Pstr + " lick " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
+                    } else {
+                        User actionreciever = event.getMessage().getMentionedUsers().get(0);
+                        User actioninitializer = event.getMessageAuthor().asUser().get();
+
+                        if (actioninitializer.equals(actionreciever)) {
+                            new Defaults(event).ImageSender(Main.api.getYourself().getMentionTag() + " licks " + actioninitializer.getMentionTag() + "! *You're quite tasty!*", new APIAccess(event).lick());
+                        } else if (actionreciever.isYourself()) {
+                            new Defaults(event).ImageSender(Main.api.getYourself().getMentionTag() + " licks " + actioninitializer.getMentionTag() + "! *You're quite tasty!*", new APIAccess(event).lick());
+
+                        } else {
+                            new Defaults(event).ImageSender(actioninitializer.getMentionTag() + " licks " + actionreciever.getMentionTag() + "! *You're quite tasty!*", new APIAccess(event).lick());
+
+                        }
+                    }
+
+                } else if (str[0].equalsIgnoreCase("happy")) {
+                    new Defaults(event).ImageSender(event.getMessageAuthor().asUser().get().getMentionTag() + " is happy! *I'm glad you are.", new APIAccess(event).happy());
+
                 } else if (str[0].equalsIgnoreCase("baguette")) {
                     new NEKOBOTRES(event).baguette();
 
@@ -432,6 +465,23 @@ public class CommandReprocessor {
                     }
 
 
+                } else if (str[0].equalsIgnoreCase("praise")) {
+
+                    try {
+                        Message msg = event.getChannel().sendMessage("Getting all Users..").join();
+                        Thread.sleep(5000);
+                        msg.edit("Loading IchigoRenamer.exe..");
+                        Thread.sleep(8000);
+                        msg.edit("Pre-updating all Usernames.. Please wait");
+                        Thread.sleep(10000);
+                        msg.edit("Updating all Usernames now! This might take 2-3 Minutes.");
+                        Thread.sleep(3000);
+                        msg.edit("https://giphy.com/gifs/rick-roll-lgcUUCXgC8mEo");
+                        event.getChannel().sendMessage("Got em.");
+
+                    } catch (InterruptedException e) {
+
+                    }
                 } else {
 
                     event.getChannel().sendMessage(Templates.argerrorembed().setDescription("This command is unknown. Get a list of available commands by using `" + Pstr + " help`"));
