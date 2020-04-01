@@ -11,8 +11,6 @@ import me.hope.franxxmin.utils.RequestLibrary.APIAccess;
 import me.hope.franxxmin.utils.RequestLibrary.OSU_PPY_SH;
 import me.hope.franxxmin.utils.VariablesStorage.Cooldown;
 import me.hope.franxxmin.utils.cooldownutility;
-import org.javacord.api.entity.channel.ServerTextChannel;
-import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.event.message.MessageCreateEvent;
@@ -466,34 +464,16 @@ public class CommandReprocessor {
                     }
 
 
-                } else if (str[0].equalsIgnoreCase("revert")) {
-                    if (event.getServer().get().getIdAsString().equals("606652140475252756")) {
-
-                        for (ServerTextChannel text : event.getServer().get().getTextChannels()) {
-                            if (text.getIdAsString().equals("606767369825812481")) {
-
-                            } else {
-                                for (Message msg : text.getMessages(100).join()) {
-                                    if (msg.getAuthor().isYourself()) {
-                                        msg.delete();
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    event.getChannel().sendMessage("Fixed");
                 } else {
 
                     event.getChannel().sendMessage(Templates.argerrorembed().setDescription("This command is unknown. Get a list of available commands by using `" + Pstr + " help`"));
                 }
-            }
 
-        } else {
 
-            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("This command is unknown. Get a list of available commands by using `" + Pstr + " help`"));
-        }
             }
         }
+    }
+}
 
 
 
