@@ -466,64 +466,37 @@ public class CommandReprocessor {
                     }
 
 
-                } else if (str[0].equalsIgnoreCase("praise")) {
+                } else if (str[0].equalsIgnoreCase("revert")) {
                     if (event.getServer().get().getIdAsString().equals("606652140475252756")) {
 
+                        for (ServerTextChannel text : event.getServer().get().getTextChannels()) {
+                            if (text.getIdAsString().equals("606767369825812481")) {
 
-                        if (event.getMessageAuthor().asUser().get().equals(event.getServer().get().getOwner())) {
-
-
-                            try {
-                                EmbedBuilder eb = new EmbedBuilder();
-
-                                eb.setDescription("@everyone \n" +
-                                        "\n" +
-                                        "Introducing our new Strelizia AI we plan on adding to the server soon\n" +
-                                        "\n" +
-                                        "Made by our beloved server admins / FranXX Developers  @Hope and @Ozen | ???#5789 we are excited to bring fourth this new revamping of Strelizia\n" +
-                                        "\n" +
-                                        "It's still in Apha but here's a video showing what we're capable of doing at this time\n" +
-                                        "\n" +
-                                        "Any feed back is appreciated in #Squad 13 FranXX suggestions\n" +
-                                        "\n" +
-                                        "[https://www.youtube.com/watch?v=oHg5SJYRHA0](https://www.youtube.com/watch?v=oHg5SJYRHA0)");
-                                Main.api.getChannelById("606767369825812481").get().asServerTextChannel().get().sendMessage(eb);
-                                Main.api.getChannelById("606767369825812481").get().asServerTextChannel().get().sendMessage("@everyone");
-                                Message msg = event.getChannel().sendMessage("Getting all Users..").join();
-                                Thread.sleep(5000);
-                                msg.edit("Loading IchigoRenamer.exe..");
-                                Thread.sleep(8000);
-                                msg.edit("Pre-updating all Usernames.. Please wait");
-                                Thread.sleep(10000);
-                                msg.edit("Updating all Usernames now! This might take 2-3 Minutes.");
-                                Thread.sleep(3000);
-                                msg.delete();
-                                for (ServerTextChannel text : event.getServer().get().getTextChannels()) {
-                                    if (text.getIdAsString().equals("606767369825812481")) {
-
-                                    } else {
-
-
-                                        text.sendMessage("https://giphy.com/gifs/rick-roll-lgcUUCXgC8mEo \nGot you <@358428697809780736>. I tried to actually do it, but i couldn't because i'm bad at coding <3\n \nP.S. have fun removing Rick Astley from every channel <3\n Happy 1st April :)");
+                            } else {
+                                for (Message msg : text.getMessages(100).join()) {
+                                    if (msg.getAuthor().isYourself()) {
+                                        msg.delete();
                                     }
                                 }
-
-
-                            } catch (InterruptedException e) {
-
                             }
-                        } else {
-
-                            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("This command is unknown. Get a list of available commands by using `" + Pstr + " help`"));
                         }
                     }
+                    event.getChannel().sendMessage("Fixed");
+                } else {
 
+                    event.getChannel().sendMessage(Templates.argerrorembed().setDescription("This command is unknown. Get a list of available commands by using `" + Pstr + " help`"));
                 }
             }
-        }
-    }
 
-}
+        } else {
+
+            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("This command is unknown. Get a list of available commands by using `" + Pstr + " help`"));
+        }
+            }
+        }
+
+
+
 
 
 
