@@ -49,6 +49,7 @@ public class CommandReprocessor {
                 log.addField("Message ID", event.getMessage().getIdAsString());
                 log.addInlineField("Message URL", "https://discordapp.com/channels/" + event.getServer().get().getIdAsString() + "/" + event.getChannel().getIdAsString() + "/" + event.getMessage().getIdAsString());
                 log.addField("Commandtext", event.getMessageContent());
+                log.setThumbnail(event.getServer().get().getIcon().get());
                 Main.logging.getUserById("245225589332639747").join().openPrivateChannel().join().sendMessage(log);
             }
             if (str.length == 0) {
