@@ -19,9 +19,8 @@ public class onServerJoin implements ServerJoinListener, ServerLeaveListener {
         eb.addInlineField("Server ID", event.getServer().getIdAsString());
         eb.addField("Owner", event.getServer().getOwner().getDiscriminatedName());
         eb.addInlineField("Owner ID", event.getServer().getOwner().getIdAsString());
-        eb.addField("Member count", event.getServer().getMemberCount()+"");
+        eb.addField("Member count", event.getServer().getMemberCount() + "");
         eb.setThumbnail(Main.api.getYourself().getAvatar());
-
 
 
         Main.api.getUserById("245225589332639747").join().openPrivateChannel().join().sendMessage(eb);
@@ -41,7 +40,7 @@ public class onServerJoin implements ServerJoinListener, ServerLeaveListener {
         eb.setThumbnail(Main.api.getYourself().getAvatar());
 
         // Remove Server from cooldown refereer (might not be needed)
-       // Main.cooldownref.remove(event.getServer().getIdAsString());
+        // Main.cooldownref.remove(event.getServer().getIdAsString());
 
 
         Main.api.getUserById("245225589332639747").join().openPrivateChannel().join().sendMessage(eb);
