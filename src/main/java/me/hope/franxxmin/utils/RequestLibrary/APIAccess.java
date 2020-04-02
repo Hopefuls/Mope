@@ -8,7 +8,7 @@ public class APIAccess {
 
 
     private static String key = Main.apistring;
-    private static String requrl = "http://franxx.ml";
+    private static String requrl = "https://franxx.ml";
     private static MessageCreateEvent event;
     public APIAccess(MessageCreateEvent event) {
     APIAccess.event = event;
