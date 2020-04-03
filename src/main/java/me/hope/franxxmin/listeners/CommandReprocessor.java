@@ -464,7 +464,7 @@ public class CommandReprocessor {
                             Main.UpdatedServerID.put("id", event.getChannel().getIdAsString());
 
                             try {
-                                Runtime.getRuntime().exec("initupdate");
+                                Runtime.getRuntime().exec("botupdate");
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
