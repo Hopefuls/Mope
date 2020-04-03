@@ -17,6 +17,7 @@ import org.javacord.api.event.message.MessageCreateEvent;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 import java.util.prefs.Preferences;
 
@@ -156,20 +157,33 @@ public class CommandReprocessor {
                 } else if (str[0].equalsIgnoreCase("hug")) {
 
                     Object[] list = event.getMessage().getMentionedUsers().toArray();
-                    if (list.length > 1) {
-                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You only need to mention one user!\n \n**Usage example: fm> hug " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
-                    } else if (list.length == 0) {
-                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You need to mention a user!\n \n**Usage example: " + Pstr + " hug " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
+                    if (list.length == 0) {
+                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You need to atleast mention one user!\n \n**Usage example: " + Pstr + " hug " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
                     } else {
-                        User actionreciever = event.getMessage().getMentionedUsers().get(0);
+                        List<User> actionrecievers = event.getMessage().getMentionedUsers();
                         User actioninitializer = event.getMessageAuthor().asUser().get();
 
-                        if (actioninitializer.equals(actionreciever)) {
-                            new Defaults(event).ImageSender(Main.api.getYourself().getMentionTag() + " hugs " + actioninitializer.getMentionTag() + "! *I'm glad you love yourself!*", new APIAccess(event).hug());
-                        } else if (actionreciever.isYourself()) {
-                            new Defaults(event).ImageSender(Main.api.getYourself().getMentionTag() + " hugs " + actioninitializer.getMentionTag() + "! *Oh well, i need some love aswell!*", new APIAccess(event).hug());
+                        if (actionrecievers.contains(actioninitializer)) {
+                            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You cannot hug yourself!"));
+                        } else if (actionrecievers.contains(Main.api.getYourself())) {
+                            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You cannot include me in the Command!"));
+
                         } else {
-                            new Defaults(event).ImageSender(actioninitializer.getMentionTag() + " hugs " + actionreciever.getMentionTag() + "! *How cute~*", new APIAccess(event).hug());
+                            int i = actionrecievers.size();
+                            int fin = 0;
+                            StringBuilder sb = new StringBuilder();
+                            if (actionrecievers.size() == 1) {
+                                sb.append("" + actionrecievers.get(0).getMentionTag());
+                            } else {
+                                for (int n = 0; n < i - 1; n++) {
+                                    sb.append(actionrecievers.get(n).getMentionTag() + " ");
+                                    fin++;
+                                }
+                                sb.append(" and " + actionrecievers.get(fin).getMentionTag());
+                            }
+
+
+                            new Defaults(event).ImageSender(actioninitializer.getMentionTag() + " hugs " + sb.toString() + "! *How cute~*", new APIAccess(event).hug());
 
                         }
 
