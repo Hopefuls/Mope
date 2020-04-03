@@ -191,21 +191,31 @@ public class CommandReprocessor {
 
                 } else if (str[0].equalsIgnoreCase("kiss")) {
                     Object[] list = event.getMessage().getMentionedUsers().toArray();
-                    if (list.length > 1) {
-                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You only need to mention one user!\n \n**Usage example: " + Pstr + " kiss " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
-                    } else if (list.length == 0) {
-                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You need to mention a user!\n \n**Usage example: " + Pstr + " kiss " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
+                    if (list.length == 0) {
+                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You need to matleast mention one user!\n \n**Usage example: " + Pstr + " kiss " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
                     } else {
-                        User actionreciever = event.getMessage().getMentionedUsers().get(0);
+                        List<User> actionrecievers = event.getMessage().getMentionedUsers();
                         User actioninitializer = event.getMessageAuthor().asUser().get();
 
-                        if (actioninitializer.equals(actionreciever)) {
-                            new Defaults(event).ImageSender(Main.api.getYourself().getMentionTag() + " kisses " + actioninitializer.getMentionTag() + "! *You can't give yourself kisses you dummy!*", new APIAccess(event).kiss());
-                        } else if (actionreciever.isYourself()) {
-                            new Defaults(event).ImageSender(Main.api.getYourself().getMentionTag() + " kisses " + actioninitializer.getMentionTag() + "! *Someone loves me?!*", new APIAccess(event).kiss());
+                        if (actionrecievers.contains(actioninitializer)) {
+                            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You cannot hug yourself!"));
+                        } else if (actionrecievers.contains(Main.api.getYourself())) {
+                            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You cannot include me in the Command!"));
 
                         } else {
-                            new Defaults(event).ImageSender(actioninitializer.getMentionTag() + " kisses " + actionreciever.getMentionTag() + "! *Mwah~*", new APIAccess(event).kiss());
+                            int i = actionrecievers.size();
+                            int fin = 0;
+                            StringBuilder sb = new StringBuilder();
+                            if (actionrecievers.size() == 1) {
+                                sb.append("" + actionrecievers.get(0).getMentionTag());
+                            } else {
+                                for (int n = 0; n < i - 1; n++) {
+                                    sb.append(actionrecievers.get(n).getMentionTag() + " ");
+                                    fin++;
+                                }
+                                sb.append(" and " + actionrecievers.get(fin).getMentionTag());
+                            }
+                            new Defaults(event).ImageSender(actioninitializer.getMentionTag() + " kisses " + sb.toString() + "! *Mwah~*", new APIAccess(event).kiss());
 
                         }
 
@@ -214,21 +224,31 @@ public class CommandReprocessor {
 
                 } else if (str[0].equalsIgnoreCase("pat")) {
                     Object[] list = event.getMessage().getMentionedUsers().toArray();
-                    if (list.length > 1) {
-                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You only need to mention one user!\n \n**Usage example: " + Pstr + " pat " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
-                    } else if (list.length == 0) {
-                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You need to mention a user!\n \n**Usage example: " + Pstr + " pat " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
+                    if (list.length == 0) {
+                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You need to atleast mention one user!\n \n**Usage example: " + Pstr + " pat " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
                     } else {
-                        User actionreciever = event.getMessage().getMentionedUsers().get(0);
+                        List<User> actionrecievers = event.getMessage().getMentionedUsers();
                         User actioninitializer = event.getMessageAuthor().asUser().get();
 
-                        if (actioninitializer.equals(actionreciever)) {
-                            new Defaults(event).ImageSender(Main.api.getYourself().getMentionTag() + " pats " + actioninitializer.getMentionTag() + "! *Do you need someone who gives you headpats?*", new APIAccess(event).pat());
-                        } else if (actionreciever.isYourself()) {
-                            new Defaults(event).ImageSender(Main.api.getYourself().getMentionTag() + " pats " + actioninitializer.getMentionTag() + "! *I get headpats too?!*", new APIAccess(event).pat());
+                        if (actionrecievers.contains(actioninitializer)) {
+                            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You cannot pat yourself!"));
+                        } else if (actionrecievers.contains(Main.api.getYourself())) {
+                            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You cannot include me in the Command!"));
 
                         } else {
-                            new Defaults(event).ImageSender(actioninitializer.getMentionTag() + " pats " + actionreciever.getMentionTag() + "! *Headpats are always nice!~*", new APIAccess(event).pat());
+                            int i = actionrecievers.size();
+                            int fin = 0;
+                            StringBuilder sb = new StringBuilder();
+                            if (actionrecievers.size() == 1) {
+                                sb.append("" + actionrecievers.get(0).getMentionTag());
+                            } else {
+                                for (int n = 0; n < i - 1; n++) {
+                                    sb.append(actionrecievers.get(n).getMentionTag() + " ");
+                                    fin++;
+                                }
+                                sb.append(" and " + actionrecievers.get(fin).getMentionTag());
+                            }
+                            new Defaults(event).ImageSender(actioninitializer.getMentionTag() + " pats " + sb.toString() + "! *Headpats are always nice!~*", new APIAccess(event).pat());
 
                         }
 
@@ -237,21 +257,31 @@ public class CommandReprocessor {
 
                 } else if (str[0].equalsIgnoreCase("poke")) {
                     Object[] list = event.getMessage().getMentionedUsers().toArray();
-                    if (list.length > 1) {
-                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You only need to mention one user!\n \n**Usage example: " + Pstr + " poke " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
-                    } else if (list.length == 0) {
-                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You need to mention a user!\n \n**Usage example: " + Pstr + " poke " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
+                    if (list.length == 0) {
+                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You need to atleast mention one user!\n \n**Usage example: " + Pstr + " poke " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
                     } else {
-                        User actionreciever = event.getMessage().getMentionedUsers().get(0);
+                        List<User> actionrecievers = event.getMessage().getMentionedUsers();
                         User actioninitializer = event.getMessageAuthor().asUser().get();
 
-                        if (actioninitializer.equals(actionreciever)) {
-                            new Defaults(event).ImageSender(Main.api.getYourself().getMentionTag() + " pokes " + actioninitializer.getMentionTag() + "! *Giving yourself attention is important!*", new APIAccess(event).poke());
-                        } else if (actionreciever.isYourself()) {
-                            new Defaults(event).ImageSender(Main.api.getYourself().getMentionTag() + " pokes " + actioninitializer.getMentionTag() + "! *Stop, i'm always paying attention!!*", new APIAccess(event).poke());
+                        if (actionrecievers.contains(actioninitializer)) {
+                            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You cannot poke yourself!"));
+                        } else if (actionrecievers.contains(Main.api.getYourself())) {
+                            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You cannot include me in the Command!"));
 
                         } else {
-                            new Defaults(event).ImageSender(actioninitializer.getMentionTag() + " pokes " + actionreciever.getMentionTag() + "! *Hey, wake up!!*", new APIAccess(event).poke());
+                            int i = actionrecievers.size();
+                            int fin = 0;
+                            StringBuilder sb = new StringBuilder();
+                            if (actionrecievers.size() == 1) {
+                                sb.append("" + actionrecievers.get(0).getMentionTag());
+                            } else {
+                                for (int n = 0; n < i - 1; n++) {
+                                    sb.append(actionrecievers.get(n).getMentionTag() + " ");
+                                    fin++;
+                                }
+                                sb.append(" and " + actionrecievers.get(fin).getMentionTag());
+                            }
+                            new Defaults(event).ImageSender(actioninitializer.getMentionTag() + " pokes " + sb.toString() + "! *Hey, wake up!!*", new APIAccess(event).poke());
 
                         }
 
@@ -260,21 +290,31 @@ public class CommandReprocessor {
 
                 } else if (str[0].equalsIgnoreCase("tickle")) {
                     Object[] list = event.getMessage().getMentionedUsers().toArray();
-                    if (list.length > 1) {
-                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You only need to mention one user!\n \n**Usage example: " + Pstr + " tickle " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
-                    } else if (list.length == 0) {
-                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You need to mention a user!\n \n**Usage example: " + Pstr + " tickle " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
+                    if (list.length == 0) {
+                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You need to atleast mention one user!\n \n**Usage example: " + Pstr + " tickle " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
                     } else {
-                        User actionreciever = event.getMessage().getMentionedUsers().get(0);
+                        List<User> actionrecievers = event.getMessage().getMentionedUsers();
                         User actioninitializer = event.getMessageAuthor().asUser().get();
 
-                        if (actioninitializer.equals(actionreciever)) {
-                            new Defaults(event).ImageSender(Main.api.getYourself().getMentionTag() + " tickles " + actioninitializer.getMentionTag() + "! *Are you ticklish??*", new APIAccess(event).tickle());
-                        } else if (actionreciever.isYourself()) {
-                            new Defaults(event).ImageSender(Main.api.getYourself().getMentionTag() + " tickles " + actioninitializer.getMentionTag() + "! *Nooo stop i'm really really ticklish HAHAHA*", new APIAccess(event).tickle());
+                        if (actionrecievers.contains(actioninitializer)) {
+                            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You cannot tickle yourself!"));
+                        } else if (actionrecievers.contains(Main.api.getYourself())) {
+                            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You cannot include me in the Command!"));
 
                         } else {
-                            new Defaults(event).ImageSender(actioninitializer.getMentionTag() + " tickles " + actionreciever.getMentionTag() + "! *Tickle tickle~*", new APIAccess(event).tickle());
+                            int i = actionrecievers.size();
+                            int fin = 0;
+                            StringBuilder sb = new StringBuilder();
+                            if (actionrecievers.size() == 1) {
+                                sb.append("" + actionrecievers.get(0).getMentionTag());
+                            } else {
+                                for (int n = 0; n < i - 1; n++) {
+                                    sb.append(actionrecievers.get(n).getMentionTag() + " ");
+                                    fin++;
+                                }
+                                sb.append(" and " + actionrecievers.get(fin).getMentionTag());
+                            }
+                            new Defaults(event).ImageSender(actioninitializer.getMentionTag() + " tickles " + sb.toString() + "! *Tickle tickle~*", new APIAccess(event).tickle());
 
                         }
 
@@ -291,41 +331,61 @@ public class CommandReprocessor {
 
                 } else if (str[0].equalsIgnoreCase("feed")) {
                     Object[] list = event.getMessage().getMentionedUsers().toArray();
-                    if (list.length > 1) {
-                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You only need to mention one user!\n \n**Usage example: " + Pstr + " feed " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
-                    } else if (list.length == 0) {
-                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You need to mention a user!\n \n**Usage example: " + Pstr + " feed " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
+                    if (list.length == 0) {
+                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You need to atleast mention one user!\n \n**Usage example: " + Pstr + " feed " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
                     } else {
-                        User actionreciever = event.getMessage().getMentionedUsers().get(0);
+                        List<User> actionrecievers = event.getMessage().getMentionedUsers();
                         User actioninitializer = event.getMessageAuthor().asUser().get();
 
-                        if (actioninitializer.equals(actionreciever)) {
-                            new Defaults(event).ImageSender(Main.api.getYourself().getMentionTag() + " feeds " + actioninitializer.getMentionTag() + "! *I bet you're hungry.*", new APIAccess(event).feed());
-                        } else if (actionreciever.isYourself()) {
-                            new Defaults(event).ImageSender(Main.api.getYourself().getMentionTag() + " feeds " + actioninitializer.getMentionTag() + "! *Let me do that!*", new APIAccess(event).feed());
+                        if (actionrecievers.contains(actioninitializer)) {
+                            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You cannot feed yourself!"));
+                        } else if (actionrecievers.contains(Main.api.getYourself())) {
+                            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You cannot include me in the Command!"));
 
                         } else {
-                            new Defaults(event).ImageSender(actioninitializer.getMentionTag() + " feeds " + actionreciever.getMentionTag() + "! *Yummy~*", new APIAccess(event).feed());
+                            int i = actionrecievers.size();
+                            int fin = 0;
+                            StringBuilder sb = new StringBuilder();
+                            if (actionrecievers.size() == 1) {
+                                sb.append("" + actionrecievers.get(0).getMentionTag());
+                            } else {
+                                for (int n = 0; n < i - 1; n++) {
+                                    sb.append(actionrecievers.get(n).getMentionTag() + " ");
+                                    fin++;
+                                }
+                                sb.append(" and " + actionrecievers.get(fin).getMentionTag());
+                            }
+                            new Defaults(event).ImageSender(actioninitializer.getMentionTag() + " feeds " + sb.toString() + "! *Yummy~*", new APIAccess(event).feed());
 
                         }
                     }
                 } else if (str[0].equalsIgnoreCase("cuddle")) {
                     Object[] list = event.getMessage().getMentionedUsers().toArray();
-                    if (list.length > 1) {
-                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You only need to mention one user!\n \n**Usage example: " + Pstr + " cuddle " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
-                    } else if (list.length == 0) {
-                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You need to mention a user!\n \n**Usage example: " + Pstr + " cuddle " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
+                    if (list.length == 0) {
+                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You need to atleast mention one user!\n \n**Usage example: " + Pstr + " cuddle " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
                     } else {
-                        User actionreciever = event.getMessage().getMentionedUsers().get(0);
+                        List<User> actionrecievers = event.getMessage().getMentionedUsers();
                         User actioninitializer = event.getMessageAuthor().asUser().get();
 
-                        if (actioninitializer.equals(actionreciever)) {
-                            new Defaults(event).ImageSender(Main.api.getYourself().getMentionTag() + " cuddles " + actioninitializer.getMentionTag() + "! *Cuddles are always great!.*", new APIAccess(event).cuddle());
-                        } else if (actionreciever.isYourself()) {
-                            new Defaults(event).ImageSender(Main.api.getYourself().getMentionTag() + " cuddles " + actioninitializer.getMentionTag() + "! *Are you having your feelies?*", new APIAccess(event).cuddle());
+                        if (actionrecievers.contains(actioninitializer)) {
+                            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You cannot cuddle yourself :("));
+                        } else if (actionrecievers.contains(Main.api.getYourself())) {
+                            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You cannot include me in the Command!"));
 
                         } else {
-                            new Defaults(event).ImageSender(actioninitializer.getMentionTag() + " cuddles " + actionreciever.getMentionTag() + "! *Warmth!~*", new APIAccess(event).cuddle());
+                            int i = actionrecievers.size();
+                            int fin = 0;
+                            StringBuilder sb = new StringBuilder();
+                            if (actionrecievers.size() == 1) {
+                                sb.append("" + actionrecievers.get(0).getMentionTag());
+                            } else {
+                                for (int n = 0; n < i - 1; n++) {
+                                    sb.append(actionrecievers.get(n).getMentionTag() + " ");
+                                    fin++;
+                                }
+                                sb.append(" and " + actionrecievers.get(fin).getMentionTag());
+                            }
+                            new Defaults(event).ImageSender(actioninitializer.getMentionTag() + " cuddles " + sb.toString() + "! *Warmth!~*", new APIAccess(event).cuddle());
 
                         }
                     }
@@ -340,21 +400,31 @@ public class CommandReprocessor {
 
                 } else if (str[0].equalsIgnoreCase("lick")) {
                     Object[] list = event.getMessage().getMentionedUsers().toArray();
-                    if (list.length > 1) {
-                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You only need to mention one user!\n \n**Usage example: " + Pstr + " lick " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
-                    } else if (list.length == 0) {
-                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You need to mention a user!\n \n**Usage example: " + Pstr + " lick " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
+                    if (list.length == 0) {
+                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You need to atleast mention one user!\n \n**Usage example: " + Pstr + " lick " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
                     } else {
-                        User actionreciever = event.getMessage().getMentionedUsers().get(0);
+                        List<User> actionrecievers = event.getMessage().getMentionedUsers();
                         User actioninitializer = event.getMessageAuthor().asUser().get();
 
-                        if (actioninitializer.equals(actionreciever)) {
-                            new Defaults(event).ImageSender(Main.api.getYourself().getMentionTag() + " licks " + actioninitializer.getMentionTag() + "! *You're quite tasty!*", new APIAccess(event).lick());
-                        } else if (actionreciever.isYourself()) {
-                            new Defaults(event).ImageSender(Main.api.getYourself().getMentionTag() + " licks " + actioninitializer.getMentionTag() + "! *You're quite tasty!*", new APIAccess(event).lick());
+                        if (actionrecievers.contains(actioninitializer)) {
+                            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You cannot lick yourself!"));
+                        } else if (actionrecievers.contains(Main.api.getYourself())) {
+                            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You cannot include me in the Command!"));
 
                         } else {
-                            new Defaults(event).ImageSender(actioninitializer.getMentionTag() + " licks " + actionreciever.getMentionTag() + "! *You're quite tasty!*", new APIAccess(event).lick());
+                            int i = actionrecievers.size();
+                            int fin = 0;
+                            StringBuilder sb = new StringBuilder();
+                            if (actionrecievers.size() == 1) {
+                                sb.append("" + actionrecievers.get(0).getMentionTag());
+                            } else {
+                                for (int n = 0; n < i - 1; n++) {
+                                    sb.append(actionrecievers.get(n).getMentionTag() + " ");
+                                    fin++;
+                                }
+                                sb.append(" and " + actionrecievers.get(fin).getMentionTag());
+                            }
+                            new Defaults(event).ImageSender(actioninitializer.getMentionTag() + " licks " + sb.toString() + "! *You're quite tasty!*", new APIAccess(event).lick());
 
                         }
                     }
@@ -497,9 +567,9 @@ public class CommandReprocessor {
 
             }
         }
+
     }
 }
-
 
 
 
