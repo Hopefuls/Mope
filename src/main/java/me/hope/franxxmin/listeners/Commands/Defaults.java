@@ -198,10 +198,10 @@ public static void generalhelpPage(String prefix) {
         generalembed.addField(prefix + " help general", "Shows all general commands for Franxxmin");
         generalembed.addField(prefix + " help interactive", "Shows all interaction commands (powered by my own API)");
         generalembed.addField(prefix + " help image", "Shows all image manipulation commands");
-        generalembed.addField(prefix+" help osu", "Shows all osu stats commands");
+        generalembed.addField(prefix + " help osu", "Shows all osu stats commands");
+        generalembed.addField(prefix + " music", "Shows all available Music Commands [EXPERIMENTAL]");
 
         event.getChannel().sendMessage(generalembed);
-
 
 
     }
@@ -235,27 +235,38 @@ public static void generalhelpPage(String prefix) {
         interactiveembed.setThumbnail(Main.api.getYourself().getAvatar());
         interactiveembed.setColor(Color.MAGENTA).setTitle("\uD83D\uDD8C Image Commands");
         interactiveembed.setDescription("Most of them are powered by [Nekobot.xyz's API](https://nekobot.xyz)\nHere's a list of available Image Manipulation Commands:");
-        interactiveembed.addField(prefix+" baguette @mention(optional, uses your own avatar)", "makes you/mentioned user eat a baguette.");
-        interactiveembed.addField(prefix+" magik <intensity 1-10> @mention(optional)/attached image", "ruins your avatar(if no image attached or noone mentioned) or attached image");
+        interactiveembed.addField(prefix + " baguette @mention(optional, uses your own avatar)", "makes you/mentioned user eat a baguette.");
+        interactiveembed.addField(prefix + " magik <intensity 1-10> @mention(optional)/attached image", "ruins your avatar(if no image attached or noone mentioned) or attached image");
         event.getChannel().sendMessage(interactiveembed);
 
 
     }
 
+    public static void MusicHelp(String prefix) {
+
+        EmbedBuilder interactiveembed = Templates.defaultembed();
+        interactiveembed.setThumbnail(Main.api.getYourself().getAvatar());
+        interactiveembed.setColor(Color.MAGENTA).setTitle("\u266A Music Commands [DANGEROUSLY BETA]");
+        interactiveembed.setDescription("This feature is very very experimental! Please use it at your own Risk! Feedback --> Hope#1445");
+        interactiveembed.addField(prefix + " music play <URL or Keyword>", "Searches for a Video and plays it back (You have to be in a voice channel)");
+        interactiveembed.addField(prefix + " music pause/unpause", "Pauses/Unpauses the Playback");
+
+        event.getChannel().sendMessage(interactiveembed);
+
+
+    }
+
+
     public static void ImageSender(String Description, String URL) {
 
 
+        EmbedBuilder embed = Templates.defaultembed();
 
-            EmbedBuilder embed = Templates.defaultembed();
+        embed.setColor(Color.cyan);
+        embed.setImage(URL);
+        embed.setDescription(Description);
 
-            embed.setColor(Color.cyan);
-            embed.setImage(URL);
-            embed.setDescription(Description);
-
-            event.getChannel().sendMessage(embed);
-
-
-
+        event.getChannel().sendMessage(embed);
 
 
     }

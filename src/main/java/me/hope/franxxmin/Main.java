@@ -2,6 +2,7 @@ package me.hope.franxxmin;
 
 
 import me.hope.franxxmin.listeners.CommandReprocessor;
+import me.hope.franxxmin.listeners.Music.FinishedListener;
 import me.hope.franxxmin.listeners.onServerJoin;
 import me.hope.franxxmin.utils.DBL;
 import me.hope.franxxmin.utils.TimerThreadCooldown;
@@ -36,10 +37,12 @@ public static DiscordApi api;
     public static String apistring;
     public static Boolean localmode;
     public static String botdcapitoken;
+    public static String googleconsoletoken;
     public static void main(String[] args) {
         OSUAPIKEY = args[4];
         loggingtoken = args[5];
         dbltoken = args[6];
+        googleconsoletoken = args[7];
         localmode = Boolean.valueOf(args[0]);
         if (localmode) {
             new BotInitializer(args[2]);
@@ -107,14 +110,19 @@ public static DiscordApi api;
 
 
         }
+
+
         int ccc = 0;
+
+        //Thread reconnector for onOpcode reconnect failure --> see https://hope.is-inside.me/Eh4Bk6lQ.png
         System.out.println("Starting OPCODE ReconnectorThread..");
         ThreadReconnector thread;
-
 
         thread = new ThreadReconnector();
         thread.start();
 
+
+        Main.api.addAudioSourceFinishedListener(new FinishedListener());
     }
 
 }

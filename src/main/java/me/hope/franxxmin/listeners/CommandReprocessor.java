@@ -1,6 +1,7 @@
 package me.hope.franxxmin.listeners;
 
 import me.hope.franxxmin.Main;
+import me.hope.franxxmin.MusicPack.Music;
 import me.hope.franxxmin.Templates;
 import me.hope.franxxmin.listeners.Commands.Defaults;
 import me.hope.franxxmin.listeners.Commands.Moderation.Moderation;
@@ -559,8 +560,12 @@ public class CommandReprocessor {
                     }
 
 
+                } else if (str[0].equalsIgnoreCase("music")) {
+                    if (str.length == 1) {
+                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("Commands:\n \n" + Pstr + " music play <URL or Keyword>\n" + Pstr + " music pause/unpause\n\n\n**PLEASE DM ME ON ANY ERRORS! --> Hope#1445**").setTitle("FEATURE IN BETA!!!"));
+                    }
+                    Music.MusicHandler(event, str, strraw);
                 } else {
-
                     event.getChannel().sendMessage(Templates.argerrorembed().setDescription("This command is unknown. Get a list of available commands by using `" + Pstr + " help`"));
                 }
 

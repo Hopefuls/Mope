@@ -4,7 +4,6 @@ import me.hope.franxxmin.Main;
 import me.hope.franxxmin.Templates;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.event.message.MessageCreateEvent;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -47,9 +46,6 @@ public class makeRequest {
                 fresponse = response.toString();
 
 
-
-
-
             }
 
 
@@ -57,16 +53,18 @@ public class makeRequest {
             ex.printStackTrace();
         }
 
-
+        if (event == null) {
+            return fresponse;
+        }
         EmbedBuilder eb = Templates.infoembed();
         eb.setTitle("\uD83D\uDCDD Logging");
-        eb.setDescription("APIAccess Request "+callerClass.getName());
-        eb.addField("Server Name", event.getServer().get().getName(),true);
+        eb.setDescription("APIAccess Request " + callerClass.getName());
+        eb.addField("Server Name", event.getServer().get().getName(), true);
         eb.addField("Server ID", event.getServer().get().getName(), true);
-        eb.addField("Server Owner", event.getServer().get().getOwner().getDiscriminatedName()+" ("+event.getServer().get().getOwner().getIdAsString()+")", true);
-        eb.addField("Author", event.getMessageAuthor().getDiscriminatedName()+" ("+event.getMessageAuthor().getIdAsString()+")");
+        eb.addField("Server Owner", event.getServer().get().getOwner().getDiscriminatedName() + " (" + event.getServer().get().getOwner().getIdAsString() + ")", true);
+        eb.addField("Author", event.getMessageAuthor().getDiscriminatedName() + " (" + event.getMessageAuthor().getIdAsString() + ")");
         eb.setThumbnail(event.getMessageAuthor().getAvatar());
-        eb.addField("Channel", event.getChannel().asServerChannel().get().getName()+" ("+event.getChannel().getIdAsString()+")");
+        eb.addField("Channel", event.getChannel().asServerChannel().get().getName() + " (" + event.getChannel().getIdAsString() + ")");
         eb.addField("Response of API Request", fresponse);
         eb.setThumbnail(Main.api.getYourself().getAvatar());
 
