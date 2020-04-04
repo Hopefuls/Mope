@@ -20,6 +20,7 @@ public class Music {
 
 
     public static HashMap<Server/*ServerID*/, AudioSource/*Well obv audiosource*/> audioSourceHashMap = new HashMap<>();
+    public static HashMap<Server/*ServerID*/, AudioConnection/*Well obv audioconnection*/> audioConnectionHashMap = new HashMap<>();
 
     public static void MusicHandler(MessageCreateEvent event, String[] str, String[] strraw) {
         if (str[1].equalsIgnoreCase("play")) {
@@ -33,13 +34,17 @@ public class Music {
                 event.getChannel().sendMessage("You have to join a voicechannel");
                 return;
             }
-            YouTubeAudioSource yts;
-            String shorturl;
-            if (str[2].toLowerCase().startsWith("https://youtube.com") || str[2].toLowerCase().startsWith("https://youtu.be")) {
+            AudioConnection audio = voiceChannel.connect().join();
+            event.getChannel().sendMessage("Joined channel!");
+
+            YouTubeAudioSource yts = null;
+            String shorturl = null;
+            if (str[2].toLowerCase().startsWith("https://")) {
                 yts = YouTubeAudioSource.of(Main.api, str[2]).join();
                 shorturl = str[2].replace("https://www.youtube.com/watch?v=", "");
 
             } else {
+
                 StringBuilder sb = new StringBuilder();
                 for (int i = 2; i < str.length; i++) {
                     sb.append(str[i]);
@@ -55,8 +60,7 @@ public class Music {
 
                 }
             }
-            AudioConnection audio = voiceChannel.connect().join();
-            event.getChannel().sendMessage("Joined channel!");
+            audioConnectionHashMap.put(event.getServer().get(), audio);
 
             EmbedBuilder eb = new EmbedBuilder();
             eb.setTitle("Playing now:");
@@ -86,6 +90,11 @@ public class Music {
                 audioSource.asPauseableAudioSource().get().pause();
                 event.getChannel().sendMessage(":arrow_forward: " + event.getMessageAuthor().asUser().get().getMentionTag() + " paused playback!");
             }
+        } else if (str[1].equalsIgnoreCase("stop") || str[1].equalsIgnoreCase("leave")) {
+            audioConnectionHashMap.get(event.getServer().get()).close();
+            event.getChannel().sendMessage("Successfully stopped playback!");
+            audioConnectionHashMap.remove(event.getServer().get());
+            audioSourceHashMap.remove(event.getServer().get());
         }
     }
 }
