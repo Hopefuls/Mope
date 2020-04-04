@@ -198,7 +198,7 @@ public class CommandReprocessor {
                         User actioninitializer = event.getMessageAuthor().asUser().get();
 
                         if (actionrecievers.contains(actioninitializer)) {
-                            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You cannot hug yourself!"));
+                            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You cannot kiss yourself!"));
                         } else if (actionrecievers.contains(Main.api.getYourself())) {
                             event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You cannot include me in the Command!"));
 
