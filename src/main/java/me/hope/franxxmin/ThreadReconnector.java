@@ -18,7 +18,7 @@ public class ThreadReconnector extends Thread {
                 EmbedBuilder eb = Templates.debugembed();
                 eb.setDescription("[OPCODE] Reconnect Notification");
                 eb.addField("INFO", "Reconnected successfully!");
-                eb.addField("AMS", count + "")
+                eb.addField("AMS", count + "");
                 Main.logging.getUserById("245225589332639747").join().openPrivateChannel().join().sendMessage(eb);
 
                 System.out.println("[OPCODE] Repeat!");
