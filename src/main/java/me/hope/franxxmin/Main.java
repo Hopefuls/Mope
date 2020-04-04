@@ -44,6 +44,7 @@ public static DiscordApi api;
         dbltoken = args[6];
         googleconsoletoken = args[7];
         localmode = Boolean.valueOf(args[0]);
+        System.out.println(googleconsoletoken);
         if (localmode) {
             new BotInitializer(args[2]);
             botdcapitoken = args[2];
