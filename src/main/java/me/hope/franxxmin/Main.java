@@ -35,6 +35,7 @@ public static DiscordApi api;
     public static String dfprfx;
     public static String apistring;
     public static Boolean localmode;
+    public static String botdcapitoken;
     public static void main(String[] args) {
         OSUAPIKEY = args[4];
         loggingtoken = args[5];
@@ -42,6 +43,7 @@ public static DiscordApi api;
         localmode = Boolean.valueOf(args[0]);
         if (localmode) {
             new BotInitializer(args[2]);
+            botdcapitoken = args[2];
 
         } else {
             DBL.dbl = new DiscordBotListAPI.Builder()
@@ -50,6 +52,7 @@ public static DiscordApi api;
                     .build();
             System.out.println("[DBL] DBL Connection successfully initialized!");
             new BotInitializer(args[1]);
+            botdcapitoken = args[1];
             DBL.dbl.setStats(ServerHashmaps.ID.size());
 
 
@@ -105,7 +108,12 @@ public static DiscordApi api;
 
         }
         int ccc = 0;
+        System.out.println("Starting OPCODE ReconnectorThread..");
+        ThreadReconnector thread;
 
+
+        thread = new ThreadReconnector();
+        thread.start();
 
     }
 
