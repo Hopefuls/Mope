@@ -1,15 +1,17 @@
 package me.hope.franxxmin.utils;
 
-import me.hope.franxxmin.Main;
 import me.hope.franxxmin.onStart.CooldownManager;
 import me.hope.franxxmin.utils.VariablesStorage.Cooldown;
 import me.hope.franxxmin.utils.VariablesStorage.ServerHashmaps;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class TimerThreadCooldown extends Thread {
     public void run() {
-        while(true) {
+        while (true) {
 
             try {
                 //1 milliseconds updating
@@ -33,12 +35,12 @@ public class TimerThreadCooldown extends Thread {
                                 if (entry.getValue() <= 0.0) {
                                     Cooldown.cooldowntrack.get(x).put(entry.getKey(), 0.0);
                                 }
-                               //Debug System.out.println("Not updating: Past limit on "+Main.api.getServerById(x).get().getName());
+                                //Debug System.out.println("Not updating: Past limit on "+Main.api.getServerById(x).get().getName());
 
                             } else {
                                 double updated = entry.getValue() - 0.1;
                                 Cooldown.cooldowntrack.get(x).put(entry.getKey(), updated);
-                              //  System.out.println("Updating value for help-command on "+Main.api.getServerById(x).get().getName()+" to "+updated);
+                                //  System.out.println("Updating value for help-command on "+Main.api.getServerById(x).get().getName()+" to "+updated);
 
                             }
                         }
@@ -46,10 +48,8 @@ public class TimerThreadCooldown extends Thread {
                     }
 
 
-
                 }
-            }
-            catch(InterruptedException e) {
+            } catch (InterruptedException e) {
             }
 
 

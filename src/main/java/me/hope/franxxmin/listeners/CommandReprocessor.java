@@ -11,6 +11,7 @@ import me.hope.franxxmin.onStart.CooldownManager;
 import me.hope.franxxmin.utils.RequestLibrary.APIAccess;
 import me.hope.franxxmin.utils.RequestLibrary.OSU_PPY_SH;
 import me.hope.franxxmin.utils.VariablesStorage.Cooldown;
+import me.hope.franxxmin.utils.VariablesStorage.ServerHashmaps;
 import me.hope.franxxmin.utils.cooldownutility;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.user.User;
@@ -51,7 +52,6 @@ public class CommandReprocessor {
                 log.addField("Message ID", event.getMessage().getIdAsString());
                 log.addInlineField("Message URL", "https://discordapp.com/channels/" + event.getServer().get().getIdAsString() + "/" + event.getChannel().getIdAsString() + "/" + event.getMessage().getIdAsString());
                 log.addField("Commandtext", event.getMessageContent());
-                log.setThumbnail(event.getServer().get().getIcon().get());
                 Main.logging.getUserById("245225589332639747").join().openPrivateChannel().join().sendMessage(log);
             }
             if (str.length == 0) {
@@ -561,20 +561,46 @@ public class CommandReprocessor {
 
 
                 } else if (str[0].equalsIgnoreCase("music")) {
+
                     if (str.length == 1) {
                         event.getChannel().sendMessage(Templates.argerrorembed().setDescription("Commands:\n \n" + Pstr + " music play <URL or Keyword>\n" + Pstr + " music pause/unpause\n\n\n**PLEASE DM ME ON ANY ERRORS! --> Hope#1445**").setTitle("FEATURE IN BETA!!!"));
                     }
                     Music.MusicHandler(event, str, strraw);
-                } else {
-                    event.getChannel().sendMessage(Templates.argerrorembed().setDescription("This command is unknown. Get a list of available commands by using `" + Pstr + " help`"));
+                } else if (str[0].equalsIgnoreCase("blacklist")) {
+                    if (!event.getMessageAuthor().isBotOwner()) {
+                        return;
+                    }
+                    Preferences pref = ServerHashmaps.blacklist;
+                    if (pref.getBoolean(str[1], false)) {
+                        pref.putBoolean(str[1], false);
+                        event.getChannel().sendMessage("Server ID " + str[1] + " unblacklisted");
+                    } else if (!pref.getBoolean(str[1], false)) {
+                        pref.putBoolean(str[1], true);
+                        event.getChannel().sendMessage("Server ID " + str[1] + " blacklisted");
+                        if (Main.api.getServerById(str[1]).get().getMembers().contains(Main.api.getYourself())) {
+                            StringBuilder sb = new StringBuilder();
+                            for (int i = 2; i < str.length; i++) {
+                                sb.append(str[i] + " ");
+                            }
+
+                            Main.api.getServerById(str[1]).get().getOwner().openPrivateChannel().join().sendMessage("Hello " + Main.api.getServerById(str[1]).get().getOwner().getName() + ", \n \nYour Server has been blacklisted from using this Bot by \"BOT OWNER\": \n \n **Reason:** _" + sb.toString() + "_\n \n This Bot cannot be reinvited until unblacklisted!\n \nAppealing a Server blacklist is only possible on special occasions.\n \nQuestions? -> hopedevmail@yahoo.com");
+                            Main.api.getServerById(str[1]).get().getSystemChannel().get().sendMessage("Server has been blacklisted from using this Bot by \"BOT OWNER\": \n\n **Reason:** _" + sb.toString() + "_\n \n This Bot cannot be reinvited until unblacklisted!\n \nAppealing a Server blacklist is only possible on special occasions.\n \nQuestions? -> hopedevmail@yahoo.com");
+                            Main.api.getServerById(str[1]).get().leave();
+
+                        }
+
+                    } else {
+
+                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("This command is unknown. Get a list of available commands by using `" + Pstr + " help`"));
+                    }
+
                 }
-
-
             }
         }
-
     }
 }
+
+
 
 
 

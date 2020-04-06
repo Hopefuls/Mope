@@ -34,6 +34,11 @@ public class Music {
                 event.getChannel().sendMessage("You have to join a voicechannel");
                 return;
             }
+            if (!voiceChannel.canYouConnect()) {
+
+                event.getChannel().sendMessage("i cannot join your channel");
+                return;
+            }
             AudioConnection audio = voiceChannel.connect().join();
             event.getChannel().sendMessage("Joined channel!");
 

@@ -12,17 +12,6 @@ import java.util.HashMap;
 
 public class CooldownManager {
 
-    public enum TYPE {
-
-        HELP,
-        STATUS,
-        USERS,
-        OSU,
-        OSU_REACT;
-            // Enumerationskonstanten
-
-
-    }
     public static void onStartUpdate() {
         System.out.println("Importing Default cooldowns..");
         //Import Default Cooldowns (also important)
@@ -41,7 +30,7 @@ public class CooldownManager {
 
 
         for (Server server : Main.api.getServers()) {
-            eb.addField(server.getName(), server.getIdAsString()+"\n"+server.getOwner().getDiscriminatedName()+" ("+server.getOwner().getIdAsString()+")");
+            eb.addField(server.getName(), server.getIdAsString() + "\n" + server.getOwner().getDiscriminatedName() + " (" + server.getOwner().getIdAsString() + ")");
             HashMap<TYPE, Double> temp = new HashMap<>();
 
             temp.put(TYPE.HELP, 0.0);
@@ -64,31 +53,44 @@ public class CooldownManager {
 
     }
 
-
     public static void updateServer(Server srv) {
         String ID = srv.getIdAsString();
-        System.out.println("New Server detected! Updating for ID "+ID);
+        System.out.println("New Server detected! Updating for ID " + ID);
 
-            HashMap<TYPE, Double> temp = new HashMap<>();
-            temp.put(TYPE.HELP, 0.0);
-            temp.put(TYPE.STATUS, 0.0);
-            temp.put(TYPE.USERS, 0.0);
-            temp.put(TYPE.OSU, 0.0);
-            temp.put(TYPE.OSU_REACT, 0.0);
-            Cooldown.cooldowntrack.put(ID, temp);
-            ServerHashmaps.ID.add(ID);
-        Main.api.updateActivity("Running on "+ ServerHashmaps.ID.size()+" Servers");
+        HashMap<TYPE, Double> temp = new HashMap<>();
+        temp.put(TYPE.HELP, 0.0);
+        temp.put(TYPE.STATUS, 0.0);
+        temp.put(TYPE.USERS, 0.0);
+        temp.put(TYPE.OSU, 0.0);
+        temp.put(TYPE.OSU_REACT, 0.0);
+        Cooldown.cooldowntrack.put(ID, temp);
+        ServerHashmaps.ID.add(ID);
+        Main.api.updateActivity("Running on " + ServerHashmaps.ID.size() + " Servers");
         System.out.println("Done.\n");
 
     }
+
     public static void removeServer(Server srv) {
         String ID = srv.getIdAsString();
-        System.out.println("Server disconnect detected! Removing "+ID);
+        System.out.println("Server disconnect detected! Removing " + ID);
 
         ServerHashmaps.ID.remove(ID);
         Cooldown.cooldowntrack.remove(ID);
 
     }
+
+    public enum TYPE {
+
+        HELP,
+        STATUS,
+        USERS,
+        OSU,
+        OSU_REACT
+        // Enumerationskonstanten
+
+
+    }
+
     public static Double getDefault(String cooldowntype) {
 
         return Cooldown.def.get(cooldowntype);

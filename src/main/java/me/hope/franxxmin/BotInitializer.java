@@ -15,9 +15,9 @@ public class BotInitializer {
 
         Main.logging = new DiscordApiBuilder().setToken(Main.loggingtoken).login().join();
         Main.api = new DiscordApiBuilder().setToken(token).login().join();
-        System.out.println("Logging Invite: "+Main.logging.createBotInvite(Permissions.fromBitmask(8)));
+        System.out.println("Logging Invite: " + Main.logging.createBotInvite(Permissions.fromBitmask(8)));
         //Print Bot invite link for easier use and making sure that the bot did successfully conntect to the Discord API
-        System.out.println("Bot Invite: "+Main.api.createBotInvite(Permissions.fromBitmask(8)));
+        System.out.println("Bot Invite: " + Main.api.createBotInvite(Permissions.fromBitmask(8)));
 
         //initialize the startUpdater
         //yeet

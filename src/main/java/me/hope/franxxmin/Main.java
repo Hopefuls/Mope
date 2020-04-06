@@ -20,7 +20,7 @@ import java.util.prefs.Preferences;
 public class Main {
 
 
-public static DiscordApi api;
+    public static DiscordApi api;
     public static DiscordApi logging;
     public static Preferences pref = Preferences.userNodeForPackage(Main.class);
     public static Preferences UpdatedServerID = Preferences.userNodeForPackage(Main.class).node("dev");
@@ -38,6 +38,8 @@ public static DiscordApi api;
     public static Boolean localmode;
     public static String botdcapitoken;
     public static String googleconsoletoken;
+
+
     public static void main(String[] args) {
         OSUAPIKEY = args[4];
         loggingtoken = args[5];
@@ -91,7 +93,7 @@ public static DiscordApi api;
         timer = new TimerThreadCooldown();
         timer.start();
         System.out.println("Started! Outputting current Test values for help");
-        api.updateActivity("Running on "+ ServerHashmaps.ID.size()+" Servers");
+        api.updateActivity("Running on " + ServerHashmaps.ID.size() + " Servers");
         //  api.addReactionAddListener(new osureactor());
         apistring = args[3];
         if (api.getYourself().getIdAsString().equals("691361576279736402")) {

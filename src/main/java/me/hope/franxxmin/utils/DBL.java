@@ -10,6 +10,7 @@ public class DBL {
 
 
     }
+
     public static void updateServerCount() {
         dbl.setStats(ServerHashmaps.ID.size());
         System.out.println("[DBL] Stat \"Server Count\" successfully updated");

@@ -29,9 +29,9 @@ public class makeRequest {
 
             int responseCode = httpClient.getResponseCode();
 
-            System.out.println("Making Request to "+URL);
+            System.out.println("Making Request to " + URL);
             System.out.println("Response Code : " + responseCode);
-            System.out.println("Called in class "+callerClass.getName());
+            System.out.println("Called in class " + callerClass.getName());
 
             try (BufferedReader in = new BufferedReader(
                     new InputStreamReader(httpClient.getInputStream()))) {

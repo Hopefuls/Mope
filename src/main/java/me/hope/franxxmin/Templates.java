@@ -10,7 +10,9 @@ import java.text.DecimalFormat;
 public class Templates {
 
     public static EmbedBuilder defaultembed() {
-        EmbedBuilder prefembed = new EmbedBuilder().removeAllFields().setFooter("Franxxmin | HopeDev | Version ID: "+Main.versionid);
+        System.out.println("getting default embed");
+
+        EmbedBuilder prefembed = new EmbedBuilder().removeAllFields().setFooter("Franxxmin | HopeDev | Version ID: " + Main.versionid);
         return prefembed;
     }
 
