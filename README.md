@@ -1,6 +1,7 @@
-# Franxxmin
+# Mope
 A multi-functional Discord Bot based on Javacord
 
+Renamed the Bot from Franxxmin to Mope
 [![Discord Bots](https://top.gg/api/widget/688561837020545080.svg)](https://top.gg/bot/688561837020545080)
 
 Do not:
