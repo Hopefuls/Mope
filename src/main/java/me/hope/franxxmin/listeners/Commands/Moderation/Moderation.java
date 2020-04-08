@@ -1,17 +1,23 @@
 package me.hope.franxxmin.listeners.Commands.Moderation;
 
+import me.hope.franxxmin.Main;
+import me.hope.franxxmin.Templates;
+import org.javacord.api.entity.message.Message;
+import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.event.message.MessageCreateEvent;
 
+import java.awt.*;
 import java.util.prefs.Preferences;
 
 public class Moderation {
 
 
     //Initialize Class Variables for pre-functions
-    private static MessageCreateEvent mce;
+    private static MessageCreateEvent event;
     private static String prefix;
     private static String[] cmd;
+    private static User yourself = Main.api.getYourself();
     private static Preferences settings = Preferences.userNodeForPackage(Moderation.class);
     private static Boolean ModerationAllowed;
 
@@ -22,11 +28,98 @@ public class Moderation {
         ModerationAllowed = settings.getBoolean("useModeration", false);
         //
         Moderation.cmd = cmd;
-        mce = event;
+        Moderation.event = event;
         prefix = pr;
 
     }
 
+    public static void clearChat() {
+        if (!event.getChannel().canYouManageMessages()) {
+            event.getChannel().sendMessage(Templates.missingperms("Manage Messages"));
+            return;
+        }
+        if (cmd.length == 1) {
+            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You need to enter a Limit!"));
+            return;
+        }
+        int msgcount;
+        try {
+            msgcount = Integer.parseInt(cmd[1]);
+        } catch (NumberFormatException e) {
+            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("Please enter a valid Number!"));
+            return;
+        }
+        event.getChannel().bulkDelete(event.getChannel().getMessages(msgcount).join());
+        event.getChannel().sendMessage(Templates.defaultembed().setColor(Color.green).setDescription("Successfully deleted " + msgcount + " Messages!"));
+
+    }
+
+
+    public static void kickUser() {
+        if (!event.getServer().get().canYouKickUsers()) {
+            event.getChannel().sendMessage(Templates.missingperms("Kick Members"));
+            return;
+        }
+        if (cmd.length == 1) {
+            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("Please Mention a User to Kick"));
+            return;
+        }
+        User attacker = event.getMessage().getMentionedUsers().get(0);
+        if (!event.getServer().get().canKickUser(yourself, attacker)) {
+            event.getChannel().sendMessage(Templates.higherroleerror("kick"));
+            return;
+        }
+        StringBuilder sb = new StringBuilder();
+        if (cmd.length > 2) {
+            for (int i = 2; i < cmd.length; i++) {
+                sb.append(cmd[i] + " ");
+            }
+        } else {
+            sb.append("none");
+        }
+        boolean couldmsg = false;
+        try {
+            EmbedBuilder eb = Templates.punishmentEmbed();
+            eb.setDescription("You have been given a Punishment in " + event.getServer().get().getName());
+            eb.addInlineField("Type", "Kick");
+            eb.addInlineField("Moderator", event.getMessageAuthor().getDiscriminatedName());
+            eb.addField("Reason", sb.toString().substring(0, sb.length() - 1));
+            Message msg = attacker.sendMessage(eb).join();
+            couldmsg = true;
+
+        } catch (Exception e) {
+            // lmao literally everyone disables dms nowadays because of scams pog
+        }
+        String ok = "";
+        if (!couldmsg) {
+            ok = "\n \n_Bot Note: Could not inform user of their Punishment: DMs are disabled_";
+        }
+        EmbedBuilder eb = Templates.kickEmbed();
+        eb.addInlineField("Kicked User", attacker.getDiscriminatedName());
+        eb.addInlineField("Moderator", event.getMessageAuthor().getDiscriminatedName());
+        eb.addField("Reason", sb.toString().substring(0, sb.length() - 1) + ok);
+        event.getChannel().sendMessage(eb).join();
+        event.getServer().get().kickUser(attacker, sb.toString().substring(0, sb.length() - 1));
+        //  event.getChannel().sendMessage("*kicks "+attacker.getName()+" for the Reason "+sb.toString().substring(0, sb.length()-1)+"*");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*will fix soon
     public static void kickUser() {
         if (ModerationAllowed) {
             if (mce.getMessageAuthor().canKickUsersFromServer()) {
@@ -64,4 +157,5 @@ public class Moderation {
             }
         }
     }
+    */
 }

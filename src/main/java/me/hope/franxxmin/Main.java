@@ -99,7 +99,7 @@ public class Main {
         if (api.getYourself().getIdAsString().equals("691361576279736402")) {
             dfprfx = "fmdev>";
             api.updateActivity("DEVELOPMENT MODE!!!");
-            System.out.println("Bot is running on Franxxmin Development ==> using development mode");
+            System.out.println("Bot is running on Mope Development ==> using development mode");
         } else {
             dfprfx = "fm>";
             System.out.println("Bot initialized successfully!");

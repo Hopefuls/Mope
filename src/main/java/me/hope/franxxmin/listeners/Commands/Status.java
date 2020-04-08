@@ -41,7 +41,7 @@ public class Status {
         int lickcount = jsonobject.getInt("lickcount");
         int laughcount = jsonobject.getInt("laughcount");
         int blushcount = jsonobject.getInt("blushcount");
-        eb.addField("Franxxmin CDN Status", "Response Time: **" + durationInMsCDN + "ms**\nResource Count:\n \n      Resource \"kiss\"\u2192 " + kisscount + "\n      Resource \"hug\"\u2192 " + hugcount + "\n      Resource \"pat\"\u2192 " + patcount + "\n      Resource \"smug\"\u2192 " + smugcount + "\n      Resource \"cry\"\u2192 " + crycount + "\n      Resource \"poke\"\u2192 " + pokecount + "\n      Resource \"tickle\"\u2192 " + ticklecount + "\n      Resource \"feed\"\u2192 " + feedcount + "\n      Resource \"cuddle\"\u2192 " + cuddlecount + "\n      Resource \"laugh\"\u2192 " + laughcount + "\n      Resource \"lick\"\u2192 " + lickcount + "\n      Resource \"happy\"\u2192 " + happycount + "\n      Resource \"blush\"\u2192 " + blushcount);
+        eb.addField("Mope CDN Status", "Response Time: **" + durationInMsCDN + "ms**\nResource Count:\n \n      Resource \"kiss\"\u2192 " + kisscount + "\n      Resource \"hug\"\u2192 " + hugcount + "\n      Resource \"pat\"\u2192 " + patcount + "\n      Resource \"smug\"\u2192 " + smugcount + "\n      Resource \"cry\"\u2192 " + crycount + "\n      Resource \"poke\"\u2192 " + pokecount + "\n      Resource \"tickle\"\u2192 " + ticklecount + "\n      Resource \"feed\"\u2192 " + feedcount + "\n      Resource \"cuddle\"\u2192 " + cuddlecount + "\n      Resource \"laugh\"\u2192 " + laughcount + "\n      Resource \"lick\"\u2192 " + lickcount + "\n      Resource \"happy\"\u2192 " + happycount + "\n      Resource \"blush\"\u2192 " + blushcount);
 
         return eb;
     }

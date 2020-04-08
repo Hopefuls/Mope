@@ -5,7 +5,6 @@ import me.hope.franxxmin.MusicPack.Music;
 import me.hope.franxxmin.Templates;
 import me.hope.franxxmin.listeners.Commands.Defaults;
 import me.hope.franxxmin.listeners.Commands.Moderation.Moderation;
-import me.hope.franxxmin.listeners.Commands.NEKOBOTRES;
 import me.hope.franxxmin.listeners.Commands.Status;
 import me.hope.franxxmin.onStart.CooldownManager;
 import me.hope.franxxmin.utils.RequestLibrary.APIAccess;
@@ -79,8 +78,8 @@ public class CommandReprocessor {
                             new Defaults(event).generalhelpPage(Pstr);
                             event.getChannel().sendMessage(Templates.defaultembed().setDescription("Prefix for **" + event.getServer().get().getName() + "** is ``" + Pstr + "``"));
 
-                        } else if (str[1].equalsIgnoreCase("image")) {
-                            new Defaults(event).ImagehelpPage(Pstr);
+                        } else if (str[1].equalsIgnoreCase("moderation")) {
+                            new Defaults(event).moderationhelpPage(Pstr);
                             event.getChannel().sendMessage(Templates.defaultembed().setDescription("Prefix for **" + event.getServer().get().getName() + "** is ``" + Pstr + "``"));
 
 
@@ -124,7 +123,7 @@ public class CommandReprocessor {
 
 
                         if (str.length == 1) {
-                            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("Current Prefix for**" + event.getServer().get().getName() + "** is ``" + Pstr + "``\n \n name a Prefix you want the bot to listen to\n \n**Usage example: fm> prefix** ``franxxmin>`` \nResult: ``franxxmin>`` help\n \n \n_Hint: You can always use fm> anyways._"));
+                            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("Current Prefix for**" + event.getServer().get().getName() + "** is ``" + Pstr + "``\n \n name a Prefix you want the bot to listen to\n \n**Usage example: fm> prefix** ``Mope>`` \nResult: ``Mope>`` help\n \n \n_Hint: You can always use fm> anyways._"));
 
                         } else {
                             if (str[1].equalsIgnoreCase("reset")) {
@@ -434,10 +433,15 @@ public class CommandReprocessor {
                     new Defaults(event).ImageSender(event.getMessageAuthor().asUser().get().getMentionTag() + " is happy! *I'm glad you are.", new APIAccess(event).happy());
 
                 } else if (str[0].equalsIgnoreCase("baguette")) {
-                    new NEKOBOTRES(event).baguette();
+                    event.getChannel().sendMessage(Templates.argerrorembed().setDescription("This command is unknown. Get a list of available commands by using `" + Pstr + " help`"));
+
+                    return;
+                    //  new NEKOBOTRES(event).baguette();
 
                 } else if (str[0].equalsIgnoreCase("magik")) {
-                    new NEKOBOTRES(event).magik();
+                    event.getChannel().sendMessage(Templates.argerrorembed().setDescription("This command is unknown. Get a list of available commands by using `" + Pstr + " help`"));
+                    return;
+                    // new NEKOBOTRES(event).magik();
 
 
                 } else if (str[0].equalsIgnoreCase("osu")) {
@@ -551,15 +555,10 @@ public class CommandReprocessor {
 
                     }
 
+                } else if (str[0].equalsIgnoreCase("clearchat")) {
+                    new Moderation(event, str, Pstr).clearChat();
                 } else if (str[0].equalsIgnoreCase("kick")) {
-                    if (event.getServer().get().getIdAsString().equals("655071198291689504")) {
-                        new Moderation(event, str, Pstr).kickUser();
-                    } else {
-                        event.getChannel().sendMessage(Templates.argerrorembed().setDescription("This command is unknown. Get a list of available commands by using `" + Pstr + " help`"));
-
-                    }
-
-
+                    new Moderation(event, str, Pstr).kickUser();
                 } else if (str[0].equalsIgnoreCase("music")) {
 
                     if (str.length == 1) {

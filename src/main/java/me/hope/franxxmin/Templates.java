@@ -12,10 +12,43 @@ public class Templates {
     public static EmbedBuilder defaultembed() {
         System.out.println("getting default embed");
 
-        EmbedBuilder prefembed = new EmbedBuilder().removeAllFields().setFooter("Franxxmin | HopeDev | Version ID: " + Main.versionid);
+        EmbedBuilder prefembed = new EmbedBuilder().removeAllFields().setFooter("Mope | HopeDev | Version ID: " + Main.versionid);
         return prefembed;
     }
 
+    public static EmbedBuilder higherroleerror(String type) {
+        EmbedBuilder tempeb = defaultembed();
+        tempeb.setColor(Color.yellow).setTitle("\u26D4 Missing Authority");
+        tempeb.setDescription("I cannot " + type + " this user, they have a higher Role than me!");
+
+        return tempeb;
+    }
+
+    public static EmbedBuilder kickEmbed() {
+        EmbedBuilder tempeb = defaultembed();
+        tempeb.setColor(Color.yellow).setTitle("\uD83E\uDD7E Kicked User");
+
+        return tempeb;
+    }
+
+    public static EmbedBuilder punishmentEmbed() {
+        EmbedBuilder tempeb = defaultembed();
+        tempeb.setColor(Color.red).setTitle("\u2757 Important Note");
+
+        return tempeb;
+    }
+
+    public static EmbedBuilder missingperms(String... Permnames) {
+        StringBuilder sb = new StringBuilder();
+        for (String x : Permnames) {
+            sb.append("```- " + x + "```\n");
+        }
+        EmbedBuilder tempeb = defaultembed();
+        tempeb.setColor(Color.yellow).setTitle("\u26D4 Missing Permissions");
+        tempeb.setDescription("The Bot is missing the following Permissions:\n" + sb.toString());
+
+        return tempeb;
+    }
 
     public static EmbedBuilder infoembed() {
 
@@ -24,6 +57,7 @@ public class Templates {
 
         return tempeb;
     }
+
     public static EmbedBuilder minerrorembed() {
 
         EmbedBuilder tempeb = defaultembed();
@@ -90,7 +124,7 @@ public class Templates {
         EmbedBuilder tempeb = defaultembed();
         tempeb.setColor(Color.MAGENTA).setTitle("\uD83E\uDDED About this Bot");
         tempeb.setThumbnail(Main.api.getOwner().join().getAvatar());
-        tempeb.setDescription("This Bot was made with \u2764 by HopeDev\n \nDiscord: Hope#1445\nEmail: hopedevmail@yahoo.com\n[Development Server](https://discord.gg/xAURjuc)\n[Alternative Server](https://discord.gg/RSfuEgq)\n \n[Franxxmin on top.gg](https://top.gg/bot/688561837020545080)\n \nThanks to [nekobot.xyz](https://nekobot.xyz) for making their API available for everyone! <3\n \nCredit for the Avatar goes to [u/youregretti](https://www.reddit.com/r/DarlingInTheFranxx/comments/8nnvgs/dr_frank_werner_dr_franxx_minimalistic_wallpaper/)");
+        tempeb.setDescription("This Bot was made with \u2764 by HopeDev\n \nDiscord: Hope#1445\nEmail: hopedevmail@yahoo.com\n[Development Server](https://discord.gg/S3q8ryY)\n \n[Mope on top.gg](https://top.gg/bot/688561837020545080)\n");
         tempeb.addField("Planned Features", "- Custom Prefix (Done)\n- Automoderation\n- React Roles\n- Image Manipulation (Partially done)\n- Moderation\n- Raid Protection (partially implemented into Moderation)\n");
 
 

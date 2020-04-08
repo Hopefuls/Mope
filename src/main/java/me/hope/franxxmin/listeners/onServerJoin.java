@@ -12,7 +12,10 @@ import org.javacord.api.listener.server.ServerLeaveListener;
 
 import java.util.prefs.Preferences;
 
+
 public class onServerJoin implements ServerJoinListener, ServerLeaveListener {
+    public static Preferences pref = Preferences.userNodeForPackage(onServerJoin.class).node("informational");
+
     @Override
     public void onServerJoin(ServerJoinEvent event) {
         Preferences pref = ServerHashmaps.blacklist;
@@ -45,8 +48,9 @@ public class onServerJoin implements ServerJoinListener, ServerLeaveListener {
         Main.api.getUserById("245225589332639747").join().openPrivateChannel().join().sendMessage(eb);
 
 
+        pref.putInt("count", pref.getInt("count", 0) + 1);
+        System.out.println("Server count Update: " + pref.getInt("count", 0) + "+1");
         CooldownManager.updateServer(event.getServer());
-
 
     }
 
@@ -63,6 +67,9 @@ public class onServerJoin implements ServerJoinListener, ServerLeaveListener {
 
 
         Main.api.getUserById("245225589332639747").join().openPrivateChannel().join().sendMessage(eb);
+        pref.putInt("count", pref.getInt("count", 0) - 1);
+        System.out.println("Server count Update: " + pref.getInt("count", 0) + "-1");
+
         CooldownManager.updateServer(event.getServer());
 
         //Remove Server from Array

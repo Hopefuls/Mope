@@ -176,30 +176,43 @@ public class Defaults {
 
         generalembed.setColor(Color.MAGENTA).setTitle("\uD83C\uDF10 General Commands");
         generalembed.setThumbnail(Main.api.getYourself().getAvatar());
-        generalembed.setDescription("Here's a list of available General Commands:");
         generalembed.addField(prefix + " users", "Get a count of every user in your server.");
         generalembed.addField(prefix + " userinfo @mention", "Shows global and local informations about a mentioned user.");
         generalembed.addField(prefix + " osu", "Opens the osu help page");
         generalembed.addField(prefix + " prefix <prefix>/reset", "Set a custom prefix for the bot(default is ``fm>``)/use reset to reset it's prefix back to ``fm>`` [Usable by Server Admins]");
-        generalembed.addField(prefix + " status", "Prints ARABAPI and Franxxmin CDN Status");
+        generalembed.addField(prefix + " status", "Prints ARABAPI and Mope CDN Status");
         generalembed.addField(prefix + " about", "about this Bot.");
-        generalembed.addField("fmdev>", "only works on the Development instance of Franxxmin, so pretty much useless for the normal user :)");
+        generalembed.addField("fmdev>", "only works on the Development instance of Mope, so pretty much useless for the normal user :)");
         event.getChannel().sendMessage(generalembed);
 
 
     }
 
+    public static void moderationhelpPage(String prefix) {
+
+
+        EmbedBuilder generalembed = Templates.defaultembed();
+
+        generalembed.setColor(Color.MAGENTA).setTitle("\uD83D\uDEE0Moderation Commands");
+        generalembed.setThumbnail(Main.api.getYourself().getAvatar());
+        generalembed.addField(prefix + " clearchat <limit>", "Deletes given amount of Messages in called channel");
+        event.getChannel().sendMessage(generalembed);
+
+
+    }
+
+
     public static void allHelpPages(String prefix) {
 
         System.out.println("yeet");
-        EmbedBuilder generalembed = new EmbedBuilder().setFooter("Franxxmin | HopeDev | Version ID: " + Main.versionid);
+        EmbedBuilder generalembed = new EmbedBuilder().setFooter("Mope | HopeDev | Version ID: " + Main.versionid);
 
-        generalembed.setColor(Color.MAGENTA).setTitle("\uD83C\uDF10 Franxxmin Bot Help");
+        generalembed.setColor(Color.MAGENTA).setTitle("\uD83C\uDF10 Mope Bot Help");
         generalembed.setThumbnail(Main.api.getYourself().getAvatar());
-        generalembed.setDescription("Available Help pages for Franxxmin");
-        generalembed.addField(prefix + " help general", "Shows all general commands for Franxxmin");
+        generalembed.setDescription("Available Help pages for Mope");
+        generalembed.addField(prefix + " help general", "Shows all general commands for Mope");
+        generalembed.addField(prefix + " help moderation", "Shows all Moderation commands");
         generalembed.addField(prefix + " help interactive", "Shows all interaction commands (powered by my own API)");
-        generalembed.addField(prefix + " help image", "Shows all image manipulation commands");
         generalembed.addField(prefix + " help osu", "Shows all osu stats commands");
 
         System.out.println(generalembed.toString());
@@ -233,18 +246,6 @@ public class Defaults {
 
     }
 
-    public static void ImagehelpPage(String prefix) {
-
-        EmbedBuilder interactiveembed = Templates.defaultembed();
-        interactiveembed.setThumbnail(Main.api.getYourself().getAvatar());
-        interactiveembed.setColor(Color.MAGENTA).setTitle("\uD83D\uDD8C Image Commands");
-        interactiveembed.setDescription("Most of them are powered by [Nekobot.xyz's API](https://nekobot.xyz)\nHere's a list of available Image Manipulation Commands:");
-        interactiveembed.addField(prefix + " baguette @mention(optional, uses your own avatar)", "makes you/mentioned user eat a baguette.");
-        interactiveembed.addField(prefix + " magik <intensity 1-10> @mention(optional)/attached image", "ruins your avatar(if no image attached or noone mentioned) or attached image");
-        event.getChannel().sendMessage(interactiveembed);
-
-
-    }
 
     public static void MusicHelp(String prefix) {
 
