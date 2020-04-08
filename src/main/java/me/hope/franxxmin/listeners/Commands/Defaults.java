@@ -176,13 +176,13 @@ public class Defaults {
 
         generalembed.setColor(Color.MAGENTA).setTitle("\uD83C\uDF10 General Commands");
         generalembed.setThumbnail(Main.api.getYourself().getAvatar());
-        generalembed.addField(prefix + " users", "Get a count of every user in your server.\n\u200B\n");
-        generalembed.addField(prefix + " userinfo @mention", "Shows global and local informations about a mentioned user.\n\u200B\n");
-        generalembed.addField(prefix + " osu", "Opens the osu help page\n\u200B\n");
-        generalembed.addField(prefix + " prefix <prefix>/reset", "Set a custom prefix for the bot(default is ``mp>``)/use reset to reset it's prefix back to ``mp>`` [Usable by Server Admins]\n\u200B\n");
-        generalembed.addField(prefix + " status", "Prints ARABAPI and Mope CDN Status\n\u200B\n");
-        generalembed.addField(prefix + " about", "about this Bot.\n\u200B\n");
-        generalembed.addField("mpdev>", "only works on the Development instance of Mope, so pretty much useless for the normal user :)\n\u200B\n");
+        generalembed.addField(prefix + " users", "Get a count of every user in your server.");
+        generalembed.addField(prefix + " userinfo @mention", "Shows global and local informations about a mentioned user.");
+        generalembed.addField(prefix + " osu", "Opens the osu help page");
+        generalembed.addField(prefix + " prefix <prefix>/reset", "Set a custom prefix for the bot(default is ``mp>``)/use reset to reset it's prefix back to ``mp>`` [Usable by Server Admins]");
+        generalembed.addField(prefix + " status", "Prints ARABAPI and Mope CDN Status");
+        generalembed.addField(prefix + " about", "about this Bot.");
+        generalembed.addField("mpdev>", "only works on the Development instance of Mope, so pretty much useless for the normal user :)");
         event.getChannel().sendMessage(generalembed);
 
 
@@ -195,9 +195,9 @@ public class Defaults {
 
         generalembed.setColor(Color.MAGENTA).setTitle("\uD83D\uDEE0Moderation Commands");
         generalembed.setThumbnail(Main.api.getYourself().getAvatar());
-        generalembed.addField(prefix + " clearchat <limit>", "Deletes given amount of Messages in called channel\n\u200B\n");
-        generalembed.addField(prefix + " kick @mention <reason>", "Kicks mentioned user for specified Reason\n\u200B\n");
-        generalembed.addField(prefix + " ban @mention <reason>", "Bans mentioned user for specified Reason\n\u200B\n");
+        generalembed.addField(prefix + " clearchat <limit>", "Deletes given amount of Messages in called channel");
+        generalembed.addField(prefix + " kick @mention <reason>", "Kicks mentioned user for specified Reason");
+        generalembed.addField(prefix + " ban @mention <reason>", "Bans mentioned user for specified Reason");
         event.getChannel().sendMessage(generalembed);
 
 
@@ -212,10 +212,10 @@ public class Defaults {
         generalembed.setColor(Color.MAGENTA).setTitle("\uD83C\uDF10 Mope Bot Help");
         generalembed.setThumbnail(Main.api.getYourself().getAvatar());
         generalembed.setDescription("Available Help pages for Mope");
-        generalembed.addField(prefix + " help general", "Shows all general commands for Mope\n\u200B\n");
-        generalembed.addField(prefix + " help moderation", "Shows all Moderation commands\n\u200B\n");
-        generalembed.addField(prefix + " help interactive", "Shows all interaction commands (powered by my own API)\n\u200B\n");
-        generalembed.addField(prefix + " help osu", "Shows all osu stats commands\n\u200B\n");
+        generalembed.addField(prefix + " help general", "Shows all general commands for Mope");
+        generalembed.addField(prefix + " help moderation", "Shows all Moderation commands");
+        generalembed.addField(prefix + " help interactive", "Shows all interaction commands (powered by my own API)");
+        generalembed.addField(prefix + " help osu", "Shows all osu stats commands");
 
         System.out.println(generalembed.toString());
         event.getChannel().sendMessage(generalembed);
@@ -230,18 +230,18 @@ public class Defaults {
         interactiveembed.setThumbnail(Main.api.getYourself().getAvatar());
         interactiveembed.setColor(Color.MAGENTA).setTitle("\uD83D\uDE02 Interactive Anime Commands [UPDATED]");
         interactiveembed.setDescription("_Took me hours to make a working api myself_\nHere's a list of available Interactive Commands:");
-        interactiveembed.addField(prefix + " smug", "makes you smug\n\u200B\n");
-        interactiveembed.addField(prefix + " cry", "makes you cry\n\u200B\n");
-        interactiveembed.addField(prefix + " laugh", "makes you laugh\n\u200B\n");
-        interactiveembed.addField(prefix + "blush", "makes you blush\n\u200B\n");
-        interactiveembed.addField(prefix + " hug @mention", "Hugs mentioned user\n\u200B\n");
-        interactiveembed.addField(prefix + " kiss @mention", "Kiss mentioned user\n\u200B\n");
-        interactiveembed.addField(prefix + " pat @mention", "Give mentioned user headpats\n\u200B\n");
-        interactiveembed.addField(prefix + " poke @mention", "pokes mentioned user\n\u200B\n");
-        interactiveembed.addField(prefix + " tickle @mention", "tickles mentioned user\n\u200B\n");
-        interactiveembed.addField(prefix + " feed @mention", "feed mentioned user\n\u200B\n");
-        interactiveembed.addField(prefix + " cuddle @mention", "Cuddle with mentioned user\n\u200B\n");
-        interactiveembed.addField(prefix + " lick @mention", "Licks mentioned user\n\u200B\n");
+        interactiveembed.addField(prefix + " smug", "makes you smug");
+        interactiveembed.addField(prefix + " cry", "makes you cry");
+        interactiveembed.addField(prefix + " laugh", "makes you laugh");
+        interactiveembed.addField(prefix + "blush", "makes you blush");
+        interactiveembed.addField(prefix + " hug @mention", "Hugs mentioned user");
+        interactiveembed.addField(prefix + " kiss @mention", "Kiss mentioned user");
+        interactiveembed.addField(prefix + " pat @mention", "Give mentioned user headpats");
+        interactiveembed.addField(prefix + " poke @mention", "pokes mentioned user");
+        interactiveembed.addField(prefix + " tickle @mention", "tickles mentioned user");
+        interactiveembed.addField(prefix + " feed @mention", "feed mentioned user");
+        interactiveembed.addField(prefix + " cuddle @mention", "Cuddle with mentioned user");
+        interactiveembed.addField(prefix + " lick @mention", "Licks mentioned user");
 
         event.getChannel().sendMessage(interactiveembed);
 
@@ -255,8 +255,8 @@ public class Defaults {
         interactiveembed.setThumbnail(Main.api.getYourself().getAvatar());
         interactiveembed.setColor(Color.MAGENTA).setTitle("\u266A Music Commands [DANGEROUSLY BETA]");
         interactiveembed.setDescription("This feature is very very experimental! Please use it at your own Risk! Feedback --> Hope#1445");
-        interactiveembed.addField(prefix + " music play <URL or Keyword>", "Searches for a Video and plays it back (You have to be in a voice channel)\n\u200B\n");
-        interactiveembed.addField(prefix + " music pause/unpause", "Pauses/Unpauses the Playback\n\u200B\n");
+        interactiveembed.addField(prefix + " music play <URL or Keyword>", "Searches for a Video and plays it back (You have to be in a voice channel)");
+        interactiveembed.addField(prefix + " music pause/unpause", "Pauses/Unpauses the Playback");
 
         event.getChannel().sendMessage(interactiveembed);
 
