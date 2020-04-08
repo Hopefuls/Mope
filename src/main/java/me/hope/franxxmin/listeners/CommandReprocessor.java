@@ -42,8 +42,8 @@ public class CommandReprocessor {
         String Pstr = prefix.get("prefix", Main.dfprfx);
 
         if (strraw[0].equalsIgnoreCase(Pstr) || strraw[0].equalsIgnoreCase(Main.dfprfx)) {
-            if (!event.getServer().get().getIdAsString().equals("264445053596991498")) {
                 EmbedBuilder log = Templates.debugembed();
+
                 log.setDescription("Command executed");
                 log.addField("Server (ID)", event.getServer().get().getName() + " (" + event.getServer().get().getIdAsString() + ")");
                 log.addInlineField("Channel (ID)", event.getChannel().asServerTextChannel().get().getName() + " (" + event.getChannel().getIdAsString() + ")");
@@ -51,8 +51,11 @@ public class CommandReprocessor {
                 log.addField("Message ID", event.getMessage().getIdAsString());
                 log.addInlineField("Message URL", "https://discordapp.com/channels/" + event.getServer().get().getIdAsString() + "/" + event.getChannel().getIdAsString() + "/" + event.getMessage().getIdAsString());
                 log.addField("Commandtext", event.getMessageContent());
+            if (Main.debug.getBoolean("enabled", true)) {
                 Main.logging.getUserById("245225589332639747").join().openPrivateChannel().join().sendMessage(log);
+
             }
+
             if (str.length == 0) {
 
                 new Defaults(event).allHelpPages(Pstr);
