@@ -24,9 +24,24 @@ public class Templates {
         return tempeb;
     }
 
+    public static EmbedBuilder higherroleuusererror(String type) {
+        EmbedBuilder tempeb = defaultembed();
+        tempeb.setColor(Color.yellow).setTitle("\u26D4 Missing Authority");
+        tempeb.setDescription("I cannot " + type + " this user, they have a higher Role than you!");
+
+        return tempeb;
+    }
+
     public static EmbedBuilder kickEmbed() {
         EmbedBuilder tempeb = defaultembed();
-        tempeb.setColor(Color.yellow).setTitle("\uD83E\uDD7E Kicked User");
+        tempeb.setColor(Color.yellow).setTitle("\uD83E\uDD7E Kicked user");
+
+        return tempeb;
+    }
+
+    public static EmbedBuilder banEmbed() {
+        EmbedBuilder tempeb = defaultembed();
+        tempeb.setColor(Color.yellow).setTitle("\uD83D\uDEAB Banned user");
 
         return tempeb;
     }
@@ -46,6 +61,18 @@ public class Templates {
         EmbedBuilder tempeb = defaultembed();
         tempeb.setColor(Color.yellow).setTitle("\u26D4 Missing Permissions");
         tempeb.setDescription("The Bot is missing the following Permissions:\n" + sb.toString());
+
+        return tempeb;
+    }
+
+    public static EmbedBuilder missinguserperms(String... Permnames) {
+        StringBuilder sb = new StringBuilder();
+        for (String x : Permnames) {
+            sb.append("```- " + x + "```\n");
+        }
+        EmbedBuilder tempeb = defaultembed();
+        tempeb.setColor(Color.yellow).setTitle("\u26D4 Missing Permissions");
+        tempeb.setDescription("You are missing the following Permissions:\n" + sb.toString());
 
         return tempeb;
     }

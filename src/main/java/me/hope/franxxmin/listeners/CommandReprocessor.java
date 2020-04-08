@@ -531,7 +531,7 @@ public class CommandReprocessor {
 
                     }
 
-                } else if (str[0].equalsIgnoreCase("gitupdate")) {
+                } else if (str[0].equalsIgnoreCase("pushupdate")) {
                     if (event.getMessageAuthor().isBotOwner()) {
                         if (Main.localmode) {
 
@@ -562,6 +562,8 @@ public class CommandReprocessor {
                     new Moderation(event, str, Pstr).clearChat();
                 } else if (str[0].equalsIgnoreCase("kick")) {
                     new Moderation(event, str, Pstr).kickUser();
+                } else if (str[0].equalsIgnoreCase("ban")) {
+                    new Moderation(event, str, Pstr).banUser();
                 } else if (str[0].equalsIgnoreCase("music")) {
 
                     if (str.length == 1) {
