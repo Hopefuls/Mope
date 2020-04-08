@@ -1,11 +1,13 @@
+# Mope
+A multi-functional Discord Bot based on Javacord
+
 [![Discord Bots](https://top.gg/api/widget/owner/688561837020545080.svg)](https://top.gg/bot/688561837020545080)
 [![Discord Bots](https://top.gg/api/widget/lib/688561837020545080.svg)](https://top.gg/bot/688561837020545080)
 [![Discord Bots](https://top.gg/api/widget/upvotes/688561837020545080.svg)](https://top.gg/bot/688561837020545080)
 [![Discord Bots](https://top.gg/api/widget/servers/688561837020545080.svg)](https://top.gg/bot/688561837020545080)
 [![Discord Bots](https://top.gg/api/widget/status/688561837020545080.svg)](https://top.gg/bot/688561837020545080)
 
-# Mope
-A multi-functional Discord Bot based on Javacord
+
 
 Renamed the Bot from Franxxmin to Mope
 
