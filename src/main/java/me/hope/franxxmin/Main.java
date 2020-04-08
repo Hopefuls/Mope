@@ -97,11 +97,11 @@ public class Main {
         //  api.addReactionAddListener(new osureactor());
         apistring = args[3];
         if (api.getYourself().getIdAsString().equals("691361576279736402")) {
-            dfprfx = "fmdev>";
+            dfprfx = "mpdev>";
             api.updateActivity("DEVELOPMENT MODE!!!");
             System.out.println("Bot is running on Mope Development ==> using development mode");
         } else {
-            dfprfx = "fm>";
+            dfprfx = "mp>";
             System.out.println("Bot initialized successfully!");
 
         }
