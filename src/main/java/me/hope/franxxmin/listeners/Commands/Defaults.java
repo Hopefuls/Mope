@@ -66,9 +66,9 @@ public class Defaults {
     public static void userinfo() {
         Object[] list = event.getMessage().getMentionedUsers().toArray();
         if (list.length > 1) {
-            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You only need to mention one user!\n \n**Usage example: fm> userinfo " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
+            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You only need to mention one user!\n \n**Usage example: mp> userinfo " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
         } else if (list.length == 0) {
-            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You need to mention a user!\n \n**Usage example: fm> userinfo " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
+            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You need to mention a user!\n \n**Usage example: mp> userinfo " + event.getMessageAuthor().asUser().get().getMentionTag() + "**"));
         } else {
             User checkuser = event.getMessage().getMentionedUsers().get(0);
             EmbedBuilder eb = Templates.defaultembed();
@@ -179,7 +179,7 @@ public class Defaults {
         generalembed.addField(prefix + " users", "Get a count of every user in your server.");
         generalembed.addField(prefix + " userinfo @mention", "Shows global and local informations about a mentioned user.");
         generalembed.addField(prefix + " osu", "Opens the osu help page");
-        generalembed.addField(prefix + " prefix <prefix>/reset", "Set a custom prefix for the bot(default is ``fm>``)/use reset to reset it's prefix back to ``fm>`` [Usable by Server Admins]");
+        generalembed.addField(prefix + " prefix <prefix>/reset", "Set a custom prefix for the bot(default is ``mp>``)/use reset to reset it's prefix back to ``mp>`` [Usable by Server Admins]");
         generalembed.addField(prefix + " status", "Prints ARABAPI and Mope CDN Status");
         generalembed.addField(prefix + " about", "about this Bot.");
         generalembed.addField("fmdev>", "only works on the Development instance of Mope, so pretty much useless for the normal user :)");

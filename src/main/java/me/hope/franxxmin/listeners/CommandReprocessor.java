@@ -123,12 +123,12 @@ public class CommandReprocessor {
 
 
                         if (str.length == 1) {
-                            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("Current Prefix for**" + event.getServer().get().getName() + "** is ``" + Pstr + "``\n \n name a Prefix you want the bot to listen to\n \n**Usage example: fm> prefix** ``Mope>`` \nResult: ``Mope>`` help\n \n \n_Hint: You can always use fm> anyways._"));
+                            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("Current Prefix for**" + event.getServer().get().getName() + "** is ``" + Pstr + "``\n \n name a Prefix you want the bot to listen to\n \n**Usage example: mp> prefix** ``Mope>`` \nResult: ``Mope>`` help\n \n \n_Hint: You can always use mp> anyways._"));
 
                         } else {
                             if (str[1].equalsIgnoreCase("reset")) {
                                 prefix.remove("prefix");
-                                event.getChannel().sendMessage(Templates.defaultembed().setColor(Color.green).setDescription("Command Prefix for ``" + event.getServer().get().getName() + "`` has been set to the default ``fm> ``"));
+                                event.getChannel().sendMessage(Templates.defaultembed().setColor(Color.green).setDescription("Command Prefix for ``" + event.getServer().get().getName() + "`` has been set to the default ``mp> ``"));
 
                             } else {
                                 StringBuilder sb = new StringBuilder();
