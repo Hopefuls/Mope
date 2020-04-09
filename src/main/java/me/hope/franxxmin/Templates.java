@@ -63,6 +63,13 @@ public class Templates {
         return tempeb;
     }
 
+    public static EmbedBuilder muteErrorEmbed() {
+        EmbedBuilder tempeb = defaultembed();
+        tempeb.setColor(Color.yellow).setTitle("\uD83D\uDD07 Error while trying to mute user");
+
+        return tempeb;
+    }
+
     public static EmbedBuilder notmutedEmbed() {
         EmbedBuilder tempeb = defaultembed();
         tempeb.setColor(Color.yellow).setTitle("\uD83D\uDD07 not Muted");

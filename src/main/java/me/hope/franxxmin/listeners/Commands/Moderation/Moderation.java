@@ -375,6 +375,10 @@ public class Moderation {
             unmuteUserhandler(attacker, mutedrole);
             return;
         }
+        if (attacker.equals(author)) {
+            event.getChannel().sendMessage(Templates.muteErrorEmbed().setDescription("You cannot mute yourself!"));
+            return;
+        }
         // Finally, for the first fucking time, make the final mute function
         StringBuilder sb = new StringBuilder();
         if (cmd.length > 2) {
