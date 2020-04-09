@@ -3,6 +3,7 @@ package me.hope.franxxmin.listeners;
 import me.hope.franxxmin.Main;
 import me.hope.franxxmin.Templates;
 import me.hope.franxxmin.onStart.CooldownManager;
+import me.hope.franxxmin.utils.DBL;
 import me.hope.franxxmin.utils.VariablesStorage.ServerHashmaps;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.event.server.ServerJoinEvent;
@@ -51,6 +52,8 @@ public class onServerJoin implements ServerJoinListener, ServerLeaveListener {
         pref.putInt("count", pref.getInt("count", 0) + 1);
         System.out.println("Server count Update: " + pref.getInt("count", 0) + "+1");
         CooldownManager.updateServer(event.getServer());
+        Main.api.updateActivity("Running on " + Main.api.getServers().size() + " Servers | mp>");
+        DBL.dbl.setStats(Main.api.getServers().size());
 
     }
 
@@ -71,6 +74,8 @@ public class onServerJoin implements ServerJoinListener, ServerLeaveListener {
         System.out.println("Server count Update: " + pref.getInt("count", 0) + "-1");
 
         CooldownManager.updateServer(event.getServer());
+        Main.api.updateActivity("Running on " + Main.api.getServers().size() + " Servers | mp>");
+        DBL.dbl.setStats(Main.api.getServers().size());
 
         //Remove Server from Array
 

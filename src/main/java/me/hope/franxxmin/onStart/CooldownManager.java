@@ -2,7 +2,6 @@ package me.hope.franxxmin.onStart;
 
 import me.hope.franxxmin.Main;
 import me.hope.franxxmin.Templates;
-import me.hope.franxxmin.utils.DBL;
 import me.hope.franxxmin.utils.VariablesStorage.Cooldown;
 import me.hope.franxxmin.utils.VariablesStorage.ServerHashmaps;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
@@ -43,7 +42,6 @@ public class CooldownManager {
         }
         Main.api.updateActivity("Running on " + ServerHashmaps.ID.size() + " Servers");
         if (!Main.localmode) {
-            DBL.updateServerCount();
 
         }
 
@@ -65,7 +63,6 @@ public class CooldownManager {
         temp.put(TYPE.OSU_REACT, 0.0);
         Cooldown.cooldowntrack.put(ID, temp);
         ServerHashmaps.ID.add(ID);
-        Main.api.updateActivity("Running on " + ServerHashmaps.ID.size() + " Servers");
         System.out.println("Done.\n");
 
     }
