@@ -190,16 +190,16 @@ public class CommandReprocessor {
                     sb.append("" + actionrecievers.get(0).getMentionTag());
                 } else {
                     for (int n = 0; n < i - 1; n++) {
-                                    sb.append(actionrecievers.get(n).getMentionTag() + " ");
-                                    fin++;
-                                }
-                                sb.append(" and " + actionrecievers.get(fin).getMentionTag());
-                            }
-
-
-                            new Defaults(event).ImageSender(actioninitializer.getMentionTag() + " hugs " + sb.toString() + "! *How cute~*", new APIAccess(event).hug());
-                return;
+                        sb.append(actionrecievers.get(n).getMentionTag() + " ");
+                        fin++;
                     }
+                    sb.append(" and " + actionrecievers.get(fin).getMentionTag());
+                }
+
+
+                new Defaults(event).ImageSender(actioninitializer.getMentionTag() + " hugs " + sb.toString() + "! *How cute~*", new APIAccess(event).hug());
+                return;
+            }
 
             if (str[0].equalsIgnoreCase("kiss")) {
                 Object[] list = event.getMessage().getMentionedUsers().toArray();
@@ -225,7 +225,7 @@ public class CommandReprocessor {
                     sb.append("" + actionrecievers.get(0).getMentionTag());
                 } else {
                     for (int n = 0; n < i - 1; n++) {
-                                    sb.append(actionrecievers.get(n).getMentionTag() + " ");
+                        sb.append(actionrecievers.get(n).getMentionTag() + " ");
                         fin++;
                     }
                     sb.append(" and " + actionrecievers.get(fin).getMentionTag());
@@ -486,15 +486,15 @@ public class CommandReprocessor {
                         event.getChannel().sendMessage(Templates.argerrorembed().setDescription("You need to either enter a username or a userid!\n \n**Example: **_" + Pstr + " osu user HopeDev_"));
                         return;
                     }
-                                if (new cooldownutility(event.getServer().get().getIdAsString()).chkcooldown(CooldownManager.TYPE.OSU) != 0.0) {
+                    if (new cooldownutility(event.getServer().get().getIdAsString()).chkcooldown(CooldownManager.TYPE.OSU) != 0.0) {
 
-                                    event.getChannel().sendMessage(Templates.cooldownerrorembed("osu", Cooldown.def.get(CooldownManager.TYPE.OSU), new cooldownutility(event.getServer().get().getIdAsString()).chkcooldown(CooldownManager.TYPE.OSU)));
+                        event.getChannel().sendMessage(Templates.cooldownerrorembed("osu", Cooldown.def.get(CooldownManager.TYPE.OSU), new cooldownutility(event.getServer().get().getIdAsString()).chkcooldown(CooldownManager.TYPE.OSU)));
 
-                                    return;
-                                }
-                                    OSU_PPY_SH timer;
-                                    StringBuilder sb = new StringBuilder();
-                                    int i = 2;
+                        return;
+                    }
+                    OSU_PPY_SH timer;
+                    StringBuilder sb = new StringBuilder();
+                    int i = 2;
                     for (i = 2; i < str.length; i++) {
                         sb.append(str[i] + "_");
                     }
@@ -521,12 +521,12 @@ public class CommandReprocessor {
 
                         return;
                     }
-                                    OSU_PPY_SH timer;
-                                    StringBuilder sb = new StringBuilder();
-                                    int i = 2;
-                                    for (i = 2; i < str.length; i++) {
-                                        sb.append(str[i] + "_");
-                                    }
+                    OSU_PPY_SH timer;
+                    StringBuilder sb = new StringBuilder();
+                    int i = 2;
+                    for (i = 2; i < str.length; i++) {
+                        sb.append(str[i] + "_");
+                    }
                     String sendthis = sb.toString().substring(0, sb.toString().length() - 1);
 
                     // Ab jetzt wird "Timer"
@@ -574,16 +574,16 @@ public class CommandReprocessor {
                     Main.UpdatedServerID.put("id", event.getChannel().getIdAsString());
 
                     try {
-                                Runtime.getRuntime().exec("initupdate");
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
+                        Runtime.getRuntime().exec("initupdate");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
-                            try {
-                                Thread.sleep(3000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     System.exit(1);
 
 
@@ -654,8 +654,8 @@ public class CommandReprocessor {
 
 
         }
-            }
-        }
+    }
+}
 
 
 
