@@ -118,11 +118,11 @@ public class Main {
         int ccc = 0;
 
         //Thread reconnector for onOpcode reconnect failure --> see https://hope.is-inside.me/Eh4Bk6lQ.png
-        System.out.println("Starting OPCODE ReconnectorThread..");
-        ThreadReconnector thread;
+        System.out.println("NOT Starting OPCODE ReconnectorThread..");
+        //ThreadReconnector thread;
 
-        thread = new ThreadReconnector();
-        thread.start();
+        //thread = new ThreadReconnector();
+        //thread.start();
 
 
         Main.api.addAudioSourceFinishedListener(new FinishedListener());

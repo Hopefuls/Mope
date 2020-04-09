@@ -198,6 +198,7 @@ public class Defaults {
         generalembed.addField(prefix + " clearchat <limit>", "Deletes given amount of Messages in called channel");
         generalembed.addField(prefix + " kick @mention <reason>", "Kicks mentioned user for specified Reason");
         generalembed.addField(prefix + " ban @mention <reason>", "Bans mentioned user for specified Reason");
+        generalembed.addField(prefix + " mute/unmute @mention <reason>", "Mutes/Unmutes mentioned user for specified Reason (reason is not needed on unmute)");
         event.getChannel().sendMessage(generalembed);
 
 

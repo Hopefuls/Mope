@@ -24,11 +24,49 @@ public class Templates {
         return tempeb;
     }
 
+    public static EmbedBuilder MuteRolemissingEmbed() {
+        EmbedBuilder tempeb = defaultembed();
+        tempeb.setColor(Color.red).setTitle("\u2757 Missing Role");
+        tempeb.setDescription("It seems like this Server doesn't have a Mute Role! Please create a unique Role called **Muted** (Not case-sensitive), make sure it is the only one called like that and make sure the Bot can Manage that Role (optional: manage Channels Permissions for automated Setup)");
+
+        return tempeb;
+    }
+
+    public static EmbedBuilder cantmanageroleerrorEmbed(String role) {
+        EmbedBuilder tempeb = defaultembed();
+        tempeb.setColor(Color.red).setTitle("\u2757 Can't manage Role");
+        tempeb.setDescription("I cannot manage the " + role + " Role, please make sure that it is below me and can be managed by me.");
+
+        return tempeb;
+    }
+
+    public static EmbedBuilder moreThanoneMuteRoleEmbed() {
+        EmbedBuilder tempeb = defaultembed();
+        tempeb.setColor(Color.red).setTitle("\u2757 Role Error");
+        tempeb.setDescription("It seems like this Server has more than one Role called **Muted**! Please create a unique Role called **Muted** (Not case-sensitive), make sure it is the only one called like that and make sure the Bot can Manage that Role (optional: manage Channels Permissions for automated Setup [NOT WORKING YET!!!])");
+
+        return tempeb;
+    }
+
     public static EmbedBuilder higherroleuusererror(String type) {
         EmbedBuilder tempeb = defaultembed();
         tempeb.setColor(Color.yellow).setTitle("\u26D4 Missing Authority");
         tempeb.setDescription("I cannot " + type + " this user, they have a higher Role than you!");
 
+        return tempeb;
+    }
+
+    public static EmbedBuilder muteEmbed() {
+        EmbedBuilder tempeb = defaultembed();
+        tempeb.setColor(Color.yellow).setTitle("\uD83D\uDD07 Muted user");
+
+        return tempeb;
+    }
+
+    public static EmbedBuilder notmutedEmbed() {
+        EmbedBuilder tempeb = defaultembed();
+        tempeb.setColor(Color.yellow).setTitle("\uD83D\uDD07 not Muted");
+        tempeb.setDescription("This user is not muted!");
         return tempeb;
     }
 

@@ -558,12 +558,18 @@ public class CommandReprocessor {
 
                     }
 
+
+                    //TODO MODERATION SHIT HERE LMAOOO
                 } else if (str[0].equalsIgnoreCase("clearchat")) {
                     new Moderation(event, str, Pstr).clearChat();
                 } else if (str[0].equalsIgnoreCase("kick")) {
                     new Moderation(event, str, Pstr).kickUser();
                 } else if (str[0].equalsIgnoreCase("ban")) {
                     new Moderation(event, str, Pstr).banUser();
+                } else if (str[0].equalsIgnoreCase("mute")) {
+                    new Moderation(event, str, Pstr).permMuteUser();
+                } else if (str[0].equalsIgnoreCase("unmute")) {
+                    new Moderation(event, str, Pstr).unmuteUser();
                 } else if (str[0].equalsIgnoreCase("music")) {
 
                     if (str.length == 1) {
