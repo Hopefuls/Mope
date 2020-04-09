@@ -3,6 +3,7 @@ package me.hope.franxxmin;
 
 import me.hope.franxxmin.listeners.CommandReprocessor;
 import me.hope.franxxmin.listeners.Music.FinishedListener;
+import me.hope.franxxmin.listeners.Reconnect;
 import me.hope.franxxmin.listeners.onServerJoin;
 import me.hope.franxxmin.utils.DBL;
 import me.hope.franxxmin.utils.TimerThreadCooldown;
@@ -84,7 +85,7 @@ public class Main {
 
         api.addServerJoinListener(new onServerJoin());
         api.addServerLeaveListener(new onServerJoin());
-
+        api.addReconnectListener(new Reconnect());
         System.out.println("Starting Timer Thread for cooldowns..");
         TimerThreadCooldown timer;
 
