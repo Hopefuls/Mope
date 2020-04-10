@@ -160,7 +160,7 @@ public class Defaults {
         EmbedBuilder generalembed = Templates.defaultembed();
 
         generalembed.setColor(Main.blurple).setTitle("<:osuicon:692410518090022944> osu! commands [WIP]");
-        generalembed.setThumbnail(Main.api.getYourself().getAvatar());
+        generalembed.setThumbnail("https://franxx.ml/images/tgg/Art.png");
         generalembed.addField(prefix + " osu user <username/id>", "Get the osu! stats of a specific User.");
         generalembed.addField(prefix + " osu recent <username/id>", "Get the most recent map of a specific User.");
 
@@ -175,7 +175,7 @@ public class Defaults {
         EmbedBuilder generalembed = Templates.defaultembed();
 
         generalembed.setColor(Main.blurple).setTitle("\uD83C\uDF10 General Commands");
-        generalembed.setThumbnail(Main.api.getYourself().getAvatar());
+        generalembed.setThumbnail("https://franxx.ml/images/tgg/Art.png");
         generalembed.addField(prefix + " users", "Get a count of every user in your server.");
         generalembed.addField(prefix + " userinfo @mention", "Shows global and local informations about a mentioned user.");
         generalembed.addField(prefix + " osu", "Opens the osu help page");
@@ -194,7 +194,7 @@ public class Defaults {
         EmbedBuilder generalembed = Templates.defaultembed();
 
         generalembed.setColor(Main.blurple).setTitle("\uD83D\uDEE0Moderation Commands");
-        generalembed.setThumbnail(Main.api.getYourself().getAvatar());
+        generalembed.setThumbnail("https://franxx.ml/images/tgg/Art.png");
         generalembed.addField(prefix + " clearchat <limit>", "Deletes given amount of Messages in called channel");
         generalembed.addField(prefix + " kick @mention <reason>", "Kicks mentioned user for specified Reason");
         generalembed.addField(prefix + " ban @mention <reason>", "Bans mentioned user for specified Reason");
@@ -211,7 +211,7 @@ public class Defaults {
         EmbedBuilder generalembed = Templates.defaultembed();
 
         generalembed.setColor(Main.blurple).setTitle("\uD83C\uDF10 Mope Bot Help");
-        generalembed.setThumbnail(Main.api.getYourself().getAvatar());
+        generalembed.setThumbnail("https://franxx.ml/images/tgg/Art.png");
         generalembed.setDescription("Available Help pages for Mope");
         generalembed.addField(prefix + " help general", "Shows all general commands for Mope");
         generalembed.addField(prefix + " help moderation", "Shows all Moderation commands");
@@ -228,7 +228,7 @@ public class Defaults {
 
         //Testing
         EmbedBuilder interactiveembed = Templates.defaultembed();
-        interactiveembed.setThumbnail(Main.api.getYourself().getAvatar());
+        interactiveembed.setThumbnail("https://franxx.ml/images/tgg/Art.png");
         interactiveembed.setColor(Main.blurple).setTitle("\uD83D\uDE02 Interactive Anime Commands [UPDATED]");
         interactiveembed.setDescription("_Took me hours to make a working api myself_\nHere's a list of available Interactive Commands:");
         interactiveembed.addField(prefix + " smug", "makes you smug");
@@ -253,7 +253,7 @@ public class Defaults {
     public static void MusicHelp(String prefix) {
 
         EmbedBuilder interactiveembed = Templates.defaultembed();
-        interactiveembed.setThumbnail(Main.api.getYourself().getAvatar());
+        interactiveembed.setThumbnail("https://franxx.ml/images/tgg/Art.png");
 
 
         interactiveembed.setColor(Main.blurple).setTitle("\u266A Music Commands [DANGEROUSLY BETA]");

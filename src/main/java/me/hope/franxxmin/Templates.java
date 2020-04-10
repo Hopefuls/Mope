@@ -12,7 +12,7 @@ public class Templates {
     public static EmbedBuilder defaultembed() {
         System.out.println("getting default embed");
 
-        EmbedBuilder prefembed = new EmbedBuilder().removeAllFields().setFooter("Mope made by Hope#1445 | All rights reserved", Main.api.getYourself().getAvatar());
+        EmbedBuilder prefembed = new EmbedBuilder().removeAllFields().setFooter("Mope made by Hope#1445 | All rights reserved", "https://franxx.ml/images/tgg/Art.png");
         return prefembed.setColor(Main.blurple);
     }
 
