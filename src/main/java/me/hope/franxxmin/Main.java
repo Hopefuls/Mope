@@ -12,6 +12,7 @@ import org.discordbots.api.client.DiscordBotListAPI;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 
+import java.awt.*;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -40,6 +41,7 @@ public class Main {
     public static String botdcapitoken;
     public static String googleconsoletoken;
 
+    public static Color blurple = new Color(114, 137, 218);
 
     public static void main(String[] args) {
         OSUAPIKEY = args[4];

@@ -74,7 +74,7 @@ public class Defaults {
             EmbedBuilder eb = Templates.defaultembed();
             eb.setThumbnail(checkuser.getAvatar());
             eb.setDescription("[Avatar URL](" + checkuser.getAvatar().getUrl() + ")");
-            eb.setColor(Color.blue);
+            eb.setColor(Color.getColor("#7289DA"));
             if (checkuser.isBot()) {
                 eb.setTitle("\uD83C\uDF0D Global Informations about " + checkuser.getName() + " [BOT]");
             } else {
@@ -159,7 +159,7 @@ public class Defaults {
 
         EmbedBuilder generalembed = Templates.defaultembed();
 
-        generalembed.setColor(Color.MAGENTA).setTitle("<:osuicon:692410518090022944> osu! commands [WIP]");
+        generalembed.setColor(Main.blurple).setTitle("<:osuicon:692410518090022944> osu! commands [WIP]");
         generalembed.setThumbnail(Main.api.getYourself().getAvatar());
         generalembed.addField(prefix + " osu user <username/id>", "Get the osu! stats of a specific User.");
         generalembed.addField(prefix + " osu recent <username/id>", "Get the most recent map of a specific User.");
@@ -174,7 +174,7 @@ public class Defaults {
 
         EmbedBuilder generalembed = Templates.defaultembed();
 
-        generalembed.setColor(Color.MAGENTA).setTitle("\uD83C\uDF10 General Commands");
+        generalembed.setColor(Main.blurple).setTitle("\uD83C\uDF10 General Commands");
         generalembed.setThumbnail(Main.api.getYourself().getAvatar());
         generalembed.addField(prefix + " users", "Get a count of every user in your server.");
         generalembed.addField(prefix + " userinfo @mention", "Shows global and local informations about a mentioned user.");
@@ -193,7 +193,7 @@ public class Defaults {
 
         EmbedBuilder generalembed = Templates.defaultembed();
 
-        generalembed.setColor(Color.MAGENTA).setTitle("\uD83D\uDEE0Moderation Commands");
+        generalembed.setColor(Main.blurple).setTitle("\uD83D\uDEE0Moderation Commands");
         generalembed.setThumbnail(Main.api.getYourself().getAvatar());
         generalembed.addField(prefix + " clearchat <limit>", "Deletes given amount of Messages in called channel");
         generalembed.addField(prefix + " kick @mention <reason>", "Kicks mentioned user for specified Reason");
@@ -208,9 +208,9 @@ public class Defaults {
     public static void allHelpPages(String prefix) {
 
         System.out.println("yeet");
-        EmbedBuilder generalembed = new EmbedBuilder().setFooter("Mope | HopeDev | Version ID: " + Main.versionid);
+        EmbedBuilder generalembed = Templates.defaultembed();
 
-        generalembed.setColor(Color.MAGENTA).setTitle("\uD83C\uDF10 Mope Bot Help");
+        generalembed.setColor(Main.blurple).setTitle("\uD83C\uDF10 Mope Bot Help");
         generalembed.setThumbnail(Main.api.getYourself().getAvatar());
         generalembed.setDescription("Available Help pages for Mope");
         generalembed.addField(prefix + " help general", "Shows all general commands for Mope");
@@ -229,7 +229,7 @@ public class Defaults {
         //Testing
         EmbedBuilder interactiveembed = Templates.defaultembed();
         interactiveembed.setThumbnail(Main.api.getYourself().getAvatar());
-        interactiveembed.setColor(Color.MAGENTA).setTitle("\uD83D\uDE02 Interactive Anime Commands [UPDATED]");
+        interactiveembed.setColor(Main.blurple).setTitle("\uD83D\uDE02 Interactive Anime Commands [UPDATED]");
         interactiveembed.setDescription("_Took me hours to make a working api myself_\nHere's a list of available Interactive Commands:");
         interactiveembed.addField(prefix + " smug", "makes you smug");
         interactiveembed.addField(prefix + " cry", "makes you cry");
@@ -254,7 +254,9 @@ public class Defaults {
 
         EmbedBuilder interactiveembed = Templates.defaultembed();
         interactiveembed.setThumbnail(Main.api.getYourself().getAvatar());
-        interactiveembed.setColor(Color.MAGENTA).setTitle("\u266A Music Commands [DANGEROUSLY BETA]");
+
+
+        interactiveembed.setColor(Main.blurple).setTitle("\u266A Music Commands [DANGEROUSLY BETA]");
         interactiveembed.setDescription("This feature is very very experimental! Please use it at your own Risk! Feedback --> Hope#1445");
         interactiveembed.addField(prefix + " music play <URL or Keyword>", "Searches for a Video and plays it back (You have to be in a voice channel)");
         interactiveembed.addField(prefix + " music pause/unpause", "Pauses/Unpauses the Playback");
@@ -270,7 +272,7 @@ public class Defaults {
 
         EmbedBuilder embed = Templates.defaultembed();
 
-        embed.setColor(Color.cyan);
+        embed.setColor(Main.blurple);
         embed.setImage(URL);
         embed.setDescription(Description);
 

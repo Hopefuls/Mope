@@ -12,8 +12,8 @@ public class Templates {
     public static EmbedBuilder defaultembed() {
         System.out.println("getting default embed");
 
-        EmbedBuilder prefembed = new EmbedBuilder().removeAllFields().setFooter("Mope made by Hope", Main.api.getYourself().getAvatar());
-        return prefembed;
+        EmbedBuilder prefembed = new EmbedBuilder().removeAllFields().setFooter("Mope made by Hope#1445 | All rights reserved", Main.api.getYourself().getAvatar());
+        return prefembed.setColor(Main.blurple);
     }
 
     public static EmbedBuilder higherroleerror(String type) {
