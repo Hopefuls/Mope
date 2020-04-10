@@ -10,6 +10,7 @@ import me.hope.franxxmin.utils.TimerThreadCooldown;
 import me.hope.franxxmin.utils.VariablesStorage.ServerHashmaps;
 import org.discordbots.api.client.DiscordBotListAPI;
 import org.javacord.api.DiscordApi;
+import org.javacord.api.entity.activity.ActivityType;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 
 import java.awt.*;
@@ -96,7 +97,6 @@ public class Main {
         timer = new TimerThreadCooldown();
         timer.start();
         System.out.println("Started! Outputting current Test values for help");
-        api.updateActivity("on " + Main.api.getServers().size() + " Servers | mp> help");
         //  api.addReactionAddListener(new osureactor());
         apistring = args[3];
         if (api.getYourself().getIdAsString().equals("691361576279736402")) {
@@ -129,6 +129,8 @@ public class Main {
 
 
         Main.api.addAudioSourceFinishedListener(new FinishedListener());
+        api.updateActivity(ActivityType.LISTENING, "to " + Main.api.getServers().size() + " Servers | mp> help");
+
     }
 
 }

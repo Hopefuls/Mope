@@ -3,6 +3,7 @@ package me.hope.franxxmin.listeners;
 import me.hope.franxxmin.Main;
 import me.hope.franxxmin.Templates;
 import org.javacord.api.DiscordApiBuilder;
+import org.javacord.api.entity.activity.ActivityType;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.event.connection.ReconnectEvent;
 import org.javacord.api.listener.connection.ReconnectListener;
@@ -19,7 +20,7 @@ public class Reconnect implements ReconnectListener {
             eb.setDescription("[OPCODE] Reconnect Notification");
             eb.addField("INFO", "Reconnected successfully!");
             Main.logging.getUserById("245225589332639747").join().openPrivateChannel().join().sendMessage(eb);
-            Main.api.updateActivity("on " + Main.api.getServers().size() + " Servers | mp> help");
+            Main.api.updateActivity(ActivityType.LISTENING, "to " + Main.api.getServers().size() + " Servers | mp> help");
         }
 
     }
