@@ -4,6 +4,7 @@ import me.hope.franxxmin.Main;
 import me.hope.franxxmin.Templates;
 import me.hope.franxxmin.utils.VariablesStorage.Cooldown;
 import me.hope.franxxmin.utils.VariablesStorage.ServerHashmaps;
+import org.javacord.api.entity.activity.ActivityType;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.server.Server;
 
@@ -40,7 +41,7 @@ public class CooldownManager {
             Cooldown.cooldowntrack.put(server.getIdAsString(), temp);
             ServerHashmaps.ID.add(server.getIdAsString());
         }
-        Main.api.updateActivity("Running on " + ServerHashmaps.ID.size() + " Servers");
+        Main.api.updateActivity(ActivityType.LISTENING, "to " + Main.api.getServers().size() + " Servers | mp> help");
         if (!Main.localmode) {
 
         }
