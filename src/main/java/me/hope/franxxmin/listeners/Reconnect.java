@@ -19,7 +19,7 @@ public class Reconnect implements ReconnectListener {
             eb.setDescription("[OPCODE] Reconnect Notification");
             eb.addField("INFO", "Reconnected successfully!");
             Main.logging.getUserById("245225589332639747").join().openPrivateChannel().join().sendMessage(eb);
-            Main.api.updateActivity("Running on " + Main.api.getServers().size() + " Servers | mp>");
+            Main.api.updateActivity("on " + Main.api.getServers().size() + " Servers | mp> help");
         }
 
     }

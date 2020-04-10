@@ -96,7 +96,7 @@ public class Main {
         timer = new TimerThreadCooldown();
         timer.start();
         System.out.println("Started! Outputting current Test values for help");
-        api.updateActivity("Running on " + ServerHashmaps.ID.size() + " Servers");
+        api.updateActivity("on " + Main.api.getServers().size() + " Servers | mp> help");
         //  api.addReactionAddListener(new osureactor());
         apistring = args[3];
         if (api.getYourself().getIdAsString().equals("691361576279736402")) {
