@@ -12,7 +12,7 @@ public class Templates {
     public static EmbedBuilder defaultembed() {
         System.out.println("getting default embed");
 
-        EmbedBuilder prefembed = new EmbedBuilder().removeAllFields().setFooter("Mope | HopeDev | Version ID: " + Main.versionid);
+        EmbedBuilder prefembed = new EmbedBuilder().removeAllFields().setFooter("Mope made by Hope", Main.api.getYourself().getAvatar());
         return prefembed;
     }
 

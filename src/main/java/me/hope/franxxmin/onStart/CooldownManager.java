@@ -51,6 +51,7 @@ public class CooldownManager {
 
     }
 
+
     public static void updateServer(Server srv) {
         String ID = srv.getIdAsString();
         System.out.println("New Server detected! Updating for ID " + ID);
