@@ -42,7 +42,7 @@ public class OSU_PPY_SH extends Thread {
         } else {
 
             EmbedBuilder eb = Templates.defaultembed();
-            eb.setTitle("<:osuicon:692410518090022944> Best Play | :flag_" + result.getString("country").toLowerCase() + ": " + result.getString("username"));
+            eb.setTitle("<:osulogo:698316045605404702> Best Play | :flag_" + result.getString("country").toLowerCase() + ": " + result.getString("username"));
             eb.setFooter("This Command has a 6 Second Cooldown | Franxxmin | HopeDev | Version ID: " + Main.versionid);
             eb.setDescription("Work in Progress, not usable yet!");
             MiscVariables.editosureactor.get(event.getServer().get().getIdAsString()).edit(eb);
@@ -84,7 +84,7 @@ public class OSU_PPY_SH extends Thread {
                 JSONObject resultbeatmapinfo = jsonarraybeatmapinfo.getJSONObject(0);
 
                 wentthr = true;
-                eb.setTitle("<:osuicon:692410518090022944> :flag_" + resultuserinfo.getString("country").toLowerCase() + ": " + resultuserinfo.getString("username") + " | Recent play");
+                eb.setTitle("<:osulogo:698316045605404702> :flag_" + resultuserinfo.getString("country").toLowerCase() + ": " + resultuserinfo.getString("username") + " | Recent play");
 
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -106,28 +106,28 @@ public class OSU_PPY_SH extends Thread {
                 String Rank;
                 switch (ranking) {
                     case ("XH"):
-                        Rank = "<:rankingXH:692418403994173451>";
+                        Rank = "<:rankingXH:698310679362535465>";
                         break;
                     case ("X"):
-                        Rank = "<:rankingX:692415554723643512>";
+                        Rank = "<:rankingX:698310680155258910>";
                         break;
                     case ("SH"):
-                        Rank = "<:rankingSH:692415554065006694>";
+                        Rank = "<:rankingSH:698310678615949464>";
                         break;
                     case ("S"):
-                        Rank = "<:rankingS:692415554807398500>";
+                        Rank = "<:rankingS:698310679022796902>";
                         break;
                     case ("A"):
-                        Rank = "<:rankingA:692415554841083954>";
+                        Rank = "<:rankingA:698310679219666944>";
                         break;
                     case ("B"):
-                        Rank = "<:rankingB:692415554665054298>";
+                        Rank = "<:rankingB:698310680125767700>";
                         break;
                     case ("C"):
-                        Rank = "<:rankingC:692415554341830666>";
+                        Rank = "<:rankingC:698310679035379722>";
                         break;
                     case ("D"):
-                        Rank = "<:rankingD:692415554627305472> ";
+                        Rank = "<:rankingD:698310679723114566> ";
                         break;
                     default:
                         Rank = "FAILED";
@@ -205,7 +205,7 @@ public class OSU_PPY_SH extends Thread {
                 JSONObject result1 = jsonarray.getJSONObject(0);
                 MiscVariables.jsonObjectHashMapGetBest.put(event.getMessageAuthor().getIdAsString(), result1);
                 MiscVariables.jsonObjectHashMap.put(event.getMessageAuthor().getIdAsString(), result);
-                eb.setTitle("<:osuicon:692410518090022944> :flag_" + result.getString("country").toLowerCase() + ": " + result.getString("username"));
+                eb.setTitle("<:osulogo:698316045605404702> :flag_" + result.getString("country").toLowerCase() + ": " + result.getString("username"));
 
                 eb.setDescription("osu! Profile of User ID ``" + result.getString("user_id") + "``");
 
@@ -246,42 +246,42 @@ public class OSU_PPY_SH extends Thread {
                 eb.addInlineField("Level", df.format(result.getDouble("level")));
                 StringBuilder sb2 = new StringBuilder();
                 try {
-                    sb2.append("<:rankingXH:692418403994173451> " + result.getString("count_rank_ssh") + "\n");
+                    sb2.append("<:rankingXH:698310679362535465> " + result.getString("count_rank_ssh") + "\n");
                 } catch (JSONException e) {
 
                 }
                 try {
-                    sb2.append("<:rankingX:692415554723643512> " + result.getString("count_rank_ss") + "\n");
+                    sb2.append("<:rankingX:698310680155258910> " + result.getString("count_rank_ss") + "\n");
                 } catch (JSONException e) {
 
                 }
                 try {
-                    sb2.append("<:rankingSH:692415554065006694> " + result.getString("count_rank_sh") + "\n");
+                    sb2.append("<:rankingSH:698310678615949464> " + result.getString("count_rank_sh") + "\n");
                 } catch (JSONException e) {
 
                 }
                 try {
-                    sb2.append("<:rankingS:692415554807398500> " + result.getString("count_rank_s") + "\n");
+                    sb2.append("<:rankingS:698310679022796902> " + result.getString("count_rank_s") + "\n");
                 } catch (JSONException e) {
 
                 }
                 try {
-                    sb2.append("<:rankingA:692415554841083954> " + result.getString("count_rank_a") + "\n");
+                    sb2.append("<:rankingA:698310679219666944> " + result.getString("count_rank_a") + "\n");
                 } catch (JSONException e) {
 
                 }
                 try {
-                    sb2.append("<:rankingB:692415554665054298> " + result.getString("count_rank_b") + "\n");
+                    sb2.append("<:rankingB:698310680125767700> " + result.getString("count_rank_b") + "\n");
                 } catch (JSONException e) {
 
                 }
                 try {
-                    sb2.append("<:rankingC:692415554341830666> " + result.getString("count_rank_c") + "\n");
+                    sb2.append("<:rankingC:698310679035379722> " + result.getString("count_rank_c") + "\n");
                 } catch (JSONException e) {
 
                 }
                 try {
-                    sb2.append("<:rankingD:692415554627305472> " + result.getString("count_rank_d") + "\n");
+                    sb2.append("<:rankingD:698310679723114566> " + result.getString("count_rank_d") + "\n");
                 } catch (JSONException e) {
 
                 }
@@ -291,9 +291,9 @@ public class OSU_PPY_SH extends Thread {
                 eb.addField("Performance Points (pp)", result.getString("pp_raw") + "pp", true);
                 eb.addField("Plays", result.getString("playcount"), true);
                 StringBuilder sb4 = new StringBuilder();
-                sb4.append("<:hit50:692449536907673601> " + result.getInt("count50") + "\n");
-                sb4.append("<:hit100:692449537003880588> " + result.getInt("count100") + "\n");
-                sb4.append("<:hit300:692449536811204678> " + result.getInt("count300") + "\n");
+                sb4.append("<:hit50:698310678368223282> " + result.getInt("count50") + "\n");
+                sb4.append("<:hit100:698310678083141654> " + result.getInt("count100") + "\n");
+                sb4.append("<:hit300:698310678120890410> " + result.getInt("count300") + "\n");
 
                 eb.addField("Hits", sb4.toString() + "\n \n \n \n \n \n", true);
                 eb.addField("Accuracy", df.format(result.getDouble("accuracy")), true);
@@ -330,7 +330,7 @@ public class OSU_PPY_SH extends Thread {
             eb.setColor(Color.pink);
 
 
-            eb.setTitle("<:osuicon:692410518090022944> :flag_" + result.getString("country").toLowerCase() + ": " + result.getString("username"));
+            eb.setTitle("<:osulogo:698316045605404702> :flag_" + result.getString("country").toLowerCase() + ": " + result.getString("username"));
 
             eb.setDescription("osu! Profile of User ID ``" + result.getString("user_id") + "``");
 
@@ -371,42 +371,42 @@ public class OSU_PPY_SH extends Thread {
             eb.addInlineField("Level", df.format(result.getDouble("level")));
             StringBuilder sb2 = new StringBuilder();
             try {
-                sb2.append("<:rankingXH:692418403994173451> " + result.getString("count_rank_ssh") + "\n");
+                sb2.append("<:rankingXH:698310679362535465> " + result.getString("count_rank_ssh") + "\n");
             } catch (JSONException e) {
 
             }
             try {
-                sb2.append("<:rankingX:692415554723643512> " + result.getString("count_rank_ss") + "\n");
+                sb2.append("<:rankingX:698310680155258910> " + result.getString("count_rank_ss") + "\n");
             } catch (JSONException e) {
 
             }
             try {
-                sb2.append("<:rankingSH:692415554065006694> " + result.getString("count_rank_sh") + "\n");
+                sb2.append("<:rankingSH:698310678615949464> " + result.getString("count_rank_sh") + "\n");
             } catch (JSONException e) {
 
             }
             try {
-                sb2.append("<:rankingS:692415554807398500> " + result.getString("count_rank_s") + "\n");
+                sb2.append("<:rankingS:698310679022796902> " + result.getString("count_rank_s") + "\n");
             } catch (JSONException e) {
 
             }
             try {
-                sb2.append("<:rankingA:692415554841083954> " + result.getString("count_rank_a") + "\n");
+                sb2.append("<:rankingA:698310679219666944> " + result.getString("count_rank_a") + "\n");
             } catch (JSONException e) {
 
             }
             try {
-                sb2.append("<:rankingB:692415554665054298> " + result.getString("count_rank_b") + "\n");
+                sb2.append("<:rankingB:698310680125767700> " + result.getString("count_rank_b") + "\n");
             } catch (JSONException e) {
 
             }
             try {
-                sb2.append("<:rankingC:692415554341830666> " + result.getString("count_rank_c") + "\n");
+                sb2.append("<:rankingC:698310679035379722> " + result.getString("count_rank_c") + "\n");
             } catch (JSONException e) {
 
             }
             try {
-                sb2.append("<:rankingD:692415554627305472> " + result.getString("count_rank_d") + "\n");
+                sb2.append("<:rankingD:698310679723114566> " + result.getString("count_rank_d") + "\n");
             } catch (JSONException e) {
 
             }
@@ -416,9 +416,9 @@ public class OSU_PPY_SH extends Thread {
             eb.addField("Performance Points (pp)", result.getString("pp_raw") + "pp", true);
             eb.addField("Plays", result.getString("playcount"), true);
             StringBuilder sb4 = new StringBuilder();
-            sb4.append("<:hit50:692449536907673601> " + result.getInt("count50") + "\n");
-            sb4.append("<:hit100:692449537003880588> " + result.getInt("count100") + "\n");
-            sb4.append("<:hit300:692449536811204678> " + result.getInt("count300") + "\n");
+            sb4.append("<:hit50:698310678368223282> " + result.getInt("count50") + "\n");
+            sb4.append("<:hit100:698310678083141654> " + result.getInt("count100") + "\n");
+            sb4.append("<:hit300:698310678120890410> " + result.getInt("count300") + "\n");
 
             eb.addField("Hits", sb4.toString(), true);
             eb.addField("Accuracy", df.format(result.getDouble("accuracy")), true);

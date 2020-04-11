@@ -16,6 +16,16 @@ public class Templates {
         return prefembed.setColor(Main.blurple);
     }
 
+    public static EmbedBuilder ServerJoinEmbed() {
+        EmbedBuilder tempeb = defaultembed();
+
+        tempeb.setColor(Color.yellow).setTitle("Hi! I'm Mope, your Moderative Person for your Guild!");
+        tempeb.setImage(Main.api.getYourself().getAvatar());
+        tempeb.setDescription(" \n**Thank you so much for adding me!**\nPlease remember: This is my first ever published bot! \n__What can you do?__\nI can do a bunch of stuff! Take a look at ``mp> help``\n **If you'd like to use the Moderation-feature, please use mp> settings moderation true**\n \nSupport: https://discord.gg/S3q8ryY\nTop.gg Page: https://top.gg/bot/688561837020545080");
+
+        return tempeb;
+    }
+
     public static EmbedBuilder higherroleerror(String type) {
         EmbedBuilder tempeb = defaultembed();
         tempeb.setColor(Color.yellow).setTitle("\u26D4 Missing Authority");

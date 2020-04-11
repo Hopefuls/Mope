@@ -47,7 +47,10 @@ public class CooldownManager {
         }
 
         System.out.println("Done.\n");
-        Main.api.getUserById("245225589332639747").join().openPrivateChannel().join().sendMessage(eb);
+        eb.setColor(Main.blurple);
+        Main.api.updateAvatar(Main.api.getUserById("688561837020545080").join().getAvatar());
+        Main.api.updateUsername("Mevelopment [Mope Dev]");
+        Main.api.getChannelById("698308561733812274").get().asServerTextChannel().get().sendMessage(eb);
 
 
     }

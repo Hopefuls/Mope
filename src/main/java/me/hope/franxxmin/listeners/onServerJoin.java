@@ -47,15 +47,18 @@ public class onServerJoin implements ServerJoinListener, ServerLeaveListener {
         eb.setThumbnail(Main.api.getYourself().getAvatar());
 
 
-        Main.api.getUserById("245225589332639747").join().openPrivateChannel().join().sendMessage(eb);
+        Main.api.getChannelById("698308561733812274").get().asServerTextChannel().get().sendMessage(eb);
 
 
         pref.putInt("count", pref.getInt("count", 0) + 1);
         System.out.println("Server count Update: " + pref.getInt("count", 0) + "+1");
         CooldownManager.updateServer(event.getServer());
         Main.api.updateActivity(ActivityType.LISTENING, "to " + Main.api.getServers().size() + " Servers | mp> help");
-        DBL.dbl.setStats(Main.api.getServers().size());
+        if (!Main.localmode) {
+            DBL.dbl.setStats(Main.api.getServers().size());
+        }
 
+        event.getServer().getSystemChannel().get().sendMessage(Templates.ServerJoinEmbed());
     }
 
     @Override
@@ -70,13 +73,16 @@ public class onServerJoin implements ServerJoinListener, ServerLeaveListener {
         // Main.cooldownref.remove(event.getServer().getIdAsString());
 
 
-        Main.api.getUserById("245225589332639747").join().openPrivateChannel().join().sendMessage(eb);
+        Main.api.getChannelById("698308561733812274").get().asServerTextChannel().get().sendMessage(eb);
         pref.putInt("count", pref.getInt("count", 0) - 1);
         System.out.println("Server count Update: " + pref.getInt("count", 0) + "-1");
 
         CooldownManager.updateServer(event.getServer());
         Main.api.updateActivity(ActivityType.LISTENING, "to " + Main.api.getServers().size() + " Servers | mp> help");
-        DBL.dbl.setStats(Main.api.getServers().size());
+        if (!Main.localmode) {
+            DBL.dbl.setStats(Main.api.getServers().size());
+        }
+
 
         //Remove Server from Array
 

@@ -650,6 +650,10 @@ public class CommandReprocessor {
 
                 return;
             }
+            if (str[0].equalsIgnoreCase("embedtester")) {
+                event.getChannel().sendMessage(Templates.ServerJoinEmbed());
+                return;
+            }
             event.getChannel().sendMessage(Templates.argerrorembed().setDescription("This command is unknown. Get a list of available commands by using `" + Pstr + " help`"));
 
 
