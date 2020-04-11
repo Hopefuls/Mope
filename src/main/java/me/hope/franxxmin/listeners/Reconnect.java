@@ -12,7 +12,6 @@ public class Reconnect implements ReconnectListener {
     @Override
     public void onReconnect(ReconnectEvent event) {
         System.out.println("[OPCODE] Reconnecting API..");
-        Main.logging = new DiscordApiBuilder().setToken(Main.loggingtoken).login().join();
         Main.api = new DiscordApiBuilder().setToken(Main.botdcapitoken).login().join();
         System.out.println("[OPCODE] Successfully reconnected!");
         EmbedBuilder eb = Templates.debugembed();

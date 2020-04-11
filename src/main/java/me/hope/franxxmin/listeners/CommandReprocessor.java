@@ -549,16 +549,16 @@ public class CommandReprocessor {
                     if (Main.debug.getBoolean("enabled", true)) {
                         Main.debug.putBoolean("enabled", false);
                         event.getChannel().sendMessage("Debug disabled.");
-                        System.out.println("Debug being toggled");
+                        System.out.println("Debug being toggled [FALSE]");
                         EmbedBuilder eb = new Templates().infoembed().setDescription("Debugging toggled.");
-                        Main.logging.getUserById("245225589332639747").join().openPrivateChannel().join().sendMessage(eb);
+                        Main.api.getChannelById("698308561733812274").get().asServerTextChannel().get().sendMessage(eb).join();
 
                     } else {
                         event.getChannel().sendMessage("Debug enabled.");
                         Main.debug.putBoolean("enabled", true);
                         EmbedBuilder eb = new Templates().infoembed().setDescription("Debugging toggled.");
-                        Main.logging.getUserById("245225589332639747").join().openPrivateChannel().join().sendMessage(eb);
-                        System.out.println("Debug being toggled");
+                        Main.api.getChannelById("698308561733812274").get().asServerTextChannel().get().sendMessage(eb).join();
+                        System.out.println("Debug being toggled [TRUE]");
                     }
                     return;
 

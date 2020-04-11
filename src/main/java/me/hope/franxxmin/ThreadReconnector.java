@@ -12,7 +12,6 @@ public class ThreadReconnector extends Thread {
                 System.out.println("Starting OPCODE Thread listener Timer");
                 Thread.sleep(600000);
                 System.out.println("[OPCODE] Reconnecting API..");
-                Main.logging = new DiscordApiBuilder().setToken(Main.loggingtoken).login().join();
                 Main.api = new DiscordApiBuilder().setToken(Main.botdcapitoken).login().join();
                 System.out.println("[OPCODE] Successfully reconnected!");
                 EmbedBuilder eb = Templates.debugembed();
@@ -20,7 +19,7 @@ public class ThreadReconnector extends Thread {
                 eb.setDescription("[OPCODE] Reconnect Notification");
                 eb.addField("INFO", "Reconnected successfully!");
                 eb.addField("AMS", count + "");
-                Main.logging.getUserById("245225589332639747").join().openPrivateChannel().join().sendMessage(eb);
+                Main.api.getChannelById("698308561733812274").get().asServerTextChannel().get().sendMessage(eb).join();
 
                 System.out.println("[OPCODE] Repeat!");
             } catch (InterruptedException e) {

@@ -24,7 +24,6 @@ public class Main {
 
 
     public static DiscordApi api;
-    public static DiscordApi logging;
     public static Preferences pref = Preferences.userNodeForPackage(Main.class);
     public static Preferences UpdatedServerID = Preferences.userNodeForPackage(Main.class).node("dev");
 
