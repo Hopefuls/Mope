@@ -128,7 +128,7 @@ public class Main {
 
 
         Main.api.addAudioSourceFinishedListener(new FinishedListener());
-        api.updateActivity(ActivityType.LISTENING, "to " + Main.api.getServers().size() + " Guilds | mp> help");
+        api.updateActivity(ActivityType.LISTENING, Main.api.getServers().size() + " Guilds | mp> help");
 
     }
 
