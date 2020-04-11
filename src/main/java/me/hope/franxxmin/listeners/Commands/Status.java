@@ -7,6 +7,8 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.event.message.MessageCreateEvent;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.concurrent.TimeUnit;
 
 public class Status {
@@ -42,7 +44,21 @@ public class Status {
         int laughcount = jsonobject.getInt("laughcount");
         int blushcount = jsonobject.getInt("blushcount");
         eb.addField("Mope CDN Status", "Response Time: **" + durationInMsCDN + "ms**\nResource Count:\n \n      Resource \"kiss\"\u2192 " + kisscount + "\n      Resource \"hug\"\u2192 " + hugcount + "\n      Resource \"pat\"\u2192 " + patcount + "\n      Resource \"smug\"\u2192 " + smugcount + "\n      Resource \"cry\"\u2192 " + crycount + "\n      Resource \"poke\"\u2192 " + pokecount + "\n      Resource \"tickle\"\u2192 " + ticklecount + "\n      Resource \"feed\"\u2192 " + feedcount + "\n      Resource \"cuddle\"\u2192 " + cuddlecount + "\n      Resource \"laugh\"\u2192 " + laughcount + "\n      Resource \"lick\"\u2192 " + lickcount + "\n      Resource \"happy\"\u2192 " + happycount + "\n      Resource \"blush\"\u2192 " + blushcount);
+        Runtime runtime = Runtime.getRuntime();
 
+        NumberFormat format = NumberFormat.getInstance();
+
+        StringBuilder sb = new StringBuilder();
+        long maxMemory = runtime.maxMemory();
+        long allocatedMemory = runtime.totalMemory();
+        long freeMemory = runtime.freeMemory();
+        DecimalFormat df = new DecimalFormat("####");
+
+        sb.append("free memory: " + format.format(freeMemory / 1024) + "MB\n");
+        sb.append("allocated memory: " + format.format(allocatedMemory / 1024) + "MB\n");
+        sb.append("max memory: " + format.format(maxMemory / 1024) + "MB\n");
+        sb.append("total free memory: " + format.format((freeMemory + (maxMemory - allocatedMemory)) / 1024) + "MB\n");
+        eb.addField("Host Status", sb.toString());
         return eb;
     }
 }
