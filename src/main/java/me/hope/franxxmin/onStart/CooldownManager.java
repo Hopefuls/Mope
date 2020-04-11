@@ -6,7 +6,6 @@ import me.hope.franxxmin.utils.VariablesStorage.Cooldown;
 import me.hope.franxxmin.utils.VariablesStorage.ServerHashmaps;
 import org.javacord.api.entity.activity.ActivityType;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
-import org.javacord.api.entity.permission.Permissions;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 
@@ -68,8 +67,8 @@ public class CooldownManager {
 
         System.out.println("Done.\n");
         eb.setColor(Main.blurple);
+        eb.addField("Bot-Invite", Main.api.createBotInvite());
         Main.api.getChannelById("698308561733812274").get().asServerTextChannel().get().sendMessage(eb).join();
-        Main.api.getChannelById("698308561733812274").get().asServerTextChannel().get().sendMessage("BOT Invite of " + Main.api.getYourself().getName() + ": " + Main.api.createBotInvite(Permissions.fromBitmask(8)));
 
 
     }
