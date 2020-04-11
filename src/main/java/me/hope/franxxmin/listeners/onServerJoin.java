@@ -34,7 +34,7 @@ public class onServerJoin implements ServerJoinListener, ServerLeaveListener {
             eb.setThumbnail(Main.api.getYourself().getAvatar());
 
 
-            Main.api.getUserById("245225589332639747").join().openPrivateChannel().join().sendMessage(eb);
+            Main.api.getChannelById("698308561733812274").get().asServerTextChannel().get().sendMessage(eb);
             return;
         }
         EmbedBuilder eb = Templates.infoembed();
