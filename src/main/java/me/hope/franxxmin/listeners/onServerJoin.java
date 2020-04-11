@@ -53,7 +53,7 @@ public class onServerJoin implements ServerJoinListener, ServerLeaveListener {
         pref.putInt("count", pref.getInt("count", 0) + 1);
         System.out.println("Server count Update: " + pref.getInt("count", 0) + "+1");
         CooldownManager.updateServer(event.getServer());
-        Main.api.updateActivity(ActivityType.LISTENING, "to " + Main.api.getServers().size() + " Servers | mp> help");
+        Main.api.updateActivity(ActivityType.LISTENING, Main.api.getServers().size() + " Servers | mp> help");
         if (!Main.localmode) {
             DBL.dbl.setStats(Main.api.getServers().size());
         }
@@ -78,7 +78,7 @@ public class onServerJoin implements ServerJoinListener, ServerLeaveListener {
         System.out.println("Server count Update: " + pref.getInt("count", 0) + "-1");
 
         CooldownManager.updateServer(event.getServer());
-        Main.api.updateActivity(ActivityType.LISTENING, "to " + Main.api.getServers().size() + " Servers | mp> help");
+        Main.api.updateActivity(ActivityType.LISTENING, Main.api.getServers().size() + " Servers | mp> help");
         if (!Main.localmode) {
             DBL.dbl.setStats(Main.api.getServers().size());
         }

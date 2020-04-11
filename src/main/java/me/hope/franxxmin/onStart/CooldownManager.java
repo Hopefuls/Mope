@@ -41,15 +41,13 @@ public class CooldownManager {
             Cooldown.cooldowntrack.put(server.getIdAsString(), temp);
             ServerHashmaps.ID.add(server.getIdAsString());
         }
-        Main.api.updateActivity(ActivityType.LISTENING, "to " + Main.api.getServers().size() + " Servers | mp> help");
+        Main.api.updateActivity(ActivityType.LISTENING, Main.api.getServers().size() + " Servers | mp> help");
         if (!Main.localmode) {
 
         }
 
         System.out.println("Done.\n");
         eb.setColor(Main.blurple);
-        Main.api.updateAvatar(Main.api.getUserById("688561837020545080").join().getAvatar());
-        Main.api.updateUsername("Mope");
         Main.api.getChannelById("698308561733812274").get().asServerTextChannel().get().sendMessage(eb);
 
 
