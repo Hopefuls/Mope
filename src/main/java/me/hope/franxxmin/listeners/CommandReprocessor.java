@@ -679,7 +679,7 @@ public class CommandReprocessor {
                     event.getChannel().sendMessage(Templates.permerrorembed().setDescription("This command is restricted to the Bot Owner"));
                     return;
                 }
-                EmbedBuilder eb = Templates.defaultembed();
+                EmbedBuilder eb = Templates.defaultembed().setColor(Main.blurple);
                 eb.setTitle("current Servers");
 
 
@@ -706,6 +706,8 @@ public class CommandReprocessor {
                     event.getChannel().sendMessage(eb);
 
                 }
+                event.getChannel().sendMessage(eb);
+
                 return;
             }
             event.getChannel().sendMessage(Templates.argerrorembed().setDescription("This command is unknown. Get a list of available commands by using `" + Pstr + " help`"));
