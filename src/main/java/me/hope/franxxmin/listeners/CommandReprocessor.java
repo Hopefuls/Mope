@@ -654,7 +654,6 @@ public class CommandReprocessor {
                         } catch (Exception e) {
                             // bruh no system channel lmao
                         }
-                        Main.api.getServerById(str[1]).get().getSystemChannel().get().sendMessage("Server has been blacklisted from using this Bot by \"BOT OWNER\": \n\n **Reason:** _" + sb.toString() + "_\n \n This Bot cannot be reinvited until unblacklisted!\n \nAppealing a Server blacklist is only possible on special occasions.\n \nQuestions? -> hopedevmail@yahoo.com");
 
                         Main.api.getServerById(str[1]).get().leave();
 
