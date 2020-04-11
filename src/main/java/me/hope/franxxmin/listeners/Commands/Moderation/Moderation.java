@@ -76,7 +76,7 @@ public class Moderation {
             attacker = event.getMessage().getMentionedUsers().get(0);
 
         } catch (Exception e) {
-            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("This User is not on this Server!"));
+            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("This User is not on this Guild!"));
             return;
         }
         if (!event.getServer().get().canKickUser(yourself, attacker)) {
@@ -144,7 +144,7 @@ public class Moderation {
             attacker = event.getMessage().getMentionedUsers().get(0);
 
         } catch (Exception e) {
-            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("This User is not on this Server!"));
+            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("This User is not on this Guild!"));
             return;
         }
         if (!event.getServer().get().canBanUser(yourself, attacker)) {
@@ -261,7 +261,7 @@ public class Moderation {
             attacker = event.getMessage().getMentionedUsers().get(0);
 
         } catch (Exception e) {
-            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("This User is not on this Server!"));
+            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("This User is not on this Guild!"));
             return;
         }
         System.out.println(attacker.getRoles(event.getServer().get()));
@@ -368,7 +368,7 @@ public class Moderation {
             attacker = event.getMessage().getMentionedUsers().get(0);
 
         } catch (Exception e) {
-            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("This User is not on this Server!"));
+            event.getChannel().sendMessage(Templates.argerrorembed().setDescription("This User is not on this Guild!"));
             return;
         }
         if (attacker.getRoles(event.getServer().get()).contains(mutedrole)) {

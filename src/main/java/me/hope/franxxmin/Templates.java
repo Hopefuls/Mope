@@ -194,7 +194,7 @@ public class Templates {
 
         tempeb.setColor(Color.MAGENTA).setTitle("\u2139 General Commands");
         tempeb.setDescription("Here's a list of available Commands:");
-        tempeb.addField("mp> users", "Get a count of every user in your server.");
+        tempeb.addField("mp> users", "Get a count of every user in your Guild.");
         tempeb.addField("mp> userinfo @mention", "Shows global and local informations about a mentioned user.");
         tempeb.addField("fmdebug>", "Only usable for Bot Owner");
         tempeb.addField("mp> about", "about this Bot.");

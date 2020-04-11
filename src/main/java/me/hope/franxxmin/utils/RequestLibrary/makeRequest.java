@@ -59,16 +59,16 @@ public class makeRequest {
         EmbedBuilder eb = Templates.infoembed();
         eb.setTitle("\uD83D\uDCDD Logging");
         eb.setDescription("APIAccess Request " + callerClass.getName());
-        eb.addField("Server Name", event.getServer().get().getName(), true);
-        eb.addField("Server ID", event.getServer().get().getName(), true);
-        eb.addField("Server Owner", event.getServer().get().getOwner().getDiscriminatedName() + " (" + event.getServer().get().getOwner().getIdAsString() + ")", true);
+        eb.addField("Guild Name", event.getServer().get().getName(), true);
+        eb.addField("Guild ID", event.getServer().get().getName(), true);
+        eb.addField("Guild Owner", event.getServer().get().getOwner().getDiscriminatedName() + " (" + event.getServer().get().getOwner().getIdAsString() + ")", true);
         eb.addField("Author", event.getMessageAuthor().getDiscriminatedName() + " (" + event.getMessageAuthor().getIdAsString() + ")");
         eb.setThumbnail(event.getMessageAuthor().getAvatar());
         eb.addField("Channel", event.getChannel().asServerChannel().get().getName() + " (" + event.getChannel().getIdAsString() + ")");
         eb.addField("Response of API Request", fresponse);
         eb.setThumbnail(Main.api.getYourself().getAvatar());
 
-        // Remove Server from cooldown refereer (might not be needed)
+        // Remove Guild from cooldown refereer (might not be needed)
         // Main.cooldownref.remove(event.getServer().getIdAsString());
 
         if (Main.debug.getBoolean("enabled", true)) {

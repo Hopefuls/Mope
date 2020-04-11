@@ -53,9 +53,9 @@ public class Defaults {
             }
         }
         StringBuilder sb = new StringBuilder();
-        sb.append("overall Members in Server: " + all + "\n");
-        sb.append("Bot users in Server: " + botcount + "\n");
-        sb.append("Non bot users in Server: " + usercount + "\n");
+        sb.append("overall Members in Guild: " + all + "\n");
+        sb.append("Bot users in Guild: " + botcount + "\n");
+        sb.append("Non bot users in Guild: " + usercount + "\n");
         sb.append("\nOnline Users: " + online + "\n");
         sb.append("Do-not-disturb Users: " + dnd + "\n");
         sb.append("Idle Users: " + away + "\n");
@@ -100,13 +100,13 @@ public class Defaults {
                 }
             }
             if (event.getMessageAuthor().isBotOwner()) {
-                eb.addField("Mutal Servers [OWNER ONLY]", sb.toString());
+                eb.addField("Mutal Guilds [OWNER ONLY]", sb.toString());
             }
 
 
             EmbedBuilder yeet = Templates.defaultembed();
 
-            yeet.setTitle("\uD83D\uDCF0 Local Informations about " + checkuser.getName() + " on Server \"" + event.getServer().get().getName() + "\"");
+            yeet.setTitle("\uD83D\uDCF0 Local Informations about " + checkuser.getName() + " on Guild \"" + event.getServer().get().getName() + "\"");
             yeet.setColor(checkuser.getRoleColor(event.getServer().get()).get());
             if (!checkuser.getNickname(event.getServer().get()).isPresent()) {
                 yeet.addField("Nickname", "*No Nickname given*");
@@ -115,7 +115,7 @@ public class Defaults {
             }
 
 
-            yeet.addField("Server joined", new TimestampResolver(Timestamp.from(checkuser.getJoinedAtTimestamp(event.getServer().get()).get())).resolve());
+            yeet.addField("Guild joined", new TimestampResolver(Timestamp.from(checkuser.getJoinedAtTimestamp(event.getServer().get()).get())).resolve());
 
             StringBuilder stri = new StringBuilder();
 
@@ -176,10 +176,10 @@ public class Defaults {
 
         generalembed.setColor(Main.blurple).setTitle("\uD83C\uDF10 General Commands");
         generalembed.setThumbnail("https://franxx.ml/images/tgg/Art.png");
-        generalembed.addField(prefix + " users", "Get a count of every user in your server.");
+        generalembed.addField(prefix + " users", "Get a count of every user in your Guild.");
         generalembed.addField(prefix + " userinfo @mention", "Shows global and local informations about a mentioned user.");
         generalembed.addField(prefix + " osu", "Opens the osu help page");
-        generalembed.addField(prefix + " prefix <prefix>/reset", "Set a custom prefix for the bot(default is ``mp>``)/use reset to reset it's prefix back to ``mp>`` [Usable by Server Admins]");
+        generalembed.addField(prefix + " prefix <prefix>/reset", "Set a custom prefix for the bot(default is ``mp>``)/use reset to reset it's prefix back to ``mp>`` [Usable by Guild Admins]");
         generalembed.addField(prefix + " status", "Prints ARABAPI and Mope CDN Status");
         generalembed.addField(prefix + " about", "about this Bot.");
         generalembed.addField("mpdev>", "only works on the Development instance of Mope, so pretty much useless for the normal user :)");

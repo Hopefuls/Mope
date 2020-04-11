@@ -6,6 +6,7 @@ import me.hope.franxxmin.utils.VariablesStorage.Cooldown;
 import me.hope.franxxmin.utils.VariablesStorage.ServerHashmaps;
 import org.javacord.api.entity.activity.ActivityType;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
+import org.javacord.api.entity.permission.Permissions;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 
@@ -25,9 +26,9 @@ public class CooldownManager {
         System.out.println("Done.\n");
 
         // Generate cooldown hashmaps for currently registered Servers TODO add extra Message Listener for new servers onRun
-        System.out.println("Generating cooldown hashmap for current servers..");
+        System.out.println("Generating cooldown hashmap for current Guilds..");
         EmbedBuilder eb = Templates.defaultembed();
-        eb.setTitle("current Servers");
+        eb.setTitle("current Guilds");
 
 
         for (Server server : Main.api.getServers()) {
@@ -60,14 +61,15 @@ public class CooldownManager {
             Cooldown.cooldowntrack.put(server.getIdAsString(), temp);
             ServerHashmaps.ID.add(server.getIdAsString());
         }
-        Main.api.updateActivity(ActivityType.LISTENING, Main.api.getServers().size() + " Servers | mp> help");
+        Main.api.updateActivity(ActivityType.LISTENING, Main.api.getServers().size() + " Guilds | mp> help");
         if (!Main.localmode) {
 
         }
 
         System.out.println("Done.\n");
         eb.setColor(Main.blurple);
-        Main.api.getChannelById("698308561733812274").get().asServerTextChannel().get().sendMessage(eb);
+        Main.api.getChannelById("698308561733812274").get().asServerTextChannel().get().sendMessage(eb).join();
+        Main.api.getChannelById("698308561733812274").get().asServerTextChannel().get().sendMessage("BOT Invite of " + Main.api.getYourself().getName() + ": " + Main.api.createBotInvite(Permissions.fromBitmask(8)));
 
 
     }
@@ -75,7 +77,7 @@ public class CooldownManager {
 
     public static void updateServer(Server srv) {
         String ID = srv.getIdAsString();
-        System.out.println("New Server detected! Updating for ID " + ID);
+        System.out.println("New Guild detected! Updating for ID " + ID);
 
         HashMap<TYPE, Double> temp = new HashMap<>();
         temp.put(TYPE.HELP, 0.0);
@@ -91,7 +93,7 @@ public class CooldownManager {
 
     public static void removeServer(Server srv) {
         String ID = srv.getIdAsString();
-        System.out.println("Server disconnect detected! Removing " + ID);
+        System.out.println("Guild disconnect detected! Removing " + ID);
 
         ServerHashmaps.ID.remove(ID);
         Cooldown.cooldowntrack.remove(ID);

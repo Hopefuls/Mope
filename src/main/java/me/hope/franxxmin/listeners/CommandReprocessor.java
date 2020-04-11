@@ -12,6 +12,7 @@ import me.hope.franxxmin.utils.RequestLibrary.OSU_PPY_SH;
 import me.hope.franxxmin.utils.VariablesStorage.Cooldown;
 import me.hope.franxxmin.utils.VariablesStorage.ServerHashmaps;
 import me.hope.franxxmin.utils.cooldownutility;
+import org.javacord.api.entity.channel.ServerTextChannel;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
@@ -46,7 +47,7 @@ public class CommandReprocessor {
             EmbedBuilder log = Templates.debugembed();
 
             log.setDescription("Command executed");
-            log.addField("Server (ID)", event.getServer().get().getName() + " (" + event.getServer().get().getIdAsString() + ")");
+            log.addField("Guild (ID)", event.getServer().get().getName() + " (" + event.getServer().get().getIdAsString() + ")");
             log.addInlineField("Channel (ID)", event.getChannel().asServerTextChannel().get().getName() + " (" + event.getChannel().getIdAsString() + ")");
             log.addInlineField("Message Author (ID)", event.getMessageAuthor().getDiscriminatedName() + " (" + event.getMessageAuthor().getIdAsString() + " )");
             log.addField("Message ID", event.getMessage().getIdAsString());
@@ -131,7 +132,7 @@ public class CommandReprocessor {
             if (str[0].equalsIgnoreCase("prefix")) {
 
                 if (!event.getMessageAuthor().isServerAdmin()) {
-                    event.getChannel().sendMessage(Templates.permerrorembed().setDescription("This command can only be used by server admins."));
+                    event.getChannel().sendMessage(Templates.permerrorembed().setDescription("This command can only be used by Guild admins."));
                     return;
                 }
                 if (str.length == 1) {
@@ -630,26 +631,33 @@ public class CommandReprocessor {
                 Preferences pref = ServerHashmaps.blacklist;
                 if (pref.getBoolean(str[1], false)) {
                     pref.putBoolean(str[1], false);
-                    event.getChannel().sendMessage("Server ID " + str[1] + " unblacklisted");
+                    event.getChannel().sendMessage("Guild ID " + str[1] + " unblacklisted");
                     return;
                 } else if (!pref.getBoolean(str[1], false)) {
                     pref.putBoolean(str[1], true);
                     boolean couldmsg = false;
                     boolean couldmessage = false;
-
+                    boolean farmcheck = false;
                     if (Main.api.getServerById(str[1]).get().getMembers().contains(Main.api.getYourself())) {
                         StringBuilder sb = new StringBuilder();
                         for (int i = 2; i < str.length; i++) {
                             sb.append(str[i] + " ");
                         }
                         try {
-                            Main.api.getServerById(str[1]).get().getOwner().sendMessage("Hello " + Main.api.getServerById(str[1]).get().getOwner().getName() + ", \n \nYour Server has been blacklisted from using this Bot by \"BOT OWNER\": \n \n **Reason:** _" + sb.toString() + "_\n \n This Bot cannot be reinvited until unblacklisted!\n \nAppealing a Server blacklist is only possible on special occasions.\n \nQuestions? -> hopedevmail@yahoo.com");
+                            Main.api.getServerById(str[1]).get().getOwner().sendMessage("Hello " + Main.api.getServerById(str[1]).get().getOwner().getName() + ", \n \nYour Guild, " + event.getServer().get().getName() + " has been blacklisted from using this Bot by \"BOT OWNER\": \n \n **Reason:** _" + sb.toString() + "_\n \n This Bot cannot be reinvited until unblacklisted!\n \nAppealing a Server blacklist is only possible on special occasions.\n \nQuestions? -> hopedevmail@yahoo.com");
                             couldmsg = true;
                         } catch (Exception e) {
                             // lmao literally everyone disables dms nowadays because of scams pog
                         }
                         try {
-                            Main.api.getServerById(str[1]).get().getSystemChannel().get().sendMessage("Server has been blacklisted from using this Bot by \"BOT OWNER\": \n\n **Reason:** _" + sb.toString() + "_\n \n This Bot cannot be reinvited until unblacklisted!\n \nAppealing a Server blacklist is only possible on special occasions.\n \nQuestions? -> hopedevmail@yahoo.com");
+
+                            for (ServerTextChannel x : Main.api.getServerById(str[1]).get().getTextChannels()) {
+                                if (x.asServerTextChannel().get().canYouWrite()) {
+                                    x.sendMessage("Guild has been blacklisted from using this Bot by \"BOT OWNER\": \n\n **Reason:** _" + sb.toString() + "_\n \n This Bot cannot be reinvited until unblacklisted!\n \nAppealing a Server blacklist is only possible on special occasions.\n \nQuestions? -> hopedevmail@yahoo.com");
+                                    farmcheck = true;
+                                    break;
+                                }
+                            }
                             couldmessage = true;
                         } catch (Exception e) {
                             // bruh no system channel lmao
@@ -660,14 +668,17 @@ public class CommandReprocessor {
                     }
                     StringBuilder sb = new StringBuilder();
                     if (!couldmsg) {
-                        sb.append("\nCould not Message Server Owner");
+                        sb.append("\nCould not Message Guild Owner");
 
                     }
                     if (!couldmessage) {
-                        sb.append("\nCould not Inform Server about it");
+                        sb.append("\nCould not Inform Guild about it");
 
                     }
-                    event.getChannel().sendMessage("Server ID " + str[1] + " blacklisted\n" + sb.toString());
+                    if (!farmcheck) {
+                        sb.append("\nGuild was suspected Botfarm Guild");
+                    }
+                    event.getChannel().sendMessage("Guild ID " + str[1] + " blacklisted\n" + sb.toString());
 
 
                     return;
