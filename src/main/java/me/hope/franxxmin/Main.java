@@ -41,6 +41,7 @@ public class Main {
     public static Boolean localmode;
     public static String botdcapitoken;
     public static String googleconsoletoken;
+    public static
 
     public static Color blurple = new Color(114, 137, 218);
 
