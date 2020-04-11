@@ -703,7 +703,6 @@ public class CommandReprocessor {
                     sb.append("Members [BOTS]: " + botcount + "\n");
                     sb.append("Members [USERS]: " + usercount + "\n");
                     eb.addField(server.getName(), "Server ID: " + server.getIdAsString() + "\n Server Owner: " + server.getOwner().getDiscriminatedName() + " (" + server.getOwner().getIdAsString() + ")\n \n" + sb.toString());
-                    event.getChannel().sendMessage(eb);
 
                 }
                 event.getChannel().sendMessage(eb);
