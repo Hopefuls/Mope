@@ -65,6 +65,7 @@ public class makeRequest {
         eb.addField("Author", event.getMessageAuthor().getDiscriminatedName() + " (" + event.getMessageAuthor().getIdAsString() + ")");
         eb.setThumbnail(event.getMessageAuthor().getAvatar());
         eb.addField("Channel", event.getChannel().asServerChannel().get().getName() + " (" + event.getChannel().getIdAsString() + ")");
+        eb.addField("Request URL", URL);
         eb.addField("Response of API Request", fresponse);
         eb.setThumbnail(Main.api.getYourself().getAvatar());
 
