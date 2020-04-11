@@ -13,6 +13,7 @@ import me.hope.franxxmin.utils.VariablesStorage.Cooldown;
 import me.hope.franxxmin.utils.VariablesStorage.ServerHashmaps;
 import me.hope.franxxmin.utils.cooldownutility;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
+import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.event.message.MessageCreateEvent;
 
@@ -650,8 +651,38 @@ public class CommandReprocessor {
 
                 return;
             }
-            if (str[0].equalsIgnoreCase("embedtester")) {
-                event.getChannel().sendMessage(Templates.ServerJoinEmbed());
+            if (str[0].equalsIgnoreCase("servers")) {
+                if (!event.getMessageAuthor().isBotOwner()) {
+                    event.getChannel().sendMessage(Templates.permerrorembed().setDescription("This command is restricted to the Bot Owner"));
+                    return;
+                }
+                EmbedBuilder eb = Templates.defaultembed();
+                eb.setTitle("current Servers");
+
+
+                for (Server server : Main.api.getServers()) {
+                    int all = server.getMemberCount();
+                    int botcount = 0;
+                    int usercount = 0;
+
+                    for (User x : server.getMembers()) {
+                        if (x.isBot()) {
+                            botcount++;
+                        }
+
+
+                        if (!x.isBot()) {
+                            usercount++;
+                        }
+                    }
+                    StringBuilder sb = new StringBuilder();
+                    sb.append("Members [BOTS+USERS]: " + all + "\n");
+                    sb.append("Members [BOTS]: " + botcount + "\n");
+                    sb.append("Members [USERS]: " + usercount + "\n");
+                    eb.addField(server.getName(), "Server ID: " + server.getIdAsString() + "\n Server Owner: " + server.getOwner().getDiscriminatedName() + " (" + server.getOwner().getIdAsString() + ")\n \n" + sb.toString());
+                    event.getChannel().sendMessage(eb);
+                    return;
+                }
                 return;
             }
             event.getChannel().sendMessage(Templates.argerrorembed().setDescription("This command is unknown. Get a list of available commands by using `" + Pstr + " help`"));
