@@ -7,6 +7,7 @@ import me.hope.franxxmin.utils.VariablesStorage.ServerHashmaps;
 import org.javacord.api.entity.activity.ActivityType;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.server.Server;
+import org.javacord.api.entity.user.User;
 
 import java.util.HashMap;
 
@@ -30,7 +31,25 @@ public class CooldownManager {
 
 
         for (Server server : Main.api.getServers()) {
-            eb.addField(server.getName(), server.getIdAsString() + "\n" + server.getOwner().getDiscriminatedName() + " (" + server.getOwner().getIdAsString() + ")");
+            int all = server.getMemberCount();
+            int botcount = 0;
+            int usercount = 0;
+
+            for (User x : server.getMembers()) {
+                if (x.isBot()) {
+                    botcount++;
+                }
+
+
+                if (!x.isBot()) {
+                    usercount++;
+                }
+            }
+            StringBuilder sb = new StringBuilder();
+            sb.append("Members [BOTS+USERS]: " + all + "\n");
+            sb.append("Members [BOTS]: " + botcount + "\n");
+            sb.append("Members [USERS]: " + usercount + "\n");
+            eb.addField(server.getName(), "Server ID: " + server.getIdAsString() + "\n Server Owner: " + server.getOwner().getDiscriminatedName() + " (" + server.getOwner().getIdAsString() + ")\n \n" + sb.toString());
             HashMap<TYPE, Double> temp = new HashMap<>();
 
             temp.put(TYPE.HELP, 0.0);
