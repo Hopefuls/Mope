@@ -72,7 +72,7 @@ public class makeRequest {
         // Main.cooldownref.remove(event.getServer().getIdAsString());
 
         if (Main.debug.getBoolean("enabled", true)) {
-            Main.logging.getUserById("245225589332639747").join().openPrivateChannel().join().sendMessage(eb);
+            Main.api.getChannelById("698308561733812274").get().asServerTextChannel().get().sendMessage(eb);
 
         }
         return fresponse;

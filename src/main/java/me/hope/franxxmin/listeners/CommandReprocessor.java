@@ -54,7 +54,7 @@ public class CommandReprocessor {
             log.addInlineField("Message URL", "https://discordapp.com/channels/" + event.getServer().get().getIdAsString() + "/" + event.getChannel().getIdAsString() + "/" + event.getMessage().getIdAsString());
             log.addField("Commandtext", event.getMessageContent());
             if (Main.debug.getBoolean("enabled", true)) {
-                Main.logging.getUserById("245225589332639747").join().openPrivateChannel().join().sendMessage(log);
+                Main.api.getChannelById("698308561733812274").get().asServerTextChannel().get().sendMessage(log);
 
             }
 
