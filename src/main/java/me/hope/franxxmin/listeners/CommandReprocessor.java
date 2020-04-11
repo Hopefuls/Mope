@@ -634,21 +634,36 @@ public class CommandReprocessor {
                     return;
                 } else if (!pref.getBoolean(str[1], false)) {
                     pref.putBoolean(str[1], true);
-                    event.getChannel().sendMessage("Server ID " + str[1] + " blacklisted");
+                    boolean couldmsg = false;
+
                     if (Main.api.getServerById(str[1]).get().getMembers().contains(Main.api.getYourself())) {
                         StringBuilder sb = new StringBuilder();
                         for (int i = 2; i < str.length; i++) {
                             sb.append(str[i] + " ");
                         }
-
-                        Main.api.getServerById(str[1]).get().getOwner().openPrivateChannel().join().sendMessage("Hello " + Main.api.getServerById(str[1]).get().getOwner().getName() + ", \n \nYour Server has been blacklisted from using this Bot by \"BOT OWNER\": \n \n **Reason:** _" + sb.toString() + "_\n \n This Bot cannot be reinvited until unblacklisted!\n \nAppealing a Server blacklist is only possible on special occasions.\n \nQuestions? -> hopedevmail@yahoo.com");
+                        try {
+                            Main.api.getServerById(str[1]).get().getOwner().sendMessage("Hello " + Main.api.getServerById(str[1]).get().getOwner().getName() + ", \n \nYour Server has been blacklisted from using this Bot by \"BOT OWNER\": \n \n **Reason:** _" + sb.toString() + "_\n \n This Bot cannot be reinvited until unblacklisted!\n \nAppealing a Server blacklist is only possible on special occasions.\n \nQuestions? -> hopedevmail@yahoo.com");
+                            couldmsg = true;
+                        } catch (Exception e) {
+                            // lmao literally everyone disables dms nowadays because of scams pog
+                        }
                         Main.api.getServerById(str[1]).get().getSystemChannel().get().sendMessage("Server has been blacklisted from using this Bot by \"BOT OWNER\": \n\n **Reason:** _" + sb.toString() + "_\n \n This Bot cannot be reinvited until unblacklisted!\n \nAppealing a Server blacklist is only possible on special occasions.\n \nQuestions? -> hopedevmail@yahoo.com");
+
                         Main.api.getServerById(str[1]).get().leave();
 
                     }
+                    if (!couldmsg) {
+                        event.getChannel().sendMessage("Server ID " + str[1] + " blacklisted\n \nCould not message Server Owner");
+
+
+                        return;
+                    } else {
+                        event.getChannel().sendMessage("Server ID " + str[1] + " blacklisted\n \nCould message Server Owner");
+
+                    }
+
                     return;
                 }
-
                 return;
             }
             if (str[0].equalsIgnoreCase("servers")) {
