@@ -1,4 +1,4 @@
-# --------------------- Discontinued after TOS-Violation on Discord ---------------------
+# -------- Discontinued after account termination on Discord --------
 # Mope
 A multi-functional Discord Bot based on Javacord
 
